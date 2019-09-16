@@ -1,0 +1,157 @@
+.fontTop{
+    font-size: .36rem;
+    color: #969696;
+    margin-top: .25rem;
+}
+.mineLine{
+    border-top: 1px solid #e6e6e6;
+    overflow: hidden;
+}
+.iconStyle{
+    font-size: .7rem;
+    display: inline-block;
+    line-height: 1.5rem;
+    text-align: center;
+    width: 2.28rem;
+}
+.fontCen{
+    font-size: .48rem;
+    line-height: 1.5rem;
+    width: 100%;
+    border-bottom: 1px solid #e6e6e6;
+}
+.fontCen span{
+    font-size: .4rem;
+    color:#969696;
+    display: inline-block;
+    line-height: 1.5rem;
+    margin-left: .24rem;
+}
+.divCen{
+    display: flex;
+    flex-direction: row;
+}
+.collMusic{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-center;
+    padding: 0 .5rem;
+    border-top: .24rem solid #e6e6e6;
+}
+.collM1{
+    height: 1.24rem;
+    line-height: 1.24rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-center;
+    justify-content: space-between;
+}
+.collM2{
+    height: 1.24rem;
+    line-height: 1.24rem;
+    display: flex;
+    
+    flex-direction: row;
+    align-items: flex-center;
+    justify-content: space-between;
+}
+ span.iconCollM2{
+font-size: .8rem;
+color:#323232;
+}
+.weightFont{
+    font-size: .54rem;
+    font-weight: 900;
+    color: #323232;
+}
+.weightFont span{
+    font-size: .4rem;
+    color:#969696;
+    display: inline-block;
+    line-height: 1.5rem;
+}
+.iconCollM1{
+    font-size: .7rem;
+    margin-top: .06rem;
+    color: #323232;
+}
+.collList{
+    height: 1.82rem;
+    line-height: 1.82rem;
+    display: flex;
+    padding: 0 .5rem;
+    flex-direction: row;
+    align-items: flex-center;
+    justify-content: space-between;
+}
+.collImg{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-center;
+    justify-content: space-around;
+}
+.collBox{
+    width: 1.5rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    overflow: hidden;
+    border-radius: 10%;
+    background: #323232;
+    margin-top: .15rem;
+}
+.collName{
+    margin-top: .42rem;
+    font-size: .44rem;
+    display: inline-block;
+    line-height: .5rem;
+}
+.collMiddle{
+    display: flex;
+    flex-direction: column;
+    padding-left:.35rem; 
+}
+.collCheck{
+    margin-top: .05rem;
+    font-size: .32rem;
+    display: inline-block;
+    line-height: .42rem;
+    color: #969696;
+}
+.audio_player{
+    padding:0 .34rem;
+    line-height: 1.34rem;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-center;
+    background: white;
+}
+.audio_player img{
+    border-radius: 50%;
+    
+}
+.audio_son{
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.icon_audio{
+    font-size: .84rem;
+    padding-left: .58rem;
+    color: #505050;
+}
+.musicName{
+    line-height: .5rem;
+    font-size: .45rem;
+    margin-top: .2rem;
+}
+.musicBody{
+    line-height: .38rem;
+    font-size: .38rem;
+
+}
