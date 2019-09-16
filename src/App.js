@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom'
 import Home from './views/Home'
 import Search from './views/Search'
+import SearchDetails from './views/SearchDetails'
 class App extends React.Component{
   render(){
       return (
@@ -13,6 +14,7 @@ class App extends React.Component{
                 <Router>
                     <Switch>
                         <Route path={"/Search"} component={Search}></Route>
+                        <Route path={"/SearchDetails"} component={SearchDetails}></Route>
                         <Route path={"/"} component={Home}></Route>
                     </Switch>
                 </Router>
