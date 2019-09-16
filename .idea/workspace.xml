@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85e5efc2-9f67-4fab-b91b-361102b7e73a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/工作日志.md" beforeDir="false" afterPath="$PROJECT_DIR$/工作日志.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -20,8 +19,8 @@
         <entry file="file://$PROJECT_DIR$/工作日志.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="373">
-                <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
+              <first_editor relative-caret-position="520">
+                <caret line="26" column="15" selection-start-line="26" selection-start-column="15" selection-end-line="26" selection-end-column="15" />
               </first_editor>
               <second_editor />
             </state>
@@ -181,12 +180,12 @@
       <workItem from="1568621662320" duration="91000" />
       <workItem from="1568621872039" duration="34000" />
       <workItem from="1568622085457" duration="2199000" />
-      <workItem from="1568625128060" duration="120000" />
+      <workItem from="1568625128060" duration="675000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16855000" />
+    <option name="totallyTimeSpent" value="17410000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -201,14 +200,14 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4676806" visible="true" weight="0.12549537" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.46785715" visible="true" weight="0.18758257" />
       <window_info id="Structure" order="1" weight="0.25" />
-      <window_info id="npm" order="2" sideWeight="0.53231937" side_tool="true" weight="0.12549537" />
+      <window_info id="npm" order="2" sideWeight="0.5321429" side_tool="true" weight="0.18758257" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32894737" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49791667" visible="true" weight="0.2549575" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49791667" weight="0.1713881" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -423,8 +422,8 @@
     <entry file="file://$PROJECT_DIR$/工作日志.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="373">
-            <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
+          <first_editor relative-caret-position="520">
+            <caret line="26" column="15" selection-start-line="26" selection-start-column="15" selection-end-line="26" selection-end-column="15" />
           </first_editor>
           <second_editor />
         </state>
