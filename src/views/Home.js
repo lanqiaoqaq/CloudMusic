@@ -24,7 +24,7 @@ class App extends React.Component{
                     <NavLink to={"/"} exact>发现</NavLink>
                     <NavLink to={"/trend"}>动态</NavLink>
                     <span onClick={()=>{
-                        console.log(this.props.history.push("/search"))
+                        this.props.history.push("/search")
                     }}><i className={"iconfont icon-fangdajing"}></i></span>
                 </nav>
                 <section>

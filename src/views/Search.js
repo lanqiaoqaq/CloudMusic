@@ -7,11 +7,13 @@ import HotSearch from '../components/Search/HotSearch'
 class Search extends React.Component{
     render(){
         return(
-            <div className={"box"}>
-                <SearchView history={this.props.history}></SearchView>
-                <Advertisement></Advertisement>
-                <History></History>
-                <HotSearch history={this.props.history} ></HotSearch>
+            <div className={"box_k"}>
+                <SearchView {...this.props}></SearchView>
+                <div className={"box_k_k"}>
+                    <Advertisement></Advertisement>
+                    <History></History>
+                    <HotSearch {...this.props} ></HotSearch>
+                </div>
             </div>
         )
     }

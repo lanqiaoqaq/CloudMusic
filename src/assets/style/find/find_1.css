@@ -1,17 +1,14 @@
 .f_banner{
     height: 4.48rem;
-    background: red;
     padding: 0.4rem;
 }
 .banner_pic{
     width: 100%;
     height: 100%;
-    background: yellow;
 }
 .intro{
     height: 2rem;
     width: 100%;
-    background: lightskyblue;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -41,17 +38,15 @@
     font-weight: 900;
 }
 .intro li div p{
-    color: #3f3f3f;
-    font-size: 0.28rem;
+    color: #3a3a3a;
+    font-size: 0.26rem;
 }
 .intro_playlist{
     height: 10.8rem;
-    background: lightgray;
     padding: 0 0.42rem 0 0.42rem;
 }
 .head_playlist{
     height: 1.5rem;
-    background: pink;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -71,13 +66,11 @@
 }
 .playlist_list{
     height: 9.3rem;
-    background: red;
 }
 .playlist_list li{
     float: left;
     width: 3.08rem;
     height:4.14rem;
-    background: #cccccc;
     margin-right:0.28rem ;
     margin-bottom: 0.44rem;
 }
@@ -87,11 +80,9 @@
 .new_disc{
     height: 6.5rem;
     padding: 0 0.4rem 0 0.4rem;
-    background: yellow;
 }
 .head_disc{
     height: 1.5rem;
-    background: pink;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -129,7 +120,6 @@
     float: left;
     width: 3.10rem;
     height: 4.14rem;
-    background: #cccccc;
     margin-right:0.28rem ;
     margin-bottom: 0.44rem;
 }
