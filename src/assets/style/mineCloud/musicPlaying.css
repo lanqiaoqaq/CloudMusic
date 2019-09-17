@@ -1,0 +1,83 @@
+.cyHead{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 .5rem;
+    align-items: center;
+    flex-direction: row;
+    height: 1.54rem;
+    background: #393939;
+}
+.cyHead .iconfont{
+    font-size: .8rem;
+    color: white;
+}
+.cyHead div{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+.cyHead div p{
+    display: flex;
+    justify-content: center;
+    flex-direction:column ;
+    padding-left: .48rem;
+}
+.cyHead div p span:nth-child(1){
+    font-size: .52rem;
+    color: white;
+}
+.cyHead div p span:nth-child(2){
+    font-size: .36rem;
+    color: #9f9f9f;
+    padding-top:.2rem;
+}
+.cyson1{
+    padding: 0 1.46rem;
+    position: relative;
+}
+.cyson1 .cyimg1{
+    width: 8rem;
+    height:8rem;
+    margin-top:2rem;
+}
+.cyson1 div  .iconfont{
+    font-size: .64rem;
+}
+.cyson1 div:nth-child(3){
+    margin-top:2.5rem;
+}
+.cyImgBox{
+    background: red;
+    width: 5.44rem;
+    height: 5.44rem;
+    border-radius: 50%;
+    position: absolute;
+    border: none;
+    top:3.24rem;
+    left: 2.72rem;
+}
+.cyImgBox img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+}
+.cyiconaixin{
+    padding: 0 1.6rem 0 .4rem;
+}
+.cyiconpinglun{
+    padding:0  1.6rem 0 1.6rem;
+    display: inline-block;
+}
+.cyMusic{
+    height: 100%;
+}
+.cyFooter{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    height: 3.6rem;
+    background: #393939;
+    /* z-index: auto; */
+}

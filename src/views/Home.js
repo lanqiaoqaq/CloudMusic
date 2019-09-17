@@ -37,7 +37,7 @@ class App extends React.Component{
                     </Switch>
                 </section>
                 <footer className={"footer"}>
-                    <AudioPlayer></AudioPlayer>
+                    <AudioPlayer {...this.props}></AudioPlayer>
                 </footer>
             </Router>
             </>
