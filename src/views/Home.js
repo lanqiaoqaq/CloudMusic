@@ -25,7 +25,7 @@ class App extends React.Component{
                     <NavLink to={"/village"}>云村</NavLink>
                     <NavLink to={"/video"}>视频</NavLink>
                     <span onClick={()=>{
-                        console.log(this.props.history.push("/search"))
+                        this.props.history.push("/search")
                     }}><i className={"iconfont icon-fangdajing"}></i></span>
                 </nav>
                 <section>

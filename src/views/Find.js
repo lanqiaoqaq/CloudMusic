@@ -1,12 +1,13 @@
 import React from 'react'
 import "../assets/style/find_1.css"
+import Banner from '../components/Find/Banner'
 class Find extends React.Component{
     render(){
         return(
             <div>
                 <div className={"f_banner"}>
                     <div className={"banner_pic"}>
-
+                        <Banner></Banner>
                     </div>
                 </div>
                 <ul className={"intro"}>
