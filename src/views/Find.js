@@ -1,5 +1,5 @@
 import React from 'react'
-import "../assets/style/find_1.css"
+import "../assets/style/find/find_1.css"
 import Banner from '../components/Find/Banner'
 class Find extends React.Component{
     render(){
