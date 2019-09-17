@@ -1,3 +1,16 @@
 .swiper-pagination-bullet-active{
     background: #fe2617;
 }
+.playlist_s{
+    position: relative;
+}
+.playCount{
+    position: absolute;
+    right: 0;
+    top:0;
+    font-size: 0.24rem;
+    color: #ffeeea;
+}
+.playCount span, .playCount i{
+    vertical-align: middle;
+}

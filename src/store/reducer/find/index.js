@@ -6,5 +6,11 @@ export default function (state = initState,{type,payload}) {
         //console.log("CHANGE_BANNERS")
         state.banners=payload;
     }
+    if(type === actionType.CHANGE_INTRO_PLAY_LIST){
+        state.introPlaylist=payload;
+    }
+    if(type === actionType.CHANGE_NEW_SONG){
+        state.newSong=payload;
+    }
     return state
 }
