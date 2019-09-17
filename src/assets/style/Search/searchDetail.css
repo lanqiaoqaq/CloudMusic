@@ -2,18 +2,396 @@
 .detail_nav{
     width: 10.8rem;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 .search_nav{
     width: 100%;
     height: 1.25rem;
     line-height: 1.25rem;
-    white-space: nowrap;
-    overflow: hidden;
+    border-bottom: 1px solid #e6e6e6;
+}
+.search_contain{
+    flex: 1;
+    overflow: auto;
 }
 .search_nav li{
-    float: left;
     width: 2.16rem;
     height: 1.25rem;
     text-align: center;
     font-size: 0.4rem;
+}
+.search_nav li a{
+    display: inline-block;
+    height: 1.2rem;
+    color: black;
+}
+
+/*综合的样式*/
+/*(1)单曲*/
+.composite_k{
+    width: 100%;
+    margin: 0 auto;
+}
+.composite_singe{
+    width: 9.9rem;
+    margin-left: 0.45rem;
+}
+.composite_singe ul:nth-child(1){
+    width: 9.9rem;
+    height: 1.5rem;
+}
+.composite_singe ul:nth-child(1) li:nth-child(1){
+    float: left;
+    font-size: 0.45rem;
+    font-weight: bolder;
+    margin-top: 0.85rem;
+}
+.composite_singe ul:nth-child(1) li:nth-child(2){
+    text-align: center;
+    float: right;
+    width: 2.4rem;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    border: 1px solid #e6e6e6;
+    margin-top: 0.6rem;
+    margin-right: 0.2rem;
+    border-radius: 0.5rem;
+}
+.composite_singe ul:nth-child(2){
+    width: 9.9rem;
+}
+.composite_singe ul:nth-child(2) li{
+    width: 100%;
+    height: 0.92rem;
+    margin-top: 0.5rem;
+}
+.composite_singe ul:nth-child(2) li span:nth-child(1){
+    float: left;
+}
+.composite_singe ul:nth-child(2) li span:nth-child(1) p:nth-child(1){
+    color: #00a5e0;
+    font-size: 0.42rem;
+    margin-bottom: 0.14rem;
+}
+.composite_singe ul:nth-child(2) li span:nth-child(1) p:nth-child(2){
+    color: #7e8c8d;
+}
+.composite_singe ul:nth-child(2) li span:nth-child(2){
+    float: right;
+    display: inline-block;
+    height: 0.92rem;
+    text-align: center;
+    line-height: 0.92rem;
+}
+.composite_singe ul:nth-child(2) li span:nth-child(2) i{
+    font-size: 0.6rem;
+    color: #7e8c8d;
+}
+.composite_singe>h5{
+    width: 9.9rem;
+    height: 1.6rem;
+    text-align: center;
+    line-height: 1.6rem;
+    font-size: 0.3rem;
+    color: #7e8c8d;
+}
+
+/*(2)视频*/
+.composite_video{
+    width: 9.9rem;
+    height: auto;
+    margin: 0 auto;
+}
+.composite_video>h5{
+    width: 100%;
+    height: 1.54rem;
+    line-height: 1.54rem;
+    font-size: 0.45rem;
+    font-weight: bolder;
+}
+.composite_video img{
+    width: 3.4rem;
+    height: 1.9rem;
+}
+.composite_video ul li{
+    width: 100%;
+    height: 1.94rem;
+    margin-top: 0.2rem;
+}
+.composite_video ul li span:nth-child(1){
+    float: left;
+}
+.composite_video ul li span:nth-child(2){
+    float: right;
+}
+.composite_video ul li span:nth-child(2) p:nth-child(1){
+    width: 6.28rem;
+    height: 1.4rem;
+    line-height: 0.6rem;
+    font-size: 0.38rem;
+}
+.composite_video ul li span:nth-child(2) p:nth-child(2){
+    color: #7e8c8d;
+    font-size: 0.3rem;
+}
+.composite_video h5:last-child{
+    width: 9.9rem;
+    height: 1.4rem;
+    font-weight: normal;
+    line-height: 1.4rem;
+    font-size: 0.3rem;
+    color: #7e8c8d;
+}
+
+/*（3）歌单*/
+.composite_playList{
+    width: 9.9rem;
+    margin: 0 auto;
+}
+.composite_playList h5:nth-child(1){
+    width: 9.9rem;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    font-size: 0.45rem;
+    font-weight: bolder;
+}
+.composite_playList img{
+    width: 2.2rem;
+    height: 2.2rem;
+}
+.composite_playList li{
+    width: 9.9rem;
+    height: 2.2rem;
+    margin-top: 0.2rem;
+}
+.composite_playList li span:nth-child(1){
+    display: inline-block;
+    float: left;
+}
+.composite_playList li span:nth-child(2){
+    display: inline-block;
+    float: left;
+    width: 7rem;
+    height: 2.2rem;
+    margin-left: 0.5rem;
+    line-height: 1rem;
+}
+.composite_playList li span:nth-child(2) p:nth-child(1){
+    font-size: 0.4rem;
+    color: #00a5e0;
+}
+.composite_playList li span:nth-child(2) p:nth-child(2){
+    font-size: 0.3rem;
+    color: #7e8c8d;
+}
+.composite_playList h5:last-child{
+    height: 1.4rem;
+    line-height: 1.4rem;
+    margin-left: 3.6rem;
+    font-size: 0.3rem;
+    color: #7e8c8d;
+}
+
+/*(4)歌手*/
+.composite_songwriter{
+    width: 9.9rem;
+    margin: 0 auto;
+}
+.composite_songwriter h5:nth-child(1){
+    width: 9.9rem;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    font-size: 0.45rem;
+    font-weight: bolder;
+}
+.composite_songwriter img{
+    width: 2.2rem;
+    height: 2.2rem;
+}
+.composite_songwriter ul li{
+    width: 9.9rem;
+    height: 2.2rem;
+    margin-top: 0.2rem;
+}
+.composite_songwriter ul li span:nth-child(1){
+    display: inline-block;
+    float: left;
+    height: 2.2rem;
+    line-height: 2.2rem;
+}
+.composite_songwriter ul li span:nth-child(2){
+    float: right;
+    display: inline-block;
+    height: 2.2rem;
+    line-height: 2.2rem;
+}
+.composite_songwriter ul li span:nth-child(2) b:nth-child(1){
+    color: black;
+    font-size: 0.4rem;
+    margin-right: 4.2rem;
+}
+.composite_songwriter ul li span:nth-child(2) b:nth-child(2){
+    margin-right: 0.4rem;
+    background: #00a5e0;
+    font-size: 0.4rem;
+    border-radius: 50%;
+    color: #ffffff;
+    background: red;
+}
+.composite_songwriter ul li span:nth-child(2) b:nth-child(3){
+    font-size: 0.3rem;
+    color: #7e8c8d;
+}
+.composite_songwriter h5:last-child{
+    width: 9.9rem;
+    height: 1.4rem;
+    font-weight: normal;
+    line-height: 1.4rem;
+    font-size: 0.3rem;
+    text-align: center;
+    color: #7e8c8d;
+}
+
+/*（5）专辑*/
+.composite_album{
+    width: 9.9rem;
+    margin: 0 auto;
+}
+.composite_album img{
+    width: 2.7rem;
+    height: 2.2rem;
+}
+.composite_album ul li{
+    width: 9.9rem;
+    height: 2.2rem;
+    margin-top: 0.2rem;
+}
+.composite_album  h5:nth-child(1){
+    width: 9.9rem;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    font-size: 0.45rem;
+    font-weight: bolder;
+}
+.composite_album ul li span{
+    float: left;
+}
+.composite_album ul li span:nth-child(2){
+    margin-left: 0.4rem;
+    display: inline-block;
+    height: 2.2rem;
+    line-height: 1rem;
+}
+.composite_album ul li span:nth-child(2) p:nth-child(1){
+    font-size: 0.4rem;
+    color: black;
+}
+.composite_album ul li span:nth-child(2) p:nth-child(2){
+    color: #7e8c8d;
+}
+.composite_album h5:last-child{
+    width: 9.9rem;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    font-size: 0.3rem;
+    color: #7e8c8d;
+    padding-left: 3.5rem;
+}
+
+/*（6）电台*/
+.composite_radio{
+    width: 9.9rem;
+    margin: 0 auto;
+}
+.composite_radio ul li{
+    width: 100%;
+    height: 2.2rem;
+}
+.composite_radio  h5:nth-child(1){
+    width: 9.9rem;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    font-size: 0.45rem;
+    font-weight: bolder;
+}
+.composite_radio img{
+    width: 2.2rem;
+    height: 2.2rem;
+}
+.composite_radio ul li span{
+    float: left;
+}
+.composite_radio ul li span:nth-child(2){
+    display: inline-block;
+    margin-left: 0.4rem;
+    height: 100%;
+    line-height: 1rem;
+}
+.composite_radio ul li span:nth-child(2) p:nth-child(1){
+    color: #00a5e0;
+    font-size: 0.35rem;
+}
+.composite_radio ul li span:nth-child(2) p:nth-child(2){
+    font-size: 0.3rem;
+    color: #7e8c8d;
+}
+
+/*(7)用户*/
+.composite_user{
+    width: 9.9rem;
+    margin: 0 auto;
+}
+.composite_user  h5:nth-child(1){
+    width: 9.9rem;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    font-size: 0.45rem;
+    font-weight: bolder;
+    margin-top: 0.4rem;
+}
+.composite_user ul li{
+    width: 9.9rem;
+    height: 2.2rem;
+}
+.composite_user img{
+    width: 2.2rem;
+    height: 2.2rem;
+}
+.composite_user ul li span{
+    float: left;
+    display: inline-block;
+    height: 2.2rem;
+}
+.composite_user ul li span:nth-child(2){
+    margin-left: 0.4rem;
+    line-height: 1rem;
+}
+.composite_user ul li span:nth-child(2) p:nth-child(1){
+    color: #00a5e0;
+    font-size: 0.35rem;
+}
+.composite_user ul li span:nth-child(2) p:nth-child(2){
+    font-size: 0.3rem;
+    color: #7e8c8d;
+}
+.composite_user ul li span:last-child{
+    margin-top: 0.8rem;
+    float: right;
+    height: 0.6rem;
+    width: 1.6rem;
+    text-align: center;
+    line-height: 0.6rem;
+    font-size: 0.35rem;
+    border: 1px solid #ff2315;
+    border-radius: 0.5rem;
+    color: #ff2315;
+}
+.composite_user h5:last-child{
+    width: 9.9rem;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    font-size: 0.3rem;
+    color: #7e8c8d;
+    padding-left: 3.5rem;
 }

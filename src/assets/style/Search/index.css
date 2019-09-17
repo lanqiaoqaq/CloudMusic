@@ -1,7 +1,14 @@
 /*搜索框*/
 .box_k{
+    display: flex;
+    flex-direction: column;
     width: 10.8rem;
     margin: 0 auto;
+    overflow: auto;
+}
+.box_k_k{
+    flex: 1;
+    overflow: auto;
 }
 .heard{
     height: 1.54rem;

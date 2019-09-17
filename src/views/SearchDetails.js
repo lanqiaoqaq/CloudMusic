@@ -13,6 +13,8 @@ import PlayList from '../components/Search/DetailSearch/PlayList'
 import RadioStation from '../components/Search/DetailSearch/RadioStation'
 import UserHome from '../components/Search/DetailSearch/UserHome'
 import '../assets/style/Search/searchDetail.css'
+import Swiper from 'swiper/dist/js/swiper.js'
+import 'swiper/dist/css/swiper.min.css'
 class SearchDetails extends React.Component {
     constructor(props) {
         super(props)
@@ -20,19 +22,19 @@ class SearchDetails extends React.Component {
 
     render() {
         return (
-            <div className={"detail_nav"}>
+            <div className={"detail_nav swiper-container"}>
                     <SearchView {...this.props}></SearchView>
-                    <ul className={"search_nav"}>
-                        <li><NavLink to={"/SearchDetails"} exact activeStyle={{color:"red",borderBottom:"2px solid red"}}>综合</NavLink></li>
-                        <li><NavLink to={"/SearchDetails/Single"} activeStyle={{color:"red",borderBottom:"2px solid red"}}>单曲</NavLink></li>
-                        <li><NavLink to={"/SearchDetails/Video"} activeStyle={{color:"red",borderBottom:"2px solid red"}}>视频</NavLink></li>
-                        <li><NavLink to={"/SearchDetails/SongWriter"} activeStyle={{color:"red",borderBottom:"2px solid red"}}>歌手</NavLink></li>
-                        <li><NavLink to={"/SearchDetails/Album"} activeStyle={{color:"red",borderBottom:"2px solid red"}}>专辑</NavLink></li>
-                        <li><NavLink to={"/SearchDetails/PlayList"} activeStyle={{color:"red",borderBottom:"2px solid red"}}>歌单</NavLink></li>
-                        <li><NavLink to={"/SearchDetails/RadioStation"} activeStyle={{color:"red",borderBottom:"2px solid red"}}>主播电台</NavLink></li>
-                        <li><NavLink to={"/SearchDetails/UserHome"} activeStyle={{color:"red",borderBottom:"2px solid red"}}>用户</NavLink></li>
+                    <ul className={"search_nav swiper-wrapper"}>
+                        <li className={"swiper-slide"}><NavLink to={"/SearchDetails"} exact activeStyle={{color:"red",borderBottom:"2px solid red"}}>综合</NavLink></li>
+                        <li className={"swiper-slide"}><NavLink to={"/SearchDetails/Single"} activeStyle={{color:"red",borderBottom:"2px solid red"}}>单曲</NavLink></li>
+                        <li className={"swiper-slide"}><NavLink to={"/SearchDetails/Video"} activeStyle={{color:"red",borderBottom:"2px solid red"}}>视频</NavLink></li>
+                        <li className={"swiper-slide"}><NavLink to={"/SearchDetails/SongWriter"} activeStyle={{color:"red",borderBottom:"2px solid red"}}>歌手</NavLink></li>
+                        <li className={"swiper-slide"}><NavLink to={"/SearchDetails/Album"} activeStyle={{color:"red",borderBottom:"2px solid red"}}>专辑</NavLink></li>
+                        <li className={"swiper-slide"}><NavLink to={"/SearchDetails/PlayList"} activeStyle={{color:"red",borderBottom:"2px solid red"}}>歌单</NavLink></li>
+                        <li className={"swiper-slide"}><NavLink to={"/SearchDetails/RadioStation"} activeStyle={{color:"red",borderBottom:"2px solid red"}}>主播电台</NavLink></li>
+                        <li className={"swiper-slide"}><NavLink to={"/SearchDetails/UserHome"} activeStyle={{color:"red",borderBottom:"2px solid red"}}>用户</NavLink></li>
                     </ul>
-                    <ul>
+                    <ul className={"search_contain"}>
                         <li><Route path={"/SearchDetails"} exact component={Composite}></Route></li>
                         <li><Route path={"/SearchDetails/Single"} component={Single}></Route></li>
                         <li><Route path={"/SearchDetails/Video"} component={Video}></Route></li>
@@ -44,6 +46,13 @@ class SearchDetails extends React.Component {
                     </ul>
             </div>
         )
+    }
+
+    componentDidMount(){
+        var mySwiper = new Swiper('.swiper-container',{
+            freeMode : true,
+            slidesPerView: "auto"
+        })
     }
 }
 

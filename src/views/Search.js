@@ -9,9 +9,11 @@ class Search extends React.Component{
         return(
             <div className={"box_k"}>
                 <SearchView {...this.props}></SearchView>
-                <Advertisement></Advertisement>
-                <History></History>
-                <HotSearch {...this.props} ></HotSearch>
+                <div className={"box_k_k"}>
+                    <Advertisement></Advertisement>
+                    <History></History>
+                    <HotSearch {...this.props} ></HotSearch>
+                </div>
             </div>
         )
     }
