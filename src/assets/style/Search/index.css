@@ -1,0 +1,146 @@
+/*搜索框*/
+.box{
+    width: 10.8rem;
+    margin: 0 auto;
+}
+.heard{
+    height: 1.54rem;
+    width: 100%;
+    text-align: center;
+    line-height: 1.54rem;
+}
+.heard i{
+    font-size: 0.65rem;
+    color: #333333;
+}
+.heard i:nth-child(1){
+    margin-right: 0.5rem;
+}
+.heard i:nth-last-child(1){
+    margin-left: 0.5rem;
+}
+.heard input{
+    width: 7.4rem;
+    height: 0.7rem;
+    border: none;
+    outline: none;
+    font-size: 0.42rem;
+    line-height: 0.7rem;
+    border-bottom: 1px solid #333333;
+}
+
+/*广告*/
+.advertisement{
+    width: 100%;
+    height: 1.44rem;
+    text-align: center;
+    margin-top: 0.54rem;
+}
+.advertisement img{
+    height: 1.44rem;
+    width: 9.44rem;
+}
+
+/*历史纪录*/
+.history{
+    width: 100%;
+    height: 1.86rem;
+    text-align: center;
+    margin-top: 0.66rem;
+}
+.history p:nth-child(1) i:nth-child(1){
+    color: black;
+    font-size: 0.45rem;
+    font-weight: bolder;
+    margin-right: 7.4rem;
+}
+.history p:nth-child(1) i:nth-child(2){
+    font-size: 0.45rem;
+}
+.history p:nth-child(2){
+    margin-top: 0.5rem;
+    width: 9.98rem;
+    overflow: hidden;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.history p:nth-child(2) b{
+    display: inline-block;
+    height: 0.8rem;
+    width: 3rem;
+    text-align: center;
+    line-height: 0.8rem;
+    background: #e6e6e6;
+    font-size: 0.38rem;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    margin-right: 0.14rem;
+}
+.history p:nth-child(2) b:nth-child(1){
+    margin-left: 0.6rem;
+}
+
+/*热搜榜*/
+.hot{
+    width: 100%;
+    margin-top: 1.2rem;
+    overflow: hidden;
+}
+.hot h5{
+    font-size: 0.45rem;
+    font-weight: bold;
+    margin-left: 0.5rem;
+}
+.hot ul li{
+    width: 100%;
+    height: 0.9rem;
+    margin-top: 0.88rem;
+    margin-left: 0.5rem;
+}
+.hot ul li span{
+    float: left;
+    display: inline-block;
+}
+.hot ul li span:nth-child(1){
+    width: 0.5rem;
+    height: 0.9rem;
+    text-align: center;
+    line-height: 0.9rem;
+    font-size: 0.4rem;
+    font-weight: bolder;
+}
+.hot ul li span:nth-child(2){
+    margin-left: 0.44rem;
+}
+.hot ul li span:nth-child(2) p i{
+    margin-right: 0.3rem;
+}
+.hot ul li span:nth-child(2) p:nth-child(2){
+    margin-top: 0.2rem;
+    font-size: 0.26rem;
+    color: #7e8c8d;
+}
+.hot ul li span:nth-child(2) p:nth-child(1) i:nth-child(1){
+    font-size: 0.38rem;
+    color: black;
+    font-weight: bolder;
+}
+.hot ul li span:nth-child(2) p:nth-child(1) i:nth-child(2){
+    font-size: 0.26rem;
+    color: #7e8c8d;
+}
+.red{
+    color: red;
+    font-size: 0.36rem;
+    font-weight: bolder;
+    font-style: italic;
+}
+.green{
+    color: green;
+    font-size: 0.36rem;
+    font-weight: bolder;
+    font-style: italic;
+}
+._red{
+    color: red;
+}

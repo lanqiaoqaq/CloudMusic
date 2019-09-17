@@ -7,6 +7,7 @@ import {
 import Home from './views/Home'
 import Search from './views/Search'
 import HotWall from "./components/village/square/HotWall";
+import SearchDetails from './views/SearchDetails';
 class App extends React.Component{
   render(){
       return (
@@ -15,6 +16,7 @@ class App extends React.Component{
                     <Switch>
                         <Route path={"/hotWall"} component={HotWall}></Route>
                         <Route path={"/Search"} component={Search}></Route>
+                        <Route path={"/SearchDetails"} component={SearchDetails}></Route>
                         <Route path={"/"} component={Home}></Route>
                     </Switch>
                 </Router>

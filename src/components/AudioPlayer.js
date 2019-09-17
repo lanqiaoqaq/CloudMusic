@@ -1,18 +1,20 @@
 import React from 'react'
+
 class AudioPlayer extends React.Component{
     render(){
         return(
             <div className={"audio_player"}>
-                <div>
-                    <img src="" alt=""/>
+                <div className={"audio_son"}>
+                    {/* <img src="" alt=""/> */}
+                    <p style={{width:"1.2rem",height:"1.2rem",background:"red",borderRadius:"50%"}}></p>
                     <div>
-                        <p></p>
-                        <p></p>
+                        <p className={"musicName"}>歌名</p>
+                        <p className={"musicBody"}>简介</p>
                     </div>
                 </div>
                 <div>
-                    <span></span>
-                    <span></span>
+                    <span className={"iconfont iconbofang icon_audio"}></span>
+                    <span className={"iconfont iconsangeheng icon_audio"}></span>
                 </div>
             </div>
         )
