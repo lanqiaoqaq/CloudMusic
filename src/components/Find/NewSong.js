@@ -25,14 +25,14 @@ class NewSong extends React.Component{
                             this.setState({
                                 DiscOrSong:1
                             })
-                        }} className={"_active _left"}>新碟</span>
+                        }} className={this.state.DiscOrSong?"_active _left":"_unactive _left"}>新碟</span>
                         <b></b>
                         <span onClick={()=>{
                             this.props.getNewSong();
                             this.setState({
                                 DiscOrSong:0
                             })
-                        }} className={"_unactive _right"}>新歌</span>
+                        }} className={this.state.DiscOrSong?"_unactive _right":"_active _right"}>新歌</span>
                     </div>
                     <div>{this.state.DiscOrSong?"更多新碟":"新歌推荐"}</div>
                 </div>
