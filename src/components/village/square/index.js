@@ -20,6 +20,9 @@ export default class Square extends React.Component{
                         <p>{(new Date()).getDate()}</p>
                     </div>
                 </div>
+                <div>
+
+                </div>
             </>
         )
     }
