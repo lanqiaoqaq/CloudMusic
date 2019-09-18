@@ -25,7 +25,10 @@
     overflow-y: auto;
     overflow-x: hidden;
 }
-.search_nav div ul li{
+.search_contain::-webkit-scrollbar{
+    display: none;
+}
+.search_nav li{
     width: 2.16rem;
     height: 1.25rem;
     text-align: center;
@@ -244,7 +247,6 @@
 }
 .composite_songwriter ul li span:nth-child(2) b:nth-child(2){
     margin-right: 0.4rem;
-    background: #00a5e0;
     font-size: 0.4rem;
     border-radius: 50%;
     color: #ffffff;

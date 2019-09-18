@@ -56,7 +56,7 @@ class SearchDetails extends React.Component {
         var mySwiper = new Swiper('.swiper-container',{
             freeMode : true,
             slidesPerView: "auto"
-        })
+            })
     }
 }
 

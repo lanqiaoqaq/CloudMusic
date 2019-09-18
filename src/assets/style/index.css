@@ -29,19 +29,22 @@ section{
     flex:1;
     overflow-y: auto;
 }
+section::-webkit-scrollbar{
+    display:none;
+}
 .footer{
     height: 1.34rem;
     border-bottom: 1px solid #e6e6e6;
     border-top: 1px solid #e6e6e6;
     background: #e6e6e6;
 }
-.icon-sangeheng{
+.iconsangeheng{
     color:#333;
     font-weight:900;
     line-height: 1.3rem;
     margin-left: -0.3rem;
 }
-.icon-fangdajing{
+.iconfangdajing{
     font-size: 20px;
     font-weight: 900;
     line-height: 50px;
@@ -60,6 +63,6 @@ section{
     position: absolute;
     font-size: 10px;
     color: #fff;
-    left: 0.8rem;
+    left: 1rem;
     top: 0.15rem;
 }

@@ -16,7 +16,8 @@ class SearchView extends React.Component {
     }
 
     getabc() {
-        if (this.refs.abc.value.length > 0) {
+        this.refs.abc.value = this.refs.abc.value.replace(/[, ]/g,'');
+        if (this.refs.abc.value) {
             this.props.getFuzzySearchList(this.refs.abc.value)
             this.setState({
                 StrList: this.refs.abc.value
@@ -46,7 +47,7 @@ class SearchView extends React.Component {
                 <input type="text" placeholder={"去年夏天 - 王大毛"} ref={"abc"} onChange={this.getabc.bind(this)}
                        onBlur={this.missabc.bind(this)}/>
                 <i className={this.props.location.pathname === '/search' ? 'iconfont iconrenyuansousuo' : 'iconfont iconchahao'}></i>
-                <div className={"mySearch"} style={{display: this.state.StrList.length > 0 ? "block" : "none"}}>
+                <div className={"mySearch"} style={{display: this.state.StrList ? "block" : "none"}}>
                     <h5>搜索 "{this.state.StrList}"</h5>
                     <ul>
                         {

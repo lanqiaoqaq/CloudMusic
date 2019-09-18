@@ -26,9 +26,13 @@ export default {
     //获取模糊搜索列表
     getFuzzySearchList(value){
         return async (dispatch) => {
-            const {result} = await axios.get(`/search?keywords=${value}&limit=10`)
-            // console.log(result)
-            dispatch(ChangeFuzzySearchList(result.songs))
+            try {
+                const {result} = await axios.get(`/search?keywords=${value}&limit=10`)
+                // console.log(result)
+                dispatch(ChangeFuzzySearchList(result.songs))
+            }catch (e) {
+
+            }
         }
     }
 }

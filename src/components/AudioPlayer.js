@@ -1,9 +1,16 @@
 import React from 'react'
 
 class AudioPlayer extends React.Component{
+    constructor(){
+        super();
+        this.state={
+
+        }
+    }
     render(){
+        console.log(this.props)
         return(
-            <div className={"audio_player"}>
+            <div className={"audio_player"} onClick={()=>this.props.history.push("/musicplaying")}>
                 <div className={"audio_son"}>
                     {/* <img src="" alt=""/> */}
                     <p style={{width:"1.2rem",height:"1.2rem",background:"red",borderRadius:"50%"}}></p>
