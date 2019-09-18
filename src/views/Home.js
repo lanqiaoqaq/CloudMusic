@@ -10,7 +10,7 @@ import Profile from './Profile'
 import Find from './Find'
 import Trend from "./Trend";
 import AudioPlayer from '../components/AudioPlayer'
-import Drawer from '../components/Drawer_my.js'
+import Drawer from '../components/Drawser/DrawerIndex.js'
 class App extends React.Component{
     render(){
         return (

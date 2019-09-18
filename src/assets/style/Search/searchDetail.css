@@ -15,6 +15,9 @@
     flex: 1;
     overflow: auto;
 }
+.search_contain::-webkit-scrollbar{
+    display: none;
+}
 .search_nav li{
     width: 2.16rem;
     height: 1.25rem;

@@ -29,6 +29,9 @@ section{
     flex:1;
     overflow-y: auto;
 }
+section::-webkit-scrollbar{
+    display:none;
+}
 .footer{
     height: 1.34rem;
     border-bottom: 1px solid #e6e6e6;

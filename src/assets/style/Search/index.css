@@ -10,6 +10,9 @@
     flex: 1;
     overflow: auto;
 }
+.box_k_k::-webkit-scrollbar{
+    display:none;
+}
 .heard{
     height: 1.54rem;
     width: 100%;
