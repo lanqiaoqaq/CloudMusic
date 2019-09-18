@@ -11,8 +11,8 @@ class SearchView extends React.Component{
             </div>
         )
     }
-    componentDidMount() {
-        console.log(this.props.location.pathname)
-    }
+    // componentDidMount() {
+    //     console.log(this.props.location.pathname)
+    // }
 }
 export default SearchView
