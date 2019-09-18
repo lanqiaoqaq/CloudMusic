@@ -99,6 +99,45 @@ class HotSearch extends React.Component{
                             <p>啊啊啊啊啊啊啊啊啊啊啊啊</p>
                         </span>
                     </li>
+                    <li onClick={()=>{
+                        this.props.history.push("/SearchDetails")
+                    }}>
+                        <span>8</span>
+                        <span>
+                            <p>
+                                <i>野狼disco</i>
+                                <i>2189902</i>
+                                <i className={"green"}>NEW</i>
+                            </p>
+                            <p>啊啊啊啊啊啊啊啊啊啊啊啊</p>
+                        </span>
+                    </li>
+                    <li onClick={()=>{
+                        this.props.history.push("/SearchDetails")
+                    }}>
+                        <span>9</span>
+                        <span>
+                            <p>
+                                <i>野狼disco</i>
+                                <i>2189902</i>
+                                <i className={"green"}>NEW</i>
+                            </p>
+                            <p>啊啊啊啊啊啊啊啊啊啊啊啊</p>
+                        </span>
+                    </li>
+                    <li onClick={()=>{
+                        this.props.history.push("/SearchDetails")
+                    }}>
+                        <span>10</span>
+                        <span>
+                            <p>
+                                <i>野狼disco</i>
+                                <i>2189902</i>
+                                <i className={"green"}>NEW</i>
+                            </p>
+                            <p>啊啊啊啊啊啊啊啊啊啊啊啊</p>
+                        </span>
+                    </li>
                 </ul>
             </div>
         )

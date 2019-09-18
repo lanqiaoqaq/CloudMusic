@@ -8,10 +8,12 @@ class Search extends React.Component{
     render(){
         return(
             <div className={"box_k"}>
-                <SearchView history={this.props.history}></SearchView>
-                <Advertisement></Advertisement>
-                <History></History>
-                <HotSearch history={this.props.history} ></HotSearch>
+                <SearchView {...this.props}></SearchView>
+                <div className={"box_k_k"}>
+                    <Advertisement></Advertisement>
+                    <History></History>
+                    <HotSearch {...this.props} ></HotSearch>
+                </div>
             </div>
         )
     }

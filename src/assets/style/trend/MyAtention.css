@@ -1,0 +1,36 @@
+.ra_box{
+    height: 4rem;
+    width: 100%;
+    /*background: red;*/
+    border-bottom: pink solid 0.01rem;
+}
+.ra_box p{
+    font-size: 0.45rem;
+    line-height: 0.8rem;
+    padding-left: 0.5rem;
+    padding-top: 0.2rem;
+}
+.ra_box ul{
+    height: 3rem;
+    width: 100%;
+    /*background: pink;*/
+}
+.ra_box ul li{
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    height: 2.6rem;
+    width: 3rem;
+    text-align: center;
+}
+.ra_box ul img{
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+}
+.ra_box ul h2{
+    height: 0.6rem;
+    line-height: 0.6rem;
+    width: 3rem;
+    text-align: center;
+    color: #8b8585;
+}
