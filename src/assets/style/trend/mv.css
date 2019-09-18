@@ -54,6 +54,7 @@
 .ra_mv_featured_in_wor_in .vedio{
     display:block;
     position: relative;
+    width:100%;
 }
 .ra_mv_featured_in_wor_in .playerNum{
     position: absolute;
@@ -136,6 +137,14 @@
 .ra_mv_more_body_top_position{
     position: relative;
 }
+.ra_mv_Mask{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: red;
+}
 .ra_mv_more_body_top .playerNum{
     position: absolute;
     left: 0.1rem;
@@ -144,13 +153,14 @@
 }
 .ra_mv_more_body_top video{
     width: 100%;
+    height:5.2rem;
 }
 .ra_mv_more_body_top p{
     height: 1.7rem;
     width: 100%;
     /*background: greenyellow;*/
-    font-size: 0.32rem;
-    line-height: 0.5rem;
+    font-size: 0.43rem;
+    line-height: 1.7rem;
     padding-top:0.3rem;
 }
 .ra_mv_more_body_bottom{
@@ -188,4 +198,10 @@
 }
 .ra_mv_more_body_bottom_r span{
     font-size: 0.5rem;
+}
+
+video{
+    /*background: url("../../../assets/img/TrendImg/1.jpg");*/
+    background-size: 100% 100%;
+    background-position: 0 0;
 }

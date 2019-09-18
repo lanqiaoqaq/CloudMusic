@@ -13,8 +13,9 @@ import {
 import store from './store'
 import axios from 'axios'
 axios.interceptors.request.use(config=>{
-    //console.log(config);
+    // console.log(config);
     config.url="http://118.31.103.23"+config.url;
+    // console.log(config);
     return config;
 })
 axios.interceptors.response.use(({data})=>{
