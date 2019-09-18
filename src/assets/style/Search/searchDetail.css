@@ -4,6 +4,7 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    overflow: auto;
 }
 .search_nav{
     width: 100%;
@@ -11,18 +12,27 @@
     line-height: 1.25rem;
     background: #ffffff;
 }
+.search_nav div{
+    width: 100%;
+    height: 1.25rem;
+}
+.search_nav div ul{
+    width: 100%;
+    height: 1.25rem;
+}
 .search_contain{
     flex: 1;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
-.search_nav li{
+.search_nav div ul li{
     width: 2.16rem;
     height: 1.25rem;
     text-align: center;
     font-size: 0.4rem;
     border-bottom: 1px solid #e6e6e6;
 }
-.search_nav li a{
+.search_nav div ul li a{
     display: inline-block;
     height: 1.2rem;
     color: black;
@@ -387,6 +397,7 @@
     border: 1px solid #ff2315;
     border-radius: 0.5rem;
     color: #ff2315;
+    font-weight: bolder;
 }
 .composite_user h5:last-child{
     width: 9.9rem;
@@ -395,4 +406,292 @@
     font-size: 0.3rem;
     color: #7e8c8d;
     padding-left: 3.5rem;
+}
+
+/*单曲*/
+.single_k{
+    width: 9.9rem;
+    margin: 0 auto;
+}
+.single_k>p:nth-child(1){
+    width: 9.9rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+}
+.single_k p i:nth-child(1){
+    font-size: 0.55rem;
+}
+.single_k p i:nth-child(2){
+    font-size: 0.4rem;
+    margin-left: 0.3rem;
+}
+.single_k p i:nth-child(3){
+    font-size: 0.5rem;
+    margin-left: 5.8rem;
+}
+.single_k p i:nth-child(4){
+    font-size: 0.35rem;
+    margin-left: 0.2rem;
+}
+
+.single_k ul {
+    width: 9.9rem;
+    margin: 0 auto;
+}
+.single_k ul li{
+    width: 100%;
+    height: 0.92rem;
+    margin-top: 0.84rem;
+}
+.single_k ul li span:nth-child(1){
+    float: left;
+    height: 0.92rem;
+    line-height: 0.5rem;
+}
+.single_k ul li span:nth-child(2){
+    float: right;
+    height: 0.92rem;
+    line-height: 0.92rem;
+}
+.single_k ul li span:nth-child(1) h5{
+    font-size: 0.4rem;
+    color: #00a5e0;
+}
+.single_k ul li span:nth-child(1) p{
+    font-size: 0.28rem;
+    color: #7e8c8d;
+}
+.single_k ul li span:nth-child(2) i:nth-child(2){
+    color: #7e8c8d;
+    font-size: 0.8rem;
+    margin-right: 0.2rem;
+}
+.single_k ul li span:nth-child(2) i:nth-child(1){
+    color: #7e8c8d;
+    font-size: 0.65rem;
+    margin-right: 0.15rem;
+}
+
+/*视频*/
+.video_k{
+    width: 9.9rem;
+    margin: 0 auto;
+}
+.video_k img{
+    width: 3.4rem;
+    height: 1.9rem;
+}
+.video_k ul li{
+    width: 100%;
+    height: 1.94rem;
+    margin-top: 0.3rem;
+}
+.video_k ul li span:nth-child(1){
+    float: left;
+}
+.video_k ul li span:nth-child(2){
+    float: right;
+}
+.video_k ul li span:nth-child(2) p:nth-child(1){
+    width: 6.28rem;
+    height: 1.4rem;
+    line-height: 0.6rem;
+    font-size: 0.38rem;
+}
+.video_k ul li span:nth-child(2) p:nth-child(2){
+    color: #7e8c8d;
+    font-size: 0.3rem;
+}
+
+/*歌手*/
+.songwriter{
+    width: 9.9rem;
+    margin: 0 auto;
+}
+.songwriter img{
+    width: 1.6rem;
+    height: 1.6rem;
+}
+.songwriter ul li{
+    width: 9.9rem;
+    height: 1.6rem;
+    margin-top: 0.4rem;
+}
+.composite_songwriter ul li span:nth-child(1){
+    display: inline-block;
+    float: left;
+    height: 1.6rem;
+    line-height: 1.6rem;
+}
+.songwriter ul li span:nth-child(2){
+    float: right;
+    display: inline-block;
+    height: 1.6rem;
+    line-height: 1.6rem;
+}
+.songwriter ul li span:nth-child(2) b:nth-child(1){
+    color: black;
+    font-size: 0.4rem;
+    margin-right: 4.2rem;
+}
+.songwriter ul li span:nth-child(2) b:nth-child(2){
+    margin-right: 0.4rem;
+    background: #00a5e0;
+    font-size: 0.4rem;
+    border-radius: 50%;
+    color: #ffffff;
+    background: red;
+}
+.songwriter ul li span:nth-child(2) b:nth-child(3){
+    font-size: 0.3rem;
+    color: #7e8c8d;
+}
+
+/*专辑*/
+.album_k{
+    width: 9.9rem;
+    margin: 0 auto;
+}
+.album_k img{
+    width: 1.8rem;
+    height: 1.6rem;
+}
+.album_k ul li{
+    width: 9.9rem;
+    height: 1.6rem;
+    margin-top: 0.4rem;
+}
+.album_k ul li span{
+    float: left;
+}
+.album_k ul li span:nth-child(2){
+    margin-left: 0.4rem;
+    display: inline-block;
+    height: 1.6rem;
+    line-height: 0.9rem;
+}
+.album_k ul li span:nth-child(2) p:nth-child(1){
+    font-size: 0.45rem;
+    color: #00a5e0;
+}
+.album_k ul li span:nth-child(2) p:nth-child(2){
+    color: #7e8c8d;
+}
+
+/*歌单*/
+.playList_k{
+    width: 9.9rem;
+    margin: 0 auto;
+}
+.playList_k img{
+    width: 1.6rem;
+    height: 1.6rem;
+}
+.playList_k li{
+    width: 9.9rem;
+    height: 1.6rem;
+    margin-top: 0.4rem;
+}
+.playList_k li span:nth-child(1){
+    display: inline-block;
+    float: left;
+}
+.playList_k li span:nth-child(2){
+    display: inline-block;
+    float: left;
+    width: 7rem;
+    height: 1.6rem;
+    margin-left: 0.5rem;
+    line-height: 0.85rem;
+}
+.playList_k li span:nth-child(2) p:nth-child(1){
+    font-size: 0.45rem;
+    color: #00a5e0;
+}
+.playList_k li span:nth-child(2) p:nth-child(2){
+    font-size: 0.3rem;
+    color: #7e8c8d;
+}
+
+/*主播电台*/
+.radioStation_k{
+    width: 9.9rem;
+    margin: 0 auto;
+}
+.radioStation_k ul li{
+    width: 100%;
+    height: 1.6rem;
+    margin-top: 0.36rem;
+}
+.radioStation_k  h5:nth-child(1){
+    margin-top: 0.2rem;
+    width: 9.9rem;
+    font-size: 0.45rem;
+    font-weight: bolder;
+}
+.radioStation_k img{
+    width: 1.6rem;
+    height: 1.6rem;
+}
+.radioStation_k ul li span{
+    float: left;
+}
+.radioStation_k ul li span:nth-child(2){
+    display: inline-block;
+    margin-left: 0.4rem;
+    height: 100%;
+    line-height: 0.85rem;
+}
+.radioStation_k ul li span:nth-child(2) p:nth-child(1){
+    color: #00a5e0;
+    font-size: 0.35rem;
+}
+.radioStation_k ul li span:nth-child(2) p:nth-child(2){
+    font-size: 0.3rem;
+    color: #7e8c8d;
+}
+
+/*用户*/
+.userHome_k{
+    width: 9.9rem;
+    margin: 0 auto;
+}
+.userHome_k ul li{
+    width: 9.9rem;
+    height: 1.6rem;
+    margin-top: 0.4rem;
+}
+.userHome_k img{
+    width: 1.6rem;
+    height: 1.6rem;
+}
+.userHome_k ul li span{
+    float: left;
+    display: inline-block;
+    height: 1.6rem;
+}
+.userHome_k ul li span:nth-child(2){
+    margin-left: 0.4rem;
+    line-height: 0.85rem;
+}
+.userHome_k ul li span:nth-child(2) p:nth-child(1){
+    color: #00a5e0;
+    font-size: 0.4rem;
+}
+.userHome_k ul li span:nth-child(2) p:nth-child(2){
+    font-size: 0.3rem;
+    color: #7e8c8d;
+}
+.userHome_k ul li span:last-child{
+    margin-top: 0.8rem;
+    float: right;
+    height: 0.6rem;
+    width: 1.6rem;
+    text-align: center;
+    line-height: 0.6rem;
+    font-size: 0.35rem;
+    border: 1px solid #ff2315;
+    border-radius: 0.5rem;
+    color: #ff2315;
+    font-weight: bolder;
 }

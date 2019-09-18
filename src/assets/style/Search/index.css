@@ -16,6 +16,32 @@
     text-align: center;
     line-height: 1.54rem;
 }
+.mySearch{
+    text-align: left;
+    z-index: 999;
+    position: fixed;
+    height: 14.65rem;
+    width: 10rem;
+    background: #e7e7e7;
+    margin-left: 0.35rem;
+}
+.mySearch h5{
+    height: 1.3rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    font-size: 0.45rem;
+    color: #00a5e0;
+    border-bottom: 1px solid #7e8c8d;
+}
+.mySearch ul li{
+    height: 1.3rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    font-size: 0.4rem;
+    color: #333333;
+    border-bottom: 1px solid #7e8c8d;
+    overflow: hidden;
+}
 .heard i{
     font-size: 0.65rem;
     color: #333333;
@@ -115,6 +141,16 @@
     line-height: 0.9rem;
     font-size: 0.4rem;
     font-weight: bolder;
+    color: #7e8c8d;
+}
+.hot ul li:nth-child(1) span:nth-child(1){
+    color: red;
+}
+.hot ul li:nth-child(2) span:nth-child(1){
+    color: red;
+}
+.hot ul li:nth-child(3) span:nth-child(1){
+    color: red;
 }
 .hot ul li span:nth-child(2){
     margin-left: 0.44rem;
@@ -124,8 +160,9 @@
 }
 .hot ul li span:nth-child(2) p:nth-child(2){
     margin-top: 0.2rem;
-    font-size: 0.26rem;
+    font-size: 0.28rem;
     color: #7e8c8d;
+    position: relative;
 }
 .hot ul li span:nth-child(2) p:nth-child(1) i:nth-child(1){
     font-size: 0.38rem;
@@ -149,5 +186,6 @@
     font-style: italic;
 }
 ._red{
+    display: inline-block;
     color: red;
 }
