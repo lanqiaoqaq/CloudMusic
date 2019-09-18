@@ -11,14 +11,14 @@ import {
 import FindCreator from '../../store/actionCreator/find/index'
 class Banner extends  React.Component{
     render(){
-        //console.log(this.props.banners,"render")
+        // console.log(this.props.banners,"render")
         const banners = this.props.banners;
         return(
             <div className="swiper-container" style={{height:"100%",width:"100%"}}>
                 <div className="swiper-wrapper">
                     {
                         banners.map(v=>(
-                            <div className="swiper-slide" key={v.targetId}>
+                            <div className="swiper-slide" key={v.bannerId}>
                                 <img style={{height:"100%",width:"100%",borderRadius:"10px"}} src={v.pic} alt=""/>
                             </div>
                         ))
