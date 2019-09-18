@@ -13,8 +13,8 @@ import MailIcon from '@material-ui/icons/Mail';
 
 import '../../assets/style/drawer/drawerIndex.css'
 
-import DrawserNav from '../../components/Drawser/DrawserNav'
-
+import DrawerNav from './DrawerNav'
+import DrawerLogin from './DrawerLogin'
 const useStyles = makeStyles({
     list: {
         width: "9rem",
@@ -25,7 +25,10 @@ const useStyles = makeStyles({
     },
 });
 
-export default function TemporaryDrawer() {
+export default function TemporaryDrawer(props) {
+    function getProps() {
+        return props;
+    }
     const classes = useStyles();
     const [state, setState] = React.useState({
         top: false,
@@ -38,11 +41,10 @@ export default function TemporaryDrawer() {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;
         }
-
         setState({...state, [side]: open});
     };
 
-    const sideList = side => (
+    const sideList = (side) => (
         <div
             className={classes.list}
             role="presentation"
@@ -50,12 +52,9 @@ export default function TemporaryDrawer() {
             onKeyDown={toggleDrawer(side, false)}
         >
             <div className={"drawer_container"}>
+
                 <div className="drawer_content">
-                    <div className="Drawer_login_not">
-                        <p>登陆网易云音乐</p>
-                        <p>手机电脑多端同步，尽享海量高音质音乐</p>
-                        <span>立即登陆</span>
-                    </div>
+                    <DrawerLogin {...getProps()}></DrawerLogin>
                     <div className="membersInfo">
                         <img src={require("../../assets/img/DrawerImg/drawer_03.jpg")} alt=""/>
                     </div>
@@ -162,11 +161,12 @@ export default function TemporaryDrawer() {
                         </li>
                     </ul>
                 </div>
-                <DrawserNav></DrawserNav>
+                <DrawerNav></DrawerNav>
             </div>
         </div>
     );
     return (
+
         <span>
             <i className={"iconfont iconsangeheng"} onClick={toggleDrawer('left', true)}></i>
             <Drawer open={state.left} onClose={toggleDrawer('left', false)}>

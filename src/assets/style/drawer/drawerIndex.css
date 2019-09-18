@@ -34,6 +34,41 @@
 .drawer_nav li i{
     margin-right: .1rem;
 }
+
+.userInfo_s{
+    height:4.2rem;
+}
+.head_portrait{
+    padding-top: .9rem;
+    height:1.84rem;
+}
+.head_portrait img{
+    height: 1.84rem;
+    width: 1.84rem;
+    border-radius: 0.92rem;
+}
+.userNick{
+    font-size: .4rem;
+    color: #363636;
+    margin-top: .4rem;
+}
+.userNick span{
+    vertical-align: middle;
+}
+.level_s{
+    display: inline-block;
+    height: .4rem;
+    width: .8rem;
+    border-radius: .2rem;
+    background: #ededeb;
+    color: #8f8f8f;
+    font-size: 0.22rem;
+    font-weight: 900;
+    font-style: italic;
+    text-align: center;
+    line-height: .4rem;
+    margin-left: .3rem;
+}
 .Drawer_login_not {
     height: 4.2rem;
     text-align: center;

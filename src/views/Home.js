@@ -18,7 +18,7 @@ class App extends React.Component{
         return (
             <>
                 <nav className={"top_nav"}>
-                    <Drawer></Drawer>
+                    <Drawer {...this.props}></Drawer>
                     <NavLink to={"/profile"}>我的</NavLink>
                     <NavLink to={"/"} exact>发现</NavLink>
                     <NavLink to={"/trend"}>动态</NavLink>
