@@ -42,7 +42,7 @@ export default {
     //请求新碟
     getNewDisc(){
         return async (dispatch)=>{
-                const data = await axios.get("/top/album?offset=5&limit=3");
+                const data = await axios.get("/top/album?offset=0&limit=3");
                 //console.log(data.albums)
                 dispatch(ChangeNewSong(data.albums))
         }
@@ -50,10 +50,9 @@ export default {
     //请求新歌
     getNewSong(){
         return async (dispatch)=>{
-            const data = await axios.get("/top/song?type=0");
-            const res = data.data.splice(0,3);
-            //console.log(res,"getNewSong")
-            dispatch(ChangeNewSong(res))
+            const data = await axios.get("/top/album?offset=2&limit=3");
+            //console.log(data.albums)
+            dispatch(ChangeNewSong(data.albums))
         }
     }
 }
