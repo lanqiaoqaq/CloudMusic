@@ -13,7 +13,7 @@ class Find extends React.Component{
                         <Banner></Banner>
                     </div>
                 </div>
-                <MidNav></MidNav>
+                <MidNav {...this.props}></MidNav>
                 <div className={"intro_playlist"}>
                     <div className={"head_playlist"}>
                         <span>推荐歌单</span>

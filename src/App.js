@@ -21,12 +21,24 @@ import UserInfo from "./views/trend/UserInfo";
 import MvFeatured from "./views/trend/Mv/MvFeatured";
 import MvDetails from "./views/trend/Mv/MvDeatils";
 import MvRanking from "./views/trend/Mv/MvRanking";
+
+import DailySpecial from './views/find/DailySpecial'
+import Live from './views/find/Live'
+import RadioStation from './views/find/RadioStation'
+import Ranking from  './views/find/Ranking'
+import SongList from './views/find/SongList'
 class App extends React.Component{
   render(){
       return (
           <>
               <Router>
                     <Switch>
+                        <Route path={"/dailyspecial"} component={DailySpecial}></Route>
+                        <Route path={"/live"} component={Live}></Route>
+                        <Route path={"/radiostation"} component={RadioStation}></Route>
+                        <Route path={"/ranking"} component={Ranking}></Route>
+                        <Route path={"/songlist"} component={SongList}></Route>
+
                         <Route path={"/NextCode"}  component={NextCode}></Route>
                         <Route path={"/nextname"}  component={NextName}></Route>
                          <Route path={"/signup"}  component={signUp}></Route>
