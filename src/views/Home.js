@@ -11,11 +11,12 @@ import Village from './Village'
 import Video from './Video'
 import AudioPlayer from '../components/AudioPlayer'
 class App extends React.Component{
+    
     render(){
+      
         return (
             <>
-            <Router>
-                <nav className={"top_nav"}>
+               <nav className={"top_nav"}>
                     <span className={"sidebar"}>
                         <i className={"iconfont icon-sangeheng"}></i>
                         <b className={"msgNum"}>3</b>
@@ -25,10 +26,11 @@ class App extends React.Component{
                     <NavLink to={"/village"}>云村</NavLink>
                     <NavLink to={"/video"}>视频</NavLink>
                     <span onClick={()=>{
-                        console.log(this.props.history.push("/search"))
+                        this.props.history.push("/search")
                     }}><i className={"iconfont icon-fangdajing"}></i></span>
                 </nav>
-                <section>
+               
+      <section>
                     <Switch>
                         <Route path={"/profile"} component={Profile}></Route>
                         <Route path={"/village"} component={Village}></Route>
@@ -39,7 +41,6 @@ class App extends React.Component{
                 <footer className={"footer"}>
                     <AudioPlayer {...this.props}></AudioPlayer>
                 </footer>
-            </Router>
             </>
         );
     }

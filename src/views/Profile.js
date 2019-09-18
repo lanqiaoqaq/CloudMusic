@@ -21,7 +21,7 @@ class Profile extends React.Component{
                        <span className={"iconfont icondiandiandian iconCollM2"}></span>
                        </div>
                    </div>
-                   <div className={"collList"}>
+                   <div className={"collList"} onClick={()=>this.props.history.push("/musicList")}>
                        <div className={"collImg"}>
                           <div className={"collBox"}></div>
                            <div className={"collMiddle"}>
@@ -29,27 +29,7 @@ class Profile extends React.Component{
                                <span className={"collCheck"}>我喜欢的音乐</span>
                            </div>
                        </div>
-                       <span className={"iconfont icondiandiandian iconCollM2"}></span>
-                   </div>
-                   <div className={"collList"}>
-                       <div className={"collImg"}>
-                          <div className={"collBox"}></div>
-                           <div className={"collMiddle"}>
-                               <span className={"collName"}>我喜欢的音乐</span>
-                               <span className={"collCheck"}>我喜欢的音乐</span>
-                           </div>
-                       </div>
-                       <span className={"iconfont icondiandiandian iconCollM2"}></span>
-                   </div>
-                   <div className={"collList"}>
-                       <div className={"collImg"}>
-                          <div className={"collBox"}></div>
-                           <div className={"collMiddle"}>
-                               <span className={"collName"}>我喜欢的音乐</span>
-                               <span className={"collCheck"}>我喜欢的音乐</span>
-                           </div>
-                       </div>
-                       <span className={"iconfont icondiandiandian iconCollM2"}></span>
+                       <span className={"iconfont icondiandiandian iconCollM2"} onClick={console.log(1)}></span>
                    </div>
                </div>
             </div>
