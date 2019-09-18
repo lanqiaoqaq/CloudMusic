@@ -168,7 +168,7 @@ export default function TemporaryDrawer() {
     );
     return (
         <span>
-            <i className={"iconfont icon-sangeheng"} onClick={toggleDrawer('left', true)}></i>
+            <i className={"iconfont iconsangeheng"} onClick={toggleDrawer('left', true)}></i>
             <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
                 {sideList('left')}
             </Drawer>
