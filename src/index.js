@@ -6,7 +6,10 @@ import './assets/style/index.css'
 import * as serviceWorker from './serviceWorker';
 import {
     Provider
-} from 'react-redux'
+} from 'react-redux';
+import {
+    BrowserRouter as Router,
+} from 'react-router-dom'
 import store from './store'
 import axios from 'axios'
 axios.interceptors.request.use(config=>{

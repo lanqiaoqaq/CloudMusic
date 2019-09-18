@@ -1,0 +1,87 @@
+.ra_box1{
+    width: 100%;
+    overflow: hidden;
+    border-bottom: #00a5e0 solid 0.01rem;
+ }
+.ra_box1in{
+    width: 96%;
+    /*background: red;*/
+    overflow: hidden;
+    margin-left: 2%;
+    padding-top: 0.27rem;
+    padding-bottom: 0.27rem;
+}
+.ra_Avatar{
+    width: 1.2rem;
+    float: left;
+    height: 100%;
+    overflow: hidden;
+    /*background: pink;*/
+}
+.ra_Avatar img{
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+}
+.ra_Content{
+    width: 88.2%;
+    float: left;
+    /*background: greenyellow;*/
+}
+.ra_Content_1{
+    height: 1rem;
+}
+.ra_Content_1 p{
+    font-size: 0.43rem;
+    /*background: #7e8c8d;*/
+    line-height: 0.6rem;
+    height: 0.6rem;
+}
+.ra_Content_1 h2{
+    font-size: 0.3rem;
+    color: #b1b1b1;
+    /*background: #f3f8fd;*/
+    line-height: 0.4rem;
+    height: 0.4rem;
+}
+.ra_Content_userName{
+    color: #00a5e0;
+}
+.ra_Content_2{
+    height: 5rem;
+    /*background: purple;*/
+    width: 100%;
+    padding-top: 0.1rem;
+    margin-bottom: 0.3rem;
+}
+.ra_Content_2_word{
+    font-size:0.43rem ;
+    line-height: 0.6rem;
+}
+.ra_Content_2_vedio{
+
+}
+.ra_Content_3{
+    overflow: hidden;
+    /*background: pink;*/
+    width: 100%;
+}
+.ra_Content_3 span{
+    vertical-align: bottom;
+    margin-right: 0.15rem;
+}
+.ra_Content_3_like{
+    float: left;
+    margin-right: 1.5rem;
+}
+.ra_Content_3_com{
+    float: left;
+    margin-right: 1.5rem;
+}
+.ra_Content_3_share{
+    float: left;
+    margin-right: 1.5rem;
+}
+.ra_Content_3_more{
+    float: right;
+}
