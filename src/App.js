@@ -9,7 +9,6 @@ import Home from './views/Home'
 import Search from './views/Search'
 import SearchDetails from './views/SearchDetails'
 import MusicPlaying from "./views/MusicPlaying";
-import HotWall from "./components/village/square/HotWall";
 import MusicList from './components/MineCloud/MusicList';
 import Login from './views/Login/Login';
 import Phone from './views/Login/Phone';
@@ -35,7 +34,6 @@ class App extends React.Component{
                         <Route path={"/login"}  component={Login}></Route>
                         <Route path={"/musiclist"} exact component={MusicList}></Route>
                         <Route path={"/musicplaying"} component={MusicPlaying}></Route>
-                        <Route path={"/hotWall"} component={HotWall}></Route>
 
                         <Route path={"/mvRanking"} component={MvRanking}></Route>
                         <Route path={"/mvDetails"} component={MvDetails}></Route>

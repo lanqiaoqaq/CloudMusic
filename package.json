@@ -3,11 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
     "antd-mobile": "^2.3.1",
-=======
     "mint-ui": "^2.2.13",
->>>>>>> ae8eb4c8af389701725ad37304acd068029b774f
     "axios": "^0.19.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
