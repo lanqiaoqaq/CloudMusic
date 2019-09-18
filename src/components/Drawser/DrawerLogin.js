@@ -8,7 +8,7 @@ class DrawerLogin extends React.Component{
         }
     }
     render(){
-        console.log(this.state.userInfo,111)
+        //console.log(this.state.userInfo,111)
         return(
             <>
                 <div className="Drawer_login_not" style={{display:localStorage.userId?"none":"block"}}>
@@ -34,14 +34,16 @@ class DrawerLogin extends React.Component{
     async getUserInfo(){
         const uid = localStorage.userId;
         const data = await axios.get(`/user/detail?uid=${uid}`);
-        console.log(data);
+        //console.log(data);
         this.setState({
             userInfo:data
         })
     }
     componentDidMount(){
-        this.getUserInfo()
-        console.log(localStorage.userId);
+        if(localStorage.userId){
+            this.getUserInfo();
+        }
+        //console.log(localStorage.userId);
     }
 }
 export default DrawerLogin;
