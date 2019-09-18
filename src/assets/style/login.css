@@ -1,0 +1,18 @@
+.login_container{
+    position: relative;
+}
+.err_dialog{
+    width: 7rem;
+    height: 2rem;
+    text-align: center;
+    line-height: 2rem;
+    font-size: .5rem;
+    border:1px solid #cccccc;
+    border-radius: 10px;
+    position: absolute;
+    top: 2.2rem;
+    left: 50%;
+    transform: translate(-50%);
+    background: lightcyan;
+
+}
