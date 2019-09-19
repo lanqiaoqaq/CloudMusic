@@ -21,6 +21,8 @@ import UserInfo from "./views/trend/UserInfo";
 import MvFeatured from "./views/trend/Mv/MvFeatured";
 import MvDetails from "./views/trend/Mv/MvDeatils";
 import MvRanking from "./views/trend/Mv/MvRanking";
+import LocalMusic from './views/MyMusics/LocalMusic';
+import Recently from './views/MyMusics/Recently';
 
 import DailySpecial from './views/find/DailySpecial'
 import Live from './views/find/Live'
@@ -33,6 +35,10 @@ class App extends React.Component{
           <>
               <Router>
                     <Switch>
+                        {/* 我的音乐 */}
+                        <Route path={"/localmusic"}  component={LocalMusic}></Route>
+                        <Route path={"/recently"}  component={Recently}></Route>
+                         {/* 我的音乐 */}
                         <Route path={"/dailyspecial"} component={DailySpecial}></Route>
                         <Route path={"/live"} component={Live}></Route>
                         <Route path={"/radiostation"} component={RadioStation}></Route>

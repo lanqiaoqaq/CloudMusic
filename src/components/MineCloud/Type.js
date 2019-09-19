@@ -3,11 +3,11 @@ class Type extends React.Component{
     render(){
          return(
         <div className={"mineLine"}>
-        <div className={"divCen"}>
+        <div className={"divCen"} onClick={()=>this.props.history.push("/localmusic")}>
             <span className={"iconfont iconyinyue iconStyle"}></span>
             <p  className={"fontCen"}>本地音乐<span>({"lalalal"})</span></p>
         </div>
-        <div className={"divCen"}>
+        <div className={"divCen"}  onClick={()=>this.props.history.push("/recently")}>
             <span className={"iconfont iconzuijinbofang iconStyle"}></span>
             <p  className={"fontCen"}>最近播放<span>({"lalalal"})</span></p>
         </div>

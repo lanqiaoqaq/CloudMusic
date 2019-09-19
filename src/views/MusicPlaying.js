@@ -1,5 +1,6 @@
 import React from 'react'
 import "../assets/style/mineCloud/musicPlaying.css";
+import Audio from "../components/MineCloud/Audio"
 class MusicPlaying extends React.Component{
     render(){
         return(
@@ -28,7 +29,10 @@ class MusicPlaying extends React.Component{
                          </div>
                     </div>
                 </div>
-                <footer className={"cyFooter"}></footer>
+                <footer className={"cyFooter"}>
+                    <Audio></Audio>
+                    {/* <audio src={require("../assets/mine_img/薛之谦 - 刚刚好.mp3")} ref="cyAudio" autoPlay controls></audio> */}
+                </footer>
             </>
         )
     }
