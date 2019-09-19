@@ -5,7 +5,6 @@ import profileCreators from "../../store/actionCreator/profile/index";
 class Type extends React.Component{
     render(){
         const {subcount}=this.props;
-        console.log(this.props)
          return(
         <div className={"mineLine"}>
             

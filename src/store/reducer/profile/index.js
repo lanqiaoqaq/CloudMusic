@@ -13,7 +13,6 @@ export default function (state = initState,{type,payload}) {
     }
     if(type===actionType.CHANGE_CYPLAY_LIST_DETAIL){
         state.cyPlaylistDetail=payload;
-        console.log(546546456456,payload)
     }
     return state
 }

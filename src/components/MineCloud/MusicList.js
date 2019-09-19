@@ -13,7 +13,6 @@ class MusicList extends React.Component{
         }
     }
     render(){
-        console.log("hfkjhsdkjf",this.props)
          return(
             <>
                <MusicListHead {...this.props}></MusicListHead>

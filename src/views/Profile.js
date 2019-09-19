@@ -43,7 +43,7 @@ class Profile extends React.Component{
                                         <span className={"collCheck"}>{v.trackCount}首 by {v.creator.nickname}</span>
                                     </div>
                                 </div>
-                                <span className={"iconfont icondiandiandian iconCollM2"} onClick={console.log(1)}></span>
+                                <span className={"iconfont icondiandiandian iconCollM2"}></span>
                             </div>
                        ))
                    }
