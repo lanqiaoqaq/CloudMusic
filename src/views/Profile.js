@@ -29,7 +29,7 @@ class Profile extends React.Component{
                                <span className={"collCheck"}>我喜欢的音乐</span>
                            </div>
                        </div>
-                       <span className={"iconfont icondiandiandian iconCollM2"} onClick={console.log(1)}></span>
+                       <span className={"iconfont icondiandiandian iconCollM2"}></span>
                    </div>
                </div>
             </div>
