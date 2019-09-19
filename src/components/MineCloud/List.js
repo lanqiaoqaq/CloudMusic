@@ -1,9 +1,18 @@
 //歌单列表页
 import React from "react";
 class List extends React.Component{
+    constructor(){
+        super();
+        this.state={
+            privileges:[]
+        }
+    }
     render(){
          return(
             <>
+            {
+
+            }
                 <div className={"cy_ml_box"}>
                     <p className="cy_ml_num">1</p>
                     <div className={"cy_ml_r"}>
@@ -24,6 +33,10 @@ class List extends React.Component{
             </>
         )
     }
-   
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            privileges:[]
+    })
+  }
 }
 export default List;

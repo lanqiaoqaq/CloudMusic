@@ -50,7 +50,7 @@ class App extends React.Component{
                          <Route path={"/signup"}  component={signUp}></Route>
                         <Route path={"/phone"}  component={Phone}></Route>
                         <Route path={"/login"}  component={Login}></Route>
-                        <Route path={"/musiclist"} exact component={MusicList}></Route>
+                        <Route path={"/musiclist/:id"} exact component={MusicList}></Route>
                         <Route path={"/musicplaying"} component={MusicPlaying}></Route>
 
                         <Route path={"/mvRanking"} component={MvRanking}></Route>
