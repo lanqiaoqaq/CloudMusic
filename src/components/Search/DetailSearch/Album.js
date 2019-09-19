@@ -1,112 +1,50 @@
 import React from 'react';
+import {
+    connect
+} from 'react-redux'
+import {
+    bindActionCreators
+} from 'redux'
+import FindCreator from "../../../store/actionCreator/search"
+import Tools from "../../../common/Tools";
 class Album extends React.Component{
     render() {
+        const albumList  = this.props.albumList
+        const albums = (this.props.albumList.result?this.props.albumList.result.albums:"");
+        // console.log(albums,"1")
         return(
             <div className={"album_k"}>
                 <ul>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/9.jpg")} alt=""/></span>
-                        <span>
-                                <p>你的老舅</p>
+                    {
+                        albums?albums.map(v=>(
+                            <li key={v.id}>
+                                <span><img src={v.blurPicUrl} alt=""/></span>
+                                <span>
+                                <p>{v.name}</p>
                                 <p>
-                                    <b>宝石gem</b>
-                                    <b>2017.10.2</b>
+                                    <b>{v.artist.name}，</b>
+                                    <b>{Tools.date(v.publishTime)}</b>
                                 </p>
                         </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/9.jpg")} alt=""/></span>
-                        <span>
-                                <p>你的老舅</p>
-                                <p>
-                                    <b>宝石gem</b>
-                                    <b>2017.10.2</b>
-                                </p>
-                        </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/9.jpg")} alt=""/></span>
-                        <span>
-                                <p>你的老舅</p>
-                                <p>
-                                    <b>宝石gem</b>
-                                    <b>2017.10.2</b>
-                                </p>
-                        </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/9.jpg")} alt=""/></span>
-                        <span>
-                                <p>你的老舅</p>
-                                <p>
-                                    <b>宝石gem</b>
-                                    <b>2017.10.2</b>
-                                </p>
-                        </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/9.jpg")} alt=""/></span>
-                        <span>
-                                <p>你的老舅</p>
-                                <p>
-                                    <b>宝石gem</b>
-                                    <b>2017.10.2</b>
-                                </p>
-                        </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/9.jpg")} alt=""/></span>
-                        <span>
-                                <p>你的老舅</p>
-                                <p>
-                                    <b>宝石gem</b>
-                                    <b>2017.10.2</b>
-                                </p>
-                        </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/9.jpg")} alt=""/></span>
-                        <span>
-                                <p>你的老舅</p>
-                                <p>
-                                    <b>宝石gem</b>
-                                    <b>2017.10.2</b>
-                                </p>
-                        </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/9.jpg")} alt=""/></span>
-                        <span>
-                                <p>你的老舅</p>
-                                <p>
-                                    <b>宝石gem</b>
-                                    <b>2017.10.2</b>
-                                </p>
-                        </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/9.jpg")} alt=""/></span>
-                        <span>
-                                <p>你的老舅</p>
-                                <p>
-                                    <b>宝石gem</b>
-                                    <b>2017.10.2</b>
-                                </p>
-                        </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/9.jpg")} alt=""/></span>
-                        <span>
-                                <p>你的老舅</p>
-                                <p>
-                                    <b>宝石gem</b>
-                                    <b>2017.10.2</b>
-                                </p>
-                        </span>
-                    </li>
+                            </li>
+                        )):[].map(v=>{
+
+                        })
+                    }
                 </ul>
             </div>
         )
     }
+    componentDidMount() {
+        this.props.getAlbumList()
+    }
 }
-export default Album
+function mapStateToProps(state,props) {
+    return{
+        albumList: state.search.albumList
+    }
+}
+function mapDispatchProps(dispatch,props) {
+    return bindActionCreators(FindCreator, dispatch)
+}
+export default connect(mapStateToProps,mapDispatchProps) (Album)
