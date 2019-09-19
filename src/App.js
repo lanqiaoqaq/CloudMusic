@@ -21,12 +21,18 @@ import UserInfo from "./views/trend/UserInfo";
 import MvFeatured from "./views/trend/Mv/MvFeatured";
 import MvDetails from "./views/trend/Mv/MvDeatils";
 import MvRanking from "./views/trend/Mv/MvRanking";
+import LocalMusic from './views/MyMusics/LocalMusic';
+import Recently from './views/MyMusics/Recently';
 class App extends React.Component{
   render(){
       return (
           <>
               <Router>
                     <Switch>
+                        {/* 我的音乐 */}
+                        <Route path={"/localmusic"}  component={LocalMusic}></Route>
+                        <Route path={"/recently"}  component={Recently}></Route>
+                         {/* 我的音乐 */}
                         <Route path={"/NextCode"}  component={NextCode}></Route>
                         <Route path={"/nextname"}  component={NextName}></Route>
                          <Route path={"/signup"}  component={signUp}></Route>

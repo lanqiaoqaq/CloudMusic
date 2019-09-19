@@ -9,7 +9,7 @@ class Profile extends React.Component{
         return(
             <div>
                <Swipers></Swipers>
-               <Type></Type>
+               <Type {...this.props}></Type>
                <div>
                    <div className={"collMusic"}>
                        <div className={"collM1"}>
