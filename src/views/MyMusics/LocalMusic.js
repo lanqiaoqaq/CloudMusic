@@ -8,7 +8,7 @@ class LocalMusic extends React.Component{
                <p className="cy_ml_hh cy_lm_hh" >
                         <span className={"iconfont iconzuojiantou"} onClick={()=>this.props.history.go(-1)}></span>
                         <span >本地音乐</span>
-                        <span style={{marginLeft:"4.2rem"}} className={"iconfont iconfangdajing"}></span>
+                        <span style={{marginLeft:"4.2rem",lineHeight: ".29rem"}} className={"iconfont iconfangdajing"}></span>
                         <span className={"iconfont icondiandiandian"}></span>
                 </p>
                 <div className={"cy_ml_box"} style={{paddingLeft:".28rem",paddingRight:".5rem"}}>

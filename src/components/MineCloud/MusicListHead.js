@@ -8,7 +8,7 @@ class MusicListHead extends React.Component{
                     <p className="cy_ml_hh">
                         <span className={"iconfont iconzuojiantou"} onClick={()=>this.props.history.go(-1)}></span>
                         <span >歌单</span>
-                        <span className={"iconfont iconfangdajing"}></span>
+                        <span style={{lineHeight: ".29rem"}} className={"iconfont iconfangdajing"}></span>
                         <span className={"iconfont icondiandiandian"}></span>
                     </p>
                     <div className="cy_ml_mm">

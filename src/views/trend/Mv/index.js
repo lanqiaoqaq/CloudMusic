@@ -1,8 +1,18 @@
 import React from "react";
+import axios from "axios";
 import {Link} from "react-router-dom";
-import "../../../assets/style/trend/mv.css"
-export default class Mv extends React.Component{
+import MvVideo from "../../../components/Trend/MvVideo";
+import trendCreator, {changeMvUrlList} from "../../../store/actionCreator/trend/index";
+import "../../../assets/style/trend/mv.css";
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import {getDate} from "../../../tools/date";
+class Mv extends React.Component{
     render() {
+        const {allMv}=this.props;
+    // ,mvUrlList,singerPic,mvLike
+    //     console.log(this.props);
+        // const str="";
         return(
             <div className={"ra_mv"}>
                 <div className={"ra_mv_featured"}>
@@ -77,7 +87,7 @@ export default class Mv extends React.Component{
                     <div className={"ra_mv_leaderboard_in"}>
                         <div className={"ra_mv_leaderboard_in_left"}>
                             <p>排行榜<span className={"iconfont iconyou"}></span></p>
-                            <h2>更新时间{Date.now()}</h2>
+                            <h2>更新时间 : {"getDate()"}</h2>
                         </div>
                         <div className={"ra_mv_leaderboard_in_right"}>
                             <img src={require("../../../assets/img/TrendImg/1.jpg")} alt=""/>
@@ -88,86 +98,26 @@ export default class Mv extends React.Component{
                     <div className={"ra_mv_more_top"}>
                         <p>更多精彩MV</p>
                     </div>
-                    <div className={"ra_mv_more_body"}>
-                        <div onClick={()=>{
-                            this.props.history.push("/mvDetails")
-                        }} className={"ra_mv_more_body_top"}>
-                            <div className={"ra_mv_more_body_top_position"}>
-                                <div className={"playerNum"}>
-                                    <span className={"iconfont iconbofang3"}></span>
-                                    <span>{"播放量"}</span>
-                                </div>
-                                <video autoPlay controls src={require("../../../assets/video/caaf3d25944dd6c010d0796b66df893e.mp4")}></video>
-                            </div>
-
-                            <p>{"视频介绍视频介绍视频介绍视频介绍视频介绍视频介绍视频介绍视频介绍视频介绍视频介绍"}</p>
-                        </div>
-                        <div className={"ra_mv_more_body_bottom"}>
-                            <div onClick={()=>{
-                                this.props.history.push("/userInfo")
-                            }} className={"ra_mv_more_body_bottom_l"}>
-                                <img src={require("../../../assets/img/TrendImg/1.jpg")} alt=""/>
-                                <span>{"用户名"}</span>
-                            </div>
-                            <div className={"ra_mv_more_body_bottom_r"}>
-                                <span className={"iconfont iconthumb"}>123</span>
-                                <span onClick={()=>{
-                                    this.props.history.push("/mvDetails")
-                                }} className={"iconfont iconicon_comments"}>123</span>
-                                <span className={"iconfont icondiandiandian"}></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={"ra_mv_more_body"}>
-                        <div className={"ra_mv_more_body_top"}>
-                            <div className={"ra_mv_more_body_top_position"}>
-                                <div className={"playerNum"}>
-                                    <span className={"iconfont iconbofang3"}></span>
-                                    <span>{"播放量"}</span>
-                                </div>
-                                <video autoPlay controls src={require("../../../assets/video/caaf3d25944dd6c010d0796b66df893e.mp4")}></video>
-                            </div>
-
-                            <p>{"视频介绍视频介绍视频介绍视频介绍视频介绍视频介绍视频介绍视频介绍视频介绍视频介绍"}</p>
-                        </div>
-                        <div className={"ra_mv_more_body_bottom"}>
-                            <div className={"ra_mv_more_body_bottom_l"}>
-                                <img src={require("../../../assets/img/TrendImg/1.jpg")} alt=""/>
-                                <span>{"用户名"}</span>
-                            </div>
-                            <div className={"ra_mv_more_body_bottom_r"}>
-                                <span className={"iconfont iconthumb"}>123</span>
-                                <span className={"iconfont iconicon_comments"}>123</span>
-                                <span className={"iconfont icondiandiandian"}></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={"ra_mv_more_body"}>
-                        <div className={"ra_mv_more_body_top"}>
-                            <div className={"ra_mv_more_body_top_position"}>
-                                <div className={"playerNum"}>
-                                    <span className={"iconfont iconbofang3"}></span>
-                                    <span>{"播放量"}</span>
-                                </div>
-                                <video autoPlay controls src={require("../../../assets/video/caaf3d25944dd6c010d0796b66df893e.mp4")}></video>
-                            </div>
-
-                            <p>{"视频介绍视频介绍视频介绍视频介绍视频介绍视频介绍视频介绍视频介绍视频介绍视频介绍"}</p>
-                        </div>
-                        <div className={"ra_mv_more_body_bottom"}>
-                            <div className={"ra_mv_more_body_bottom_l"}>
-                                <img src={require("../../../assets/img/TrendImg/1.jpg")} alt=""/>
-                                <span>{"用户名"}</span>
-                            </div>
-                            <div className={"ra_mv_more_body_bottom_r"}>
-                                <span className={"iconfont iconthumb"}>123</span>
-                                <span className={"iconfont iconicon_comments"}>123</span>
-                                <span className={"iconfont icondiandiandian"}></span>
-                            </div>
-                        </div>
-                    </div>
+                    {
+                        allMv.map((v,i)=>{
+                            const bground={
+                                background: `url(${v.cover})`,
+                                backgroundSize: "100% 100%",
+                                backgroundPosition: "0 0"
+                            };
+                            return(
+                                <MvVideo {...this.props} v={v} i={i} bground={bground}></MvVideo>
+                            )
+                        })
+                    }
                 </div>
             </div>
         )
     }
+    componentDidMount() {
+        this.props.getAllMv();
+    }
 }
+export default connect(state=>({allMv:state.trend.allMv}),dispatch=>bindActionCreators(trendCreator,dispatch))(Mv)
+
+
