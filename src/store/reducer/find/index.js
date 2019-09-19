@@ -12,5 +12,11 @@ export default function (state = initState,{type,payload}) {
     if(type === actionType.CHANGE_NEW_SONG){
         state.newSong=payload;
     }
+    if(type === actionType.CHANGE_SEL_MV){
+        state.selMv=payload;
+    }
+    if(type === actionType.CHANGE_MV_LIST){
+        state.mvList=payload;
+    }
     return state
 }

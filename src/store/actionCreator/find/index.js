@@ -22,6 +22,20 @@ export const ChangeNewSong=function (payload) {
         payload
     }
 }
+//同步云村精选模块mv
+export const ChangeSelMv=function (payload) {
+    return{
+        type:actionType.CHANGE_SEL_MV,
+        payload
+    }
+}
+//同步find模块下方 Mv列表
+export const ChangeMvList=function (payload) {
+    return{
+        type:actionType.CHANGE_MV_LIST,
+        payload
+    }
+}
 export default {
     //请求banner图
     getBannerPic() {
@@ -53,6 +67,20 @@ export default {
             const data = await axios.get("/top/album?offset=2&limit=3");
             //console.log(data.albums)
             dispatch(ChangeNewSong(data.albums))
+        }
+    },
+    //请求云村精选 调用网易出品mv接口 offset limit
+    getSelMv(_offset){
+        return async (dispatch)=>{
+            const data = await axios.get(`/mv/all?limit=1&offset=${_offset}`);
+            dispatch(ChangeSelMv(data.data[0]))
+        }
+    },
+    //获取MvList 接口同上
+    getMvList(){
+        return async (dispatch)=>{
+            const data = await axios.get(`/mv/all?limit=30&offset=20`);
+            dispatch(ChangeMvList(data.data))
         }
     }
 }

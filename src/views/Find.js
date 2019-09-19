@@ -4,6 +4,8 @@ import Banner from '../components/Find/Banner'
 import MidNav from '../components/Find/MidNav'
 import IntroPlaylist from '../components/Find/IntroPlaylist'
 import NewSong from '../components/Find/NewSong'
+import CloudSelection from '../components/Find/CloudSelection'
+import MvList from '../components/Find/MvList'
 class Find extends React.Component{
     render(){
         return(
@@ -13,7 +15,7 @@ class Find extends React.Component{
                         <Banner></Banner>
                     </div>
                 </div>
-                <MidNav></MidNav>
+                <MidNav {...this.props}></MidNav>
                 <div className={"intro_playlist"}>
                     <div className={"head_playlist"}>
                         <span>推荐歌单</span>
@@ -22,6 +24,8 @@ class Find extends React.Component{
                     <IntroPlaylist></IntroPlaylist>
                 </div>
                 <NewSong></NewSong>
+                <CloudSelection></CloudSelection>
+                <MvList></MvList>
             </div>
         )
     }

@@ -88,6 +88,7 @@
     background: #f0f4f3;
     display: flex;
     flex-direction: row;
+    box-sizing: border-box;
 }
 .cy_ml_box .cy_ml_num{
     display: inline-block;
@@ -136,6 +137,11 @@
  .cy_ml_hh{
      height: .62rem;
      padding: .4rem 0;
+ }
+ .cy_lm_hh{
+     padding: .4rem .5rem;
+     background:#d53c34;
+     color: white;
  }
  .cy_ml_hh span{
     font-size: .8rem;
@@ -188,4 +194,49 @@
 }
 .cy_ml_bm span{
     font-size: .8rem;
+}
+.cy_ml_box .cy_ml_r span.cy_song_width{
+    display: inline-block;
+    max-width: 8rem;
+    white-space: nowrap;;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cy_ml_box .cy_ml_r span.cy-name-width{
+    display: inline-block;
+    max-width: 8rem;
+    white-space: nowrap;;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/*********************audio******************************/
+.audioBox{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.cyiconpause{
+    font-size: .8rem;
+    color:#e6e6e6;
+}
+.cy_timeline{
+    width: 8rem;
+    height: .1rem;
+    background: #e6e6e6;
+   position: relative;
+}
+.cy_audio_flex{
+    padding: .5rem; 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.playhead{
+    width: .4rem;
+    height: .4rem;
+    border-radius: 50%;
+    background: #e6e6e6;
+    position: absolute;
+    top:-.15rem;
 }

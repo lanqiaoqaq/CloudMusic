@@ -8,7 +8,6 @@ class AudioPlayer extends React.Component{
         }
     }
     render(){
-        console.log(this.props)
         return(
             <div className={"audio_player"} onClick={()=>this.props.history.push("/musicplaying")}>
                 <div className={"audio_son"}>
