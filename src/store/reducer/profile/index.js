@@ -14,5 +14,11 @@ export default function (state = initState,{type,payload}) {
     if(type===actionType.CHANGE_CYPLAY_LIST_DETAIL){
         state.cyPlaylistDetail=payload;
     }
+    if(type===actionType.CHANGE_SON_DETAIL){
+        state.cySongDetail=payload;
+    }
+    if(type===actionType.CHANGE_MUSIC){
+        state.cyMusic=payload;
+    }
     return state
 }

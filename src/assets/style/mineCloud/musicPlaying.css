@@ -48,7 +48,6 @@
     margin-top:2.5rem;
 }
 .cyImgBox{
-    background: red;
     width: 5.44rem;
     height: 5.44rem;
     border-radius: 50%;
@@ -57,11 +56,17 @@
     top:3.24rem;
     left: 2.72rem;
 }
-.cyImgBox img{
-    position: absolute;
-    top: 0;
-    left: 0;
+.cyImgBox{
     border-radius: 50%;
+    animation: rotate 8s linear infinite;
+}
+@keyframes rotate{
+    from{
+ transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(359deg);
+    }
 }
 .cyiconaixin{
     padding: 0 1.6rem 0 .4rem;
@@ -187,6 +192,7 @@
     vertical-align: middle;
 }
 .cy_ml_bm{
+    padding-bottom: .74rem;
     margin-top: .74rem;
    display: flex;
    flex-direction: row;
@@ -239,4 +245,11 @@
     background: #e6e6e6;
     position: absolute;
     top:-.15rem;
+}
+.cyiconFather{
+    margin-top:.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
 }
