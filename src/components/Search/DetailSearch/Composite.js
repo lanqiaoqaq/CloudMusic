@@ -21,7 +21,7 @@ class Composite extends React.Component{
         const album = (this.props.compositeList.result?this.props.compositeList.result.album:"");
         const djRadio = (this.props.compositeList.result?this.props.compositeList.result.djRadio:"");
         const user = (this.props.compositeList.result?this.props.compositeList.result.user:"");
-        // console.log(user)
+        // console.log(djRadio)
         return(
             <div className={"composite_k"}>
                 <div className={"composite_singe"}>
@@ -31,7 +31,7 @@ class Composite extends React.Component{
                     </ul>
                     <ul>
                         {
-                            song.songs?song.songs.map(v=>(
+                            song?song.songs.map(v=>(
                                 <li key={v.id}>
                             <span>
                                 <p>{v.name} {v.alia}</p>
@@ -47,13 +47,15 @@ class Composite extends React.Component{
                                 } )
                         }
                     </ul>
-                    <h5 style={{display:song.moreText?"block":"none"}}>{song.moreText} ></h5>
+                    <h5 style={{display:song?"block":"none"}} onClick={()=>{
+                        this.props.history.push("/SearchDetails/Single")
+                    }}>{song?song.moreText:""}</h5>
                 </div>
                 <div className={"composite_video"}>
-                    <h5>视频</h5>
+                    <h5 style={{display:video?"block":"none"}}>视频</h5>
                     <ul>
                         {
-                            video.videos?video.videos.map(v=>(
+                            video?video.videos.map(v=>(
                                 <li key={v.playTime}>
                                     <span><img src={v.coverUrl} alt=""/></span>
                                     <span>
@@ -66,13 +68,15 @@ class Composite extends React.Component{
                             })
                         }
                     </ul>
-                    <h5 style={{display:video.moreText?"block":"none"}}>{video.moreText} ></h5>
+                    <h5 style={{display:video?"block":"none"}} onClick={()=>{
+                        this.props.history.push("SearchDetails/Video")
+                    }}>{video?video.moreText:""}</h5>
                 </div>
                 <div className={"composite_playList"}>
-                    <h5>歌单</h5>
+                    <h5 style={{display:playList?"block":"none"}}>歌单</h5>
                     <ul>
                         {
-                            playList.playLists?playList.playLists.map(v=>(
+                            playList?playList.playLists.map(v=>(
                                 <li key={v.id}>
                                     <span><img src={v.coverImgUrl} alt=""/></span>
                                     <span>
@@ -85,13 +89,15 @@ class Composite extends React.Component{
                             })
                         }
                     </ul>
-                    <h5 style={{display:playList.moreText?"block":"none"}}>{playList.moreText} > </h5>
+                    <h5 style={{display:playList?"block":"none"}} onClick={()=>{
+                        this.props.history.push("SearchDetails/PlayList")
+                    }}>{playList?playList.moreText:""} </h5>
                 </div>
                 <div className={"composite_log"}>
-                    <h5>Mlog</h5>
+                    <h5 style={{display:mlog?"block":"none"}}>Mlog</h5>
                     <ul>
                         {
-                            mlog.mlogs?mlog.mlogs.map(v=>(
+                            mlog?mlog.mlogs.map(v=>(
                                 <li key={v.id}>
                                     <p><img src={v.resource.mlogBaseData.coverUrl} alt=""/></p>
                                     <p>{v.resource.mlogBaseData.text}</p>
@@ -106,13 +112,13 @@ class Composite extends React.Component{
                             })
                         }
                     </ul>
-                    <h5 style={{display:mlog.moreText?"block":"none"}}>{mlog.moreText} ></h5>
+                    <h5 style={{display:mlog?"block":"none"}}>{mlog?mlog.moreText:""}</h5>
                 </div>
                 <div className={"composite_songwriter"}>
-                    <h5>歌手</h5>
+                    <h5 style={{display:artist?"block":"none"}}>歌手</h5>
                     <ul>
                         {
-                            artist.artists?artist.artists.map(v=>(
+                            artist?artist.artists.map(v=>(
                                 <li key={v.id}>
                             <span>
                                 <img src={v.img1v1Url} alt=""/>
@@ -128,13 +134,15 @@ class Composite extends React.Component{
                             })
                         }
                     </ul>
-                    <h5 style={{display:artist.moreText?"block":"none"}}>{artist.moreText} ></h5>
+                    <h5 style={{display:artist?"block":"none"}} onClick={()=>{
+                        this.props.history.push("SearchDetails/SongWriter")
+                    }}>{artist?artist.moreText:""}</h5>
                 </div>
                 <div className={"composite_album"}>
-                    <h5>专辑</h5>
+                    <h5 style={{display:album?"block":"none"}}>专辑</h5>
                     <ul>
                         {
-                            album.albums?album.albums.map(v=>(
+                            album?album.albums.map(v=>(
                                 <li key={v.id}>
                                     <span><img src={v.blurPicUrl} alt=""/></span>
                                     <span>
@@ -150,13 +158,15 @@ class Composite extends React.Component{
                             })
                         }
                     </ul>
-                    <h5 style={{display:album.moreText?"block":"none"}}>{album.moreText} ></h5>
+                    <h5 style={{display:album?"block":"none"}} onClick={()=>{
+                        this.props.history.push("SearchDetails/Album")
+                    }}>{album?album.moreText:""}</h5>
                 </div>
                 <div className={"composite_radio"}>
-                    <h5>电台</h5>
+                    <h5 style={{display:djRadio?"block":"none"}}>电台</h5>
                     <ul>
                         {
-                            djRadio.djRadios?djRadio.djRadios.map(v=>(
+                            djRadio?djRadio.djRadios.map(v=>(
                                 <li key={v.id}>
                                     <span><img src={v.picUrl} alt=""/></span>
                                     <span>
@@ -170,15 +180,17 @@ class Composite extends React.Component{
                         }
 
                     </ul>
-                    <h5 style={{display:djRadio.moreText?"block":"none"}}>{djRadio.moreText} ></h5>
+                    <h5 style={{display:djRadio?"block":"none"}} onClick={()=>{
+                        this.props.history.push("SearchDetails/RadioStation")
+                    }}>{djRadio?djRadio.moreText:""}</h5>
                 </div>
                 <div className={"composite_user"}>
-                    <h5>用户</h5>
+                    <h5 style={{display:user?"block":"none"}}>用户</h5>
                     <ul>
                         {
-                            user.users ? user.users.map(v => (
+                            user? user.users.map(v => (
                                 <li key={v.avatarUrl}>
-                                    <span><img src={v.avatarUrl} alt=""/></span>
+                                    <span><img onError={(e) => {e.target.onerror = null;e.target.src="http://p1.music.126.net/VnZiScyynLG7atLIZ2YPkw==/18686200114669622.jpg"}} src={v.avatarUrl} alt=""/></span>
                                     <span>
                                 <p>{v.nickname}
                                     <i className={"sex_1"} style={{display:v.gender===1?"inline-block":"none"}}>♂</i>
@@ -193,13 +205,15 @@ class Composite extends React.Component{
                             })
                         }
                     </ul>
-                    <h5 style={{display:user.moreText?"block":"none"}}>{user.moreText} ></h5>
+                    <h5 style={{display:user?"block":"none"}} onClick={()=>{
+                        this.props.history.push("/SearchDetails/UserHome")
+                    }}>{user?user.moreText:""}</h5>
                 </div>
             </div>
         )
     }
     componentDidMount() {
-        this.props.getCompositeList()
+        this.props.getCompositeList(localStorage._k)
     }
 }
 function mapStateToProps(state,props) {

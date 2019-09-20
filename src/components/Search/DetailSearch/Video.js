@@ -13,10 +13,13 @@ class Video extends React.Component{
         // console.log(videos,"1")
         return(
             <div className={"video_k"}>
+                <div className={"my_kwc"} style={{display:videos?"none":"block"}}>未找到与"{localStorage._k}"相关的内容</div>
                 <ul>
                     {
                         videos?videos.map(v=>(
-                            <li key={v.vid}>
+                            <li key={v.vid} onClick={()=>{
+
+                            }}>
                                 <span><img src={v.coverUrl} alt=""/></span>
                                 <span>
                                 <p>{v.title}</p>
@@ -33,7 +36,7 @@ class Video extends React.Component{
         )
     }
     componentDidMount() {
-        this.props.getVideoList()
+        this.props.getVideoList(localStorage._k)
     }
 }
 function mapStateToProps(state,props) {

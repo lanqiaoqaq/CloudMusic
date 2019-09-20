@@ -94,65 +94,73 @@ export default {
     //获取综合搜索列表
     getCompositeList(value){
         return async (dispatch) => {
+            // console.log(value)
             const data = await axios.get(`/search?keywords= ${value}&type=1018`);
             // console.log(data)
             dispatch(ChangeCompositeList(data))
         }
     },
     // 获取单曲搜索列表
-    getSingleList(){
+    getSingleList(value){
         return async (dispatch) => {
-            const data = await axios.get("/search?keywords= 那个女孩&type=1");
+            const data = await axios.get(`/search?keywords= ${value}&type=1`);
             // console.log(data)
             dispatch(ChangeSingleList(data))
         }
     },
     //获取视频搜索列表
-    getVideoList(){
+    getVideoList(value){
         return async (dispatch) => {
-            const data = await axios.get("/search?keywords= 那个女孩&type=1014");
+            const data = await axios.get(`/search?keywords= ${value}&type=1014`);
             // console.log(data)
             dispatch(ChangeVideoList(data))
         }
     },
     //获取歌手搜索列表
-    getSongWriterList(){
+    getSongWriterList(value){
         return async (dispatch) => {
-            const data = await axios.get("/search?keywords= 那个女孩&type=100");
+            const data = await axios.get(`/search?keywords= ${value}&type=100`);
             // console.log(data)
             dispatch(ChangeSongWriterList(data))
         }
     },
     //获取专辑搜索列表
-    getAlbumList(){
+    getAlbumList(value){
         return async (dispatch) => {
-            const data = await axios.get("/search?keywords= 那个女孩&type=10");
+            const data = await axios.get(`/search?keywords= ${value}&type=10`);
             // console.log(data)
             dispatch(ChangeAlbumList(data))
         }
     },
     //获取歌单搜索列表
-    getPlayList(){
+    getPlayList(value){
         return async (dispatch) => {
-            const data = await axios.get("/search?keywords= 那个女孩&type=1000");
+            const data = await axios.get(`/search?keywords= ${value}&type=1000`);
             // console.log(data)
             dispatch(ChangePlayList(data))
         }
     },
     //获取电台搜索列表
-    getRadioStationList(){
+    getRadioStationList(value){
         return async (dispatch) => {
-            const data = await axios.get("/search?keywords= 那个女孩&type=1009");
+                const data = await axios.get(`/search?keywords= ${value}&type=1009`);
             // console.log(data)
             dispatch(ChangeRadioStation(data))
         }
     },
     //获取用户搜索列表
-    getUserHomeList(){
+    getUserHomeList(value){
         return async (dispatch) => {
-            const data = await axios.get("/search?keywords= 那个女孩&type=1002");
+            const data = await axios.get(`/search?keywords= ${value}&type=1002`);
             //console.log(data)
             dispatch(ChangeUserHomeList(data))
         }
-    }
+    },
+    getFlow(_id){
+        console.log(_id)
+        return async (dispatch) => {
+            const data = await axios.get(`/user/follows?uid=${_id}`);
+            console.log(data)
+        }
+    },
 }

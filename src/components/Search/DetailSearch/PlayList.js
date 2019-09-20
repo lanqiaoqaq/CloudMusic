@@ -14,6 +14,7 @@ class PlayList extends React.Component{
         // console.log(playLists,"1")
         return(
             <div className={"playList_k"}>
+                <div className={"my_kwc"} style={{display:playLists?"none":"block"}}>未找到与"{localStorage._k}"相关的内容</div>
                 <ul>
                     {
                         playLists?playLists.map(v=>(
@@ -33,7 +34,7 @@ class PlayList extends React.Component{
         )
     }
     componentDidMount() {
-        this.props.getPlayList()
+        this.props.getPlayList(localStorage._k)
     }
 }
 function mapStateToProps(state,props) {
