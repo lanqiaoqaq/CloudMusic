@@ -11,6 +11,9 @@ export default function (state = initState,{type,payload}) {
     if(type===actionType.CHANGE_SINGER_PIC){
         state.singerPic.push(payload)
     }
+    if(type===actionType.CHANGE_SINGER_PIC1){//mv详情页的
+        state.singerPic1=payload
+    }
     if(type===actionType.CHANGE_MV_LIKE){
         state.mvLike.push(payload)
     }
@@ -20,5 +23,21 @@ export default function (state = initState,{type,payload}) {
     if(type===actionType.CHANGE_MV_RANK_LIST){
         state.mvRankList=payload
     }
+    if(type===actionType.CHANGE_MV_DETAILS){
+        state.mvDetails=payload
+    }
+    if(type===actionType.CHANGE_MV_BRS){
+        state.mvBrs=payload
+    }
+    if(type===actionType.CHANGE_RELATED_VIDEOS){
+        state.relatedVideos=payload
+    }
+    if(type===actionType.CHANGE_MV_COMMENTS){
+        state.mvComments=payload
+    }
+    if(type===actionType.CHANGE_VIDEO_DETAILS){
+        state.videoDetails=payload
+    }
+
     return state
 }

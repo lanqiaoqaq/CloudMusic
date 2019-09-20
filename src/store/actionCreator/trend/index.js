@@ -18,13 +18,19 @@ export const changeSingerPic = function (payload) {
         payload
     }
 };
+export const changeSingerPic1 = function (payload) {//mv详情页的头像
+    return {
+        type:actionType.CHANGE_SINGER_PIC1,
+        payload
+    }
+};
 export const changeMvLike = function (payload) {
     return {
         type:actionType.CHANGE_MV_LIKE,
         payload
     }
 };
-export const changeMvComment = function (payload) {
+export const changeMvComment = function (payload){//mv评论数
     return {
         type:actionType.CHANGE_MV_COMMENT,
         payload
@@ -36,13 +42,105 @@ export const changeMvRankList = function (payload) {
         payload
     }
 };
+export const changeMvDetails = function (payload) {
+    return {
+        type:actionType.CHANGE_MV_DETAILS,
+        payload
+    }
+};
+export const changeMvBrs = function (payload) {
+    return {
+        type:actionType.CHANGE_MV_BRS,
+        payload
+    }
+};
+
+export const changeRelatedVideos = function (payload) {
+    return {
+        type:actionType.CHANGE_RELATED_VIDEOS,
+        payload
+    }
+};
+
+
+export const changeMvComments = function (payload) {
+    return {
+        type:actionType.CHANGE_MV_COMMENTS,
+        payload
+    }
+};
+export const changeVideoDetails = function (payload) {//改变视频详情
+    return {
+        type:actionType.CHANGE_VIDEO_DETAILS,
+        payload
+    }
+};
+
 
 export default {
+    getVideoDetails(id){//获取视频数据
+        return async (dispatch)=>{
+            console.log(id)
+            const data= await axios.get("/video/detail?id="+id);
+            if(data.code===200){
+                const pic=await  this.getVideoUserPic(data.data.creator.userId);//头像
+                const related=await this.getVideoRelatedVideos(data.data.vid);//相关视频
+                const comment=await this.getVideoComment(data.data.vid);//评论
+                const vurl=await this.getVideoAdd(data.data.vid);//视频地址
+                dispatch(changeVideoDetails({
+                    videoDetails:data,
+                    pic,
+                    related,
+                    comment,
+                    vurl
+                }))
+            }
+        }
+    },
+    getVideoAdd(id){
+        return async (dispatch)=>{
+            const data=await axios.get("/video/url?id="+id);
+            if(data.code===200){
+                return data.urls[0].url;
+            }
+        }
+    },
+    getVideoUserPic(id){//获取视频用户头像
+        return async (dispatch)=>{
+            const data=await axios.get("/user/detail?uid="+id);//用户详情
+            if(data.code===200){
+                return data.profile.avatarUrl;//头像地址
+            }
+        }
+    },
+    getVideoRelatedVideos(vid){//获取视频相关视频
+        return async (dispatch)=>{
+            const data= await axios.get("/related/allvideo?id="+vid);
+            if(data.code===200){
+                return data.data;//一个数组
+            }
+        }
+    },
+    getVideoComment(id){//获取视频评论
+        return async (dispatch)=>{
+            const data= await axios.get("/comment/video?id="+id);
+            if(data.code===200){
+                return data;//有热评和最新
+            }
+        }
+    },
     getAllMv() {
         return async(dispatch)=>{
             const data=await axios.get("/mv/first?limit=10");
             if(data.code===200){
-                dispatch(changeAllMv(data.data));
+                const videoFeatured=await this.getVideoFeatured();
+                const rank=await this.getMvRankListMl1("内地");
+                // console.log(rank)
+                dispatch(changeAllMv({
+                    allMv:data.data,
+                    videoFeatured,
+                    rank
+                }));
                 // data.data.map((v)=>{
                 //     this.getVideoSrc(v.id);this.getSingerPic(v.artists[0].id);this.getMvLike(v.id);
                 // });
@@ -55,39 +153,33 @@ export default {
             }
         }
     },
-    getInfo(urlId,picId,likeId){
-        return async (disaptch)=>{
-            // console.log(123)
-            await axios.all([axios.get("/mv/url?id="+urlId),axios.get("/artists?id="+picId),axios.get("/mv/detail?mvid="+likeId)])
-                axios.spread(function (acct,perms,last) {
-                    // console.log(acct,perms,last,123456);
-                    // dispatch(changeMvUrlList(acct.data.url));
-                    // dispatch(changeSingerPic(perms.artist.img1v1Url));
-                    // dispatch(changeMvLike({
-                    //     likeCount: last.data.likeCount,
-                    //     commentCount:last.data.commentCount
-                    // }))
-                    // return function fn() {
-                    //
-                    // }
-                })
+    getVideoFeatured(){//视频精选
+        return async (dispatch)=>{
+            const data=await axios.get("/personalized/mv");
+            if(data.code===200){
+                return data.result
+            }
         }
     },
+
     getVideoSrc(id){//获取视频地址
         return async (dispatch)=>{
             const data=await axios.get("/mv/url?id="+id);
             if(data.code===200){
                 // console.log(data,1)
                 dispatch(changeMvUrlList(data.data.url))
+                return data.data.url
             }
         }
     },
     getSingerPic(id){//获取歌手头像
+        console.log("获取歌手头像",id)
         return async (dispatch)=>{
             const data=await axios.get("/artists?id="+id);
+            console.log(data,2)
             if(data.code===200){
-                // console.log(data,2)
                 dispatch(changeSingerPic(data.artist.img1v1Url))
+                return data.artist.img1v1Url
             }
         }
     },
@@ -97,17 +189,102 @@ export default {
             if(data.code===200){
                 // console.log(data,3)
                 // dispatch(changeMvLike(data.data))
-                dispatch(changeMvLike(data.data.likeCount));
-                dispatch(changeMvComment(data.data.commentCount));
+                dispatch(changeMvLike({
+                    likeCount: data.data.likeCount,
+                    commentCount:data.data.commentCount
+                }))
+                return {
+                    likeCount: data.data.likeCount,
+                    commentCount:data.data.commentCount
+                }
+                // dispatch(changeMvLike(data.data.likeCount));
+                // dispatch(changeMvComment(data.data.commentCount));
             }
         }
     },
     getMvRankListMl(area){//获取内地排行
         return async (dispatch)=>{
-            const data=await axios.get("/top/mv?limit=10&area="+area);
+            const data=await axios.get("/top/mv?area="+area);
             if(data.code===200){
                 dispatch(changeMvRankList(data));
+                return data
             }
         }
-    }
+    },
+    getMvRankListMl1(area){//获取内地排行
+        return async (dispatch)=>{
+            const data=await axios.get("/top/mv?area="+area);
+            if(data.code===200){
+                return data
+            }
+        }
+    },
+    getMvDetails(id){//获取mv详细信息
+        return async (dispatch)=>{
+            const data=await axios.get("/mv/detail?mvid="+id);
+            // console.log(data)
+            if(data.code===200){
+                dispatch(changeMvDetails(data));
+                this.getSingerPic1(data.data.artists);
+                this.getRelatedVideos(data.data.id);
+                this.getMvComment(data.data.id);
+            }
+        }
+    },
+    changeMvBrs(id,e){//切换视频清晰度
+        console.log(id,e.target.value,document.querySelector("video").currentTime);
+        const currentTime=document.querySelector("video").currentTime;
+        return  (dispatch)=>{
+            switch (e.target.value) {
+                case "240P":dispatch(changeMvBrs(["240",currentTime]));break;
+                case "480P":dispatch(changeMvBrs(["480",currentTime]));break;
+                case "720P":dispatch(changeMvBrs(["720",currentTime]));break;
+                case "1080P":dispatch(changeMvBrs(["1080",currentTime]));break;
+            }
+        }
+    },
+    getSingerPic1(arr){//获取歌手头像mv
+        // console.log("获取歌手头像",arr)
+        return async (dispatch)=>{
+            let newarr=[];
+            let result= await Promise.all(arr.map(async (v,i)=>{
+                return  ( async ()=>{
+                    const data=await axios.get("/artists?id="+v.id);
+                    console.log(data)
+                    // console.log(data.artist.img1v1Url,"获取歌手头像")
+                    newarr.push(data.artist.img1v1Url);
+                    return newarr
+                })()
+            }))
+            console.log(newarr,2222)
+
+            dispatch(changeSingerPic1(newarr))
+        }
+    },
+    getRelatedVideos(vid){//获取相关视频 type:1 视频 0：mv
+        return async (dispatch)=>{
+            const data= await axios.get("/related/allvideo?id="+vid);
+            if(data.code===200){
+                dispatch(changeRelatedVideos(data.data));
+            }
+        }
+    },
+    getMvComment(id){//获取mv评论
+        return async (dispatch)=>{
+            const data= await axios.get("/comment/mv?id="+id);
+            if(data.code===200){
+                dispatch(changeMvComments(data));
+            }
+        }
+    },
+
+    getInfo(urlId,picId,likeId){
+        return async (disaptch)=>{
+            // console.log(123)
+            await axios.all([axios.get("/mv/url?id="+urlId),axios.get("/artists?id="+picId),axios.get("/mv/detail?mvid="+likeId)])
+            axios.spread(function (acct,perms,last) {
+            })
+        }
+    },
+
 }

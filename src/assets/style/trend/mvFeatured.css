@@ -2,6 +2,13 @@
     width: 100%;
     height: 1.5rem;
     background: #ff2315;
+    position: fixed;
+    top: 0;
+}
+.ra_Netease_mv_featured_out{
+   width: 100%;
+    overflow: hidden;
+    /*margin-top: 1.5rem;*/
 }
 .ra_mvF_follow_header .iconfont{
     font-size: 1rem;
