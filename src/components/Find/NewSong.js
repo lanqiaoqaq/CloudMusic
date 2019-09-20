@@ -34,7 +34,9 @@ class NewSong extends React.Component{
                             })
                         }} className={this.state.DiscOrSong?"_unactive _right":"_active _right"}>新歌</span>
                     </div>
-                    <div>{this.state.DiscOrSong?"更多新碟":"新歌推荐"}</div>
+                    <div onClick={()=>{
+                        this.props.history.push("/songlist")
+                    }}>{this.state.DiscOrSong?"更多新碟":"新歌推荐"}</div>
                 </div>
                 <ul>
                     {

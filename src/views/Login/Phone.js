@@ -29,7 +29,7 @@ class Phone extends React.Component {
                     width: "9.88rem",
                     marginLeft: ".48rem"
                 }}>
-                    <input ref={"phone"} style={{border: "none", marginTop: ".9rem", fontSize: ".46rem"}} ref="phone" type="text"
+                    <input ref={"phone"} style={{border: "none", marginTop: ".9rem", fontSize: ".46rem",outline:"medium"}} ref="phone" type="text"
                            placeholder="请输入手机号"/>
                 </p>
                 <p style={{
@@ -39,7 +39,7 @@ class Phone extends React.Component {
                     marginLeft: ".48rem",
                     marginBottom: ".94rem"
                 }}>
-                    <input ref={"password"} style={{border: "none", marginTop: ".9rem", fontSize: ".46rem"}} ref="password" type="password"
+                    <input ref={"password"} style={{border: "none", marginTop: ".9rem", fontSize: ".46rem",outline:"medium"}} ref="password" type="password"
                            placeholder="请输入密码"/>
                 </p>
                 <p style={{

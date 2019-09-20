@@ -161,7 +161,7 @@ export default function TemporaryDrawer(props) {
                         </li>
                     </ul>
                 </div>
-                <DrawerNav></DrawerNav>
+                <DrawerNav {...getProps()}></DrawerNav>
             </div>
         </div>
     );
