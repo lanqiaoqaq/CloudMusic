@@ -1,82 +1,47 @@
 import React from 'react';
+import {
+    connect
+} from 'react-redux'
+import {
+    bindActionCreators
+} from 'redux'
+import FindCreator from "../../../store/actionCreator/search"
+import Tools from "../../../common/Tools";
 class PlayList extends React.Component{
     render() {
+        const playList  = this.props.playList
+        const playLists = (this.props.playList.result?this.props.playList.result.playlists:"");
+        // console.log(playLists,"1")
         return(
             <div className={"playList_k"}>
                 <ul>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/5.jpg")} alt=""/></span>
-                        <span>
-                                <p>野狼Disco</p>
-                                <p>啊啊啊啊啊啊啊啊啊啊</p>
+                    {
+                        playLists?playLists.map(v=>(
+                            <li key={v.id}>
+                                <span><img src={v.coverImgUrl} alt=""/></span>
+                                <span>
+                                <p>{v.name}</p>
+                                <p>{v.trackCount}首，by{v.creator.nickname}，播放{Tools.tranNumber(v.playCount,1)}次</p>
                             </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/5.jpg")} alt=""/></span>
-                        <span>
-                                <p>野狼Disco</p>
-                                <p>啊啊啊啊啊啊啊啊啊啊</p>
-                            </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/5.jpg")} alt=""/></span>
-                        <span>
-                                <p>野狼Disco</p>
-                                <p>啊啊啊啊啊啊啊啊啊啊</p>
-                            </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/5.jpg")} alt=""/></span>
-                        <span>
-                                <p>野狼Disco</p>
-                                <p>啊啊啊啊啊啊啊啊啊啊</p>
-                            </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/5.jpg")} alt=""/></span>
-                        <span>
-                                <p>野狼Disco</p>
-                                <p>啊啊啊啊啊啊啊啊啊啊</p>
-                            </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/5.jpg")} alt=""/></span>
-                        <span>
-                                <p>野狼Disco</p>
-                                <p>啊啊啊啊啊啊啊啊啊啊</p>
-                            </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/5.jpg")} alt=""/></span>
-                        <span>
-                                <p>野狼Disco</p>
-                                <p>啊啊啊啊啊啊啊啊啊啊</p>
-                            </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/5.jpg")} alt=""/></span>
-                        <span>
-                                <p>野狼Disco</p>
-                                <p>啊啊啊啊啊啊啊啊啊啊</p>
-                            </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/5.jpg")} alt=""/></span>
-                        <span>
-                                <p>野狼Disco</p>
-                                <p>啊啊啊啊啊啊啊啊啊啊</p>
-                            </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/5.jpg")} alt=""/></span>
-                        <span>
-                                <p>野狼Disco</p>
-                                <p>啊啊啊啊啊啊啊啊啊啊</p>
-                            </span>
-                    </li>
+                            </li>
+                        )):[].map(v=>{
+
+                        })
+                    }
                 </ul>
             </div>
         )
     }
+    componentDidMount() {
+        this.props.getPlayList()
+    }
 }
-export default PlayList
+function mapStateToProps(state,props) {
+    return{
+        playList: state.search.playList
+    }
+}
+function mapDispatchProps(dispatch,props) {
+    return bindActionCreators(FindCreator, dispatch)
+}
+export default connect(mapStateToProps,mapDispatchProps) (PlayList)

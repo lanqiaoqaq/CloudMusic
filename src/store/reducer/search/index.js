@@ -9,5 +9,29 @@ export default function (state = initState,{type,payload}) {
     if (type === actionType.CHANGE_FUZZY_SEARCH_LIST){
         state.fuzzySearchList = payload
     }
+    if (type === actionType.CHANGE_COMPOSITE_LIST){
+        state.compositeList = payload
+    }
+    if (type === actionType.CHANGE_SINGLE_LIST){
+        state.singleList = payload
+    }
+    if (type === actionType.CHANGE_VIDEO_LIST){
+        state.videoList = payload
+    }
+    if (type === actionType.CHANGE_SONG_WRITER_LIST){
+        state.songWriterList = payload
+    }
+    if (type === actionType.CHANGE_ALBUM_LIST){
+        state.albumList = payload
+    }
+    if (type === actionType.CHANGE_PLAY_LIST){
+        state.playList = payload
+    }
+    if (type === actionType.CHANGE_RADIO_STATION_LIST){
+        state.radioStationList = payload
+    }
+    if (type === actionType.CHANGE_USER_HOME_LIST){
+        state.userHomeList = payload
+    }
     return state
 }

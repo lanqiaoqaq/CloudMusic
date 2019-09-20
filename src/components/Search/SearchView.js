@@ -29,11 +29,18 @@ class SearchView extends React.Component {
         }
     }
 
+    getcontext(){
+        this.props.getCompositeList(this.state.StrList)
+        this.props.history.push("/SearchDetails")
+    }
+
     missabc() {
-        this.setState({
-            StrList: ""
-        })
-        this.refs.abc.value = ""
+        if (this.props.location.pathname !== '/search') {
+            this.setState({
+                StrList: ""
+            })
+            this.refs.abc.value = ""
+        }
     }
 
     render() {
@@ -48,7 +55,7 @@ class SearchView extends React.Component {
                        onBlur={this.missabc.bind(this)}/>
                 <i className={this.props.location.pathname === '/search' ? 'iconfont iconrenyuansousuo' : 'iconfont iconchahao'}></i>
                 <div className={"mySearch"} style={{display: this.state.StrList ? "block" : "none"}}>
-                    <h5>搜索 "{this.state.StrList}"</h5>
+                    <h5 onClick={this.getcontext.bind(this)} ref={"context"}>搜索 "{this.state.StrList}"</h5>
                     <ul>
                         {
                             fuzzySearchList.map(v => (
