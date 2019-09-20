@@ -8,37 +8,31 @@ import profileCreators from "../../store/actionCreator/profile/index";
 class MusicList extends React.Component{
     constructor(){
         super();
-        this.state={
-            privileges:[]
-        }
     }
     render(){
          return(
             <>
                <MusicListHead {...this.props}></MusicListHead>
-               {
-                   this.state.privileges.map(v=>(
-                        <List key={v.id}></List>
-                   ))
-               }
-              
+               
+                        <List {...this.props}></List>
+                  
             </>
         )
     }
-    componentWillReceiveProps(nextProps){
-        this.setState({
-            privileges:nextProps.playListDetail.privileges
-        })
-  }
+//   shouldComponentUpdate(nextProps){
+//     if(JSON.stringify(nextProps.songDetail) !== JSON.stringify(this.props.songDetail)){
+//         return true
+//     }
+//     return false;
+// }
    componentDidMount(){
-    console.log(this.props.match.params.id);
     this.props.getPlayListDetail(this.props.match.params.id);
-   
    }
 }
 function mapStateToProps(state,props){
     return {
-        playListDetail:state.profile.cyPlaylistDetail
+        playListDetail:state.profile.cyPlaylistDetail,
+        songDetail:state.profile.cySongDetail
     }
 }
 function mapDispatchToProps(dispatch,props){

@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 class Recently extends React.Component{
     render(){
         const {record}=this.props;
+        console.log(record);
          return(
             <>
                <p className="cy_ml_hh cy_lm_hh" >
@@ -17,7 +18,9 @@ class Recently extends React.Component{
                 </p>
                 {
                     record.map((v,i)=>(
-                        <div key={i} className={"cy_ml_box"} style={{paddingLeft:".28rem",paddingRight:".5rem"}}>
+                        <div key={i} className={"cy_ml_box"} style={{paddingLeft:".28rem",paddingRight:".5rem"}} onClick={()=>
+                            this.props.history.push({ pathname:'/musicplaying',state:{id:v.song.id} })
+                        }>
                             <div className={"cy_ml_r"}>
                                 <div>
                                     <p>
