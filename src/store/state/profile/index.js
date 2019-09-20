@@ -2,5 +2,7 @@ export default {
     cyPlaylist:[],
     cyRecord:[],
     cySubcount:[],
-    cyPlaylistDetail:[]
+    cyPlaylistDetail:[],
+    cySongDetail:[],
+    cyMusic:[]
 }

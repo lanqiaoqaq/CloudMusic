@@ -10,13 +10,17 @@ const useStyles = makeStyles({
 
 
 export default function ContinuousSlider(props) {
+ 
   const classes = useStyles();
   const [value, setValue] = React.useState(30);
-  const {audio,currentTime}=props;
-
+  const {audio,currentTime,controlAudio}=props;
+  (function getProps() {
+    console.log(5)
+  }) ()
   const handleChange = (event, newValue) => {
-     newValue=100*(currentTime/audio.duration);
-    console.log(newValue,currentTime,audio.duration)
+    //  newValue=100*(currentTime/audio.duration);
+    const current=newValue/100*audio.duration;
+    setTimeout(controlAudio('changeCurrentTime',current),1000);
     setValue(newValue);
   };
   return (

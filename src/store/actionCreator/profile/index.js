@@ -29,6 +29,20 @@ export  function changePlayListDetail(payload){
         payload
     }
 }
+//歌曲详情
+export function changeSonDetail(payload){
+    return {
+        type:actionType.CHANGE_SON_DETAIL,
+        payload
+    }
+}
+//获取音乐
+export function changeMusic(payload){
+    return {
+        type:actionType.CHANGE_MUSIC,
+        payload
+    }
+}
 export default {
     //获取用户歌单
     getPlayList(){//异步action
@@ -56,8 +70,35 @@ export default {
     getPlayListDetail(id){
         return async (dispatch)=>{
             const data=await axios.get("/playlist/detail?id="+id);
-           
-            dispatch(changePlayListDetail(data));
+            if(data.code===200){
+                dispatch(changePlayListDetail(data));
+                let ids="";
+                console.log(data.privileges);
+                if( data.privileges){
+                    data.privileges.map(v=>{
+                            ids+=v.id+","
+                        })
+                        ids=ids.slice(0,ids.length-1);
+                this.getSonDetail(ids)       
+                }else{
+                    dispatch(changeSonDetail({}));
+                }
+            }
+            
         }
     },
+    //歌曲详情
+    getSonDetail(ids){
+        return async (dispatch)=>{
+            const data=await axios.get("/song/detail?ids="+ids);
+            dispatch(changeSonDetail(data));
+        }
+    },
+    //获取音乐
+    getMusic(id){
+        return async (dispatch)=>{
+            const data=await axios.get("/song/url?id="+id);
+            dispatch(changeMusic(data));
+        }
+    }
 }

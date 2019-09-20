@@ -3,5 +3,9 @@ export default {
     introPlaylist:[],
     newSong:[],
     selMv:{},
-    mvList:[]
+    mvList:[],
+    recommendSongs:[],
+    songListBanner:[],
+    songListIntro:[],
+    songListOther:[]
 }

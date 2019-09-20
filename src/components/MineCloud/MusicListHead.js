@@ -16,7 +16,7 @@ class MusicListHead extends React.Component{
         const {playlist,nickname,name,avatarUrl}=this.state;
          return(
             <>
-                <div className="cy_ml_head" style={{ backgroundImage: `url(${avatarUrl})` }}>
+                <div className="cy_ml_head" style={{ backgroundImage: `url(${playlist.coverImgUrl})`}}>
                     <p className="cy_ml_hh">
                         <span className={"iconfont iconzuojiantou"} onClick={()=>this.props.history.go(-1)}></span>
                         <span >歌单</span>
@@ -34,7 +34,7 @@ class MusicListHead extends React.Component{
                             </div>
                         </div>
                     </div>
-                    <div className="cy_ml_bm">
+                    <div className="cy_ml_bm" >
                         <span className={"iconfont iconxinjian"}></span>
                         <span className={"iconfont iconpinglun"}></span>
                         <span className={"iconfont iconshare"}></span>

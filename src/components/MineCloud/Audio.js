@@ -1,12 +1,26 @@
 import React from "react";
 import "../../assets/style/mineCloud/musicPlaying.css";
 import ContinuousSlider from "./Slider"
-
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import  profileCreators  from "../../store/actionCreator/profile/index";
+import pubsub from "pubsub-js"
 class Audio extends React.Component{
+  constructor(props) {
+    super(props)
+    this.state = {
+        id:"xixi",
+      isPlay: true,
+      isMuted: false,
+      volume: 100,
+      allTime: 0,
+      currentTime:0,
+      src:""
+    }
+  }
     render(){
-        
-        const src=require("../../assets/mine_img/薛之谦 - 刚刚好.mp3");
         const {isPlay,id,currentTime,allTime}=this.state;
+        const src=this.props.music;
         return(
             <div className="audioBox">
                 {/* id:歌曲id,
@@ -16,13 +30,14 @@ class Audio extends React.Component{
                 timeupdate 当目前的播放位置已更改时 */}
             <audio 
               id={`audio${id}`}
-              src={src}
-              preload={"meta"}
+              src={src.code?src.data[0].url:""}
+              autoPlay
               onCanPlay={() => this.controlAudio('allTime')}
               onTimeUpdate={(e) =>{
                 this.controlAudio('getCurrentTime')
                 this.timeUpdate();
-                this.controlAudio('allTime')
+                this.controlAudio('allTime');
+                 this.timeChange(this.props.deg);
             }}
             >
               您的浏览器不支持 audio 标签。
@@ -32,21 +47,26 @@ class Audio extends React.Component{
                     {this.millisecondToDate(currentTime)}
                     </span>
                     {/* 精度条 */}
-                     <p ref="timeline" className="cy_timeline">
+                     {/* <p ref="timeline" className="cy_timeline">
                             <span ref="playhead" className="playhead"></span>
-                        </p>
-                       {/* <ContinuousSlider audio={document.getElementById(`audio${this.state.id}`)} currentTime={this.state.currentTime} ></ContinuousSlider> */}
+                        </p> */}
+                       <ContinuousSlider audio={document.getElementById(`audio${this.state.id}`)} currentTime={this.state.currentTime} controlAudio={(a,b)=>this.controlAudio(a,b)}></ContinuousSlider>
                     {/* 显示时间 */}
                     <span className="current">
                     {this.millisecondToDate(allTime)}
                     </span>
             </div>
-           <div>
+           <div className={"cyiconFather"}>
+           <i className={"cyiconpause iconfont iconliebiaobofang"}></i>
+             <i className={"cyiconpause iconfont iconshangyishou1"}></i>
                 {/* 控制播放暂停  */}
             <i 
               className={`cyiconpause iconfont ${isPlay ? `iconbofang2` : `iconbofang`}`} 
               onClick={() => this.controlAudio(isPlay ? 'pause' : 'play')}
             />
+            
+            <i onClick={()=>console.log(1)} className={"cyiconpause iconfont iconshangyishou"}></i>
+            <i className={"cyiconpause iconfont iconicon"}></i>
            </div>
             {/* 修改当前时间 */}
             {/* <input 
@@ -72,49 +92,39 @@ class Audio extends React.Component{
           </div>
         )
     }
-    constructor(props) {
-        super(props)
-        this.state = {
-            id:"haha",
-          isPlay: false,
-          isMuted: false,
-          volume: 100,
-          allTime: 0,
-          currentTime:0
-        }
-      }
+   
       
       timeUpdate() {
-        const audio = document.getElementById(`audio${this.state.id}`)
-        var playPercent = 7.6 * (this.state.currentTime / audio.duration);
-        this.refs.playhead.style.webkitTransform  = "translateX("+playPercent + "rem)";
-        this.refs.playhead.style.transform = "translateX("+playPercent + "rem)";
-        if (this.state.currentTime == audio.duration) {
-            this.setState({
-                isPlay: false
-            })
-        }
+        // const audio = document.getElementById(`audio${this.state.id}`)
+        // var playPercent = 7.6 * (this.state.currentTime / audio.duration);
+        // this.refs.playhead.style.webkitTransform  = "translateX("+playPercent + "rem)";
+        // this.refs.playhead.style.transform = "translateX("+playPercent + "rem)";
+        // if (this.state.currentTime == audio.duration) {
+        //     this.setState({
+        //         isPlay: false
+        //     })
+        // }
     }
 
     timelineClick(e) {
                 //更新坐标位置
-                if(e.target.nodeName==='P'){
-                     const playhead=this.refs.playhead;
-                    const audio = document.getElementById(`audio${this.state.id}`)
-                    var newLeft = (e.offsetX - this.refs.timeline.offsetLeft)/100;
-                    console.log((e.pageX - this.refs.timeline.offsetLeft)/100)
-                    if (newLeft >= 0 && newLeft <= 7.6) {
-                        playhead.style.transform = "translateX("+ newLeft +"px)";
-                    }
-                    if (newLeft < 0) {
-                        playhead.style.transform = "translateX(0)";
-                    }
-                    if (newLeft > 7.6) {
-                        playhead.style.transform = "translateX("+ 7.6 + "px)";
-                    }
-                    // 更新时间
-                    audio.currentTime = audio.duration * (newLeft / 7.6);
-                }
+                // if(e.target.nodeName==='P'){
+                //      const playhead=this.refs.playhead;
+                //     const audio = document.getElementById(`audio${this.state.id}`)
+                //     var newLeft = (e.offsetX - this.refs.timeline.offsetLeft)/100;
+                //     console.log((e.pageX - this.refs.timeline.offsetLeft)/100)
+                //     if (newLeft >= 0 && newLeft <= 7.6) {
+                //         playhead.style.transform = "translateX("+ newLeft +"px)";
+                //     }
+                //     if (newLeft < 0) {
+                //         playhead.style.transform = "translateX(0)";
+                //     }
+                //     if (newLeft > 7.6) {
+                //         playhead.style.transform = "translateX("+ 7.6 + "px)";
+                //     }
+                //     // 更新时间
+                //     audio.currentTime = audio.duration * (newLeft / 7.6);
+                // }
                
             }
 
@@ -187,9 +197,31 @@ class Audio extends React.Component{
             break  
         }
       }
+      // componentWillReceiveProps(nextProps){
+      //   console.log(nextProps.music.data)
+      //   this.setState({
+      //       src:nextProps.music.data[0].url
+      //     })
+      // }
+      timeChange(deg){
+        // this.props.changeDeg(10+deg)
+      }
       componentDidMount(){
+        // this.setState({
+        //   isPlay:this.props.isPlay
+        // })
           this.timeUpdate();
-          //this.refs.timeline.addEventListener("click", this.timelineClick.bind(this));
+        //  this.refs.timeline.addEventListener("click", this.timelineClick.bind(this));
+         
+          this.props.getMusic(this.props.location.state.id);
       }
 }
-export default Audio;
+function mapStateToProps(state,props){
+  return {
+      music:state.profile.cyMusic
+  }
+}
+function mapDispatchToProps(dispatch,props){
+  return bindActionCreators(profileCreators,dispatch);
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Audio);
