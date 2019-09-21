@@ -16,17 +16,19 @@ class List extends React.Component{
                 {
                     songDetail.length>0?
                     songDetail.map((v,i)=>(
-                            <div className={"cy_ml_box"}  key={i} onClick={()=>
-                                this.props.history.push({ pathname:'/musicplaying',state:{id:v.id,song:v} })
-                            }>
+                            <div className={"cy_ml_box"}  key={i} onClick={(e)=>{
+                                e.preventDefault();
+                                return this.props.history.push({ pathname:'/musicplaying',state:{id:v.id,song:songDetail} })
+                            }}>
                            <p className="cy_ml_num">{i+1}</p>
                            <div className={"cy_ml_r"}>
                                <div>
                                    <p>
                                        <span className={"cy_song_width"}>{v.name}</span>
-                                       <Link to={"/mvDetails/"+v.mv}>
-                                       <img style={{display:v.mv?"inline-block":"none"}}  className="cy_ml_mv" src={require("../../assets/mine_img/微信图片_20190917173616.jpg")}/>
-                                       </Link>
+                                       <img onClick={(e)=>{
+                                            e.stopPropagation();
+                                       return this.props.history.push('/mvDetails/'+v.mv );
+                            }}  style={{display:v.mv?"inline-block":"none"}}  className="cy_ml_mv" src={require("../../assets/mine_img/微信图片_20190917173616.jpg")}/>
                                    </p>
                                <p>
                                    <img  className="cy_ml_sq" src={require("../../assets/mine_img/微信图片_201909171736161.jpg")}/>
