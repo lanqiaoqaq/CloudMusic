@@ -105,6 +105,10 @@ color:#323232;
     font-size: .44rem;
     display: inline-block;
     line-height: .5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 7rem;
 }
 .collMiddle{
     display: flex;

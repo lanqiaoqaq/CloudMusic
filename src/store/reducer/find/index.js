@@ -12,5 +12,23 @@ export default function (state = initState,{type,payload}) {
     if(type === actionType.CHANGE_NEW_SONG){
         state.newSong=payload;
     }
+    if(type === actionType.CHANGE_SEL_MV){
+        state.selMv=payload;
+    }
+    if(type === actionType.CHANGE_MV_LIST){
+        state.mvList=payload;
+    }
+    if(type === actionType.CHANGE_RECOMMEND_SONGS){
+        state.recommendSongs=payload;
+    }
+    if(type === actionType.CHANGE_SONG_LIST_BANNER){
+        state.songListBanner=payload;
+    }
+    if(type === actionType.CHANGE_SONG_LIST_INTRO){
+        state.songListIntro=payload;
+    }
+    if(type === actionType.CHANGE_SONG_LIST_OTHER){
+        state.songListOther=payload;
+    }
     return state
 }

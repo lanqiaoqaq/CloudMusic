@@ -98,6 +98,12 @@
     text-align: center;
     line-height: 0.92rem;
 }
+.composite_singe ul:nth-child(2) li span:nth-child(1) p:nth-child(1){
+    width: 8rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
 .composite_singe ul:nth-child(2) li span:nth-child(2) i{
     font-size: 0.6rem;
     color: #7e8c8d;
@@ -156,6 +162,7 @@
     line-height: 1.4rem;
     font-size: 0.3rem;
     color: #7e8c8d;
+    margin-left: 3rem;
 }
 
 /*（3）歌单*/
@@ -194,6 +201,9 @@
 .composite_playList li span:nth-child(2) p:nth-child(1){
     font-size: 0.4rem;
     color: #00a5e0;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
 }
 .composite_playList li span:nth-child(2) p:nth-child(2){
     font-size: 0.3rem;
@@ -220,8 +230,9 @@
     font-weight: bolder;
 }
 .composite_songwriter img{
-    width: 2.2rem;
-    height: 2.2rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
 }
 .composite_songwriter ul li{
     width: 9.9rem;
@@ -229,21 +240,24 @@
     margin-top: 0.2rem;
 }
 .composite_songwriter ul li span:nth-child(1){
-    display: inline-block;
     float: left;
     height: 2.2rem;
+    width: 2rem;
     line-height: 2.2rem;
 }
 .composite_songwriter ul li span:nth-child(2){
     float: right;
-    display: inline-block;
+    width: 7.9rem;
     height: 2.2rem;
     line-height: 2.2rem;
 }
 .composite_songwriter ul li span:nth-child(2) b:nth-child(1){
+    display: inline-block;
+    width: 5rem;
     color: black;
     font-size: 0.4rem;
-    margin-right: 4.2rem;
+    margin-left: 0.4rem;
+    margin-right: 0.6rem;
 }
 .composite_songwriter ul li span:nth-child(2) b:nth-child(2){
     margin-right: 0.4rem;
@@ -349,7 +363,82 @@
     font-size: 0.3rem;
     color: #7e8c8d;
 }
-
+.composite_radio h5:last-child{
+    width: 9.9rem;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    font-size: 0.3rem;
+    color: #7e8c8d;
+    padding-left: 3.5rem;
+}
+/*(6)Mlog*/
+.composite_log{
+    width: 9.9rem;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.composite_log  h5:nth-child(1){
+    width: 9.9rem;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    font-size: 0.45rem;
+    font-weight: bolder;
+    margin-top: 0.4rem;
+}
+.composite_log h5:last-child{
+    width: 9.9rem;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    font-size: 0.3rem;
+    color: #7e8c8d;
+    padding-left: 3.5rem;
+    overflow: hidden;
+}
+.composite_log ul li{
+    width: 4.8rem;
+    height: 7rem;
+    float: left;
+    background: #e6e6e6;
+}
+.composite_log ul li:nth-child(2){
+    margin-left: 0.3rem;
+}
+.composite_log ul li p:nth-child(1) img{
+    width: 4.8rem;
+    height: 4.84rem;
+}
+.composite_log ul li p:nth-child(2){
+    width: 4.38rem;
+    height: 1.5rem;
+    line-height: 0.7rem;
+    margin-left: 0.23rem;
+    font-size: 0.3rem;
+    /*text-overflow: -o-ellipsis-lastline;*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.composite_log ul li p:nth-child(3){
+    width: 4.38rem;
+    margin-left: 0.23rem;
+    font-size: 0.28rem;
+    color: #7e8c8d;
+    height: 0.68rem;
+    line-height: 0.68rem;
+}
+.composite_log ul li p:nth-child(3) span:nth-child(2){
+    margin-left: 0.3rem;
+}
+.composite_log ul li p:nth-child(3) span:nth-child(3){
+    margin-left: 1rem;
+}
+.composite_log ul li p:nth-child(3) img{
+    width: 0.38rem;
+    height: 0.38rem;
+}
 /*(7)用户*/
 .composite_user{
     width: 9.9rem;
@@ -370,6 +459,7 @@
 .composite_user img{
     width: 2.2rem;
     height: 2.2rem;
+    border-radius: 50%;
 }
 .composite_user ul li span{
     float: left;
@@ -387,6 +477,10 @@
 .composite_user ul li span:nth-child(2) p:nth-child(2){
     font-size: 0.3rem;
     color: #7e8c8d;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    width: 5.5rem;
 }
 .composite_user ul li span:last-child{
     margin-top: 0.8rem;
@@ -457,7 +551,11 @@
 }
 .single_k ul li span:nth-child(1) h5{
     font-size: 0.4rem;
+    width: 7rem;
     color: #00a5e0;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
 }
 .single_k ul li span:nth-child(1) p{
     font-size: 0.28rem;
@@ -497,8 +595,14 @@
 .video_k ul li span:nth-child(2) p:nth-child(1){
     width: 6.28rem;
     height: 1.4rem;
-    line-height: 0.6rem;
+    line-height: 0.7rem;
     font-size: 0.38rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 .video_k ul li span:nth-child(2) p:nth-child(2){
     color: #7e8c8d;
@@ -513,32 +617,35 @@
 .songwriter img{
     width: 1.6rem;
     height: 1.6rem;
+    border-radius: 50%;
 }
 .songwriter ul li{
     width: 9.9rem;
-    height: 1.6rem;
-    margin-top: 0.4rem;
+    height: 2.2rem;
+    margin-top: 0.2rem;
 }
-.composite_songwriter ul li span:nth-child(1){
-    display: inline-block;
+.songwriter ul li span:nth-child(1){
     float: left;
-    height: 1.6rem;
-    line-height: 1.6rem;
+    height: 2.2rem;
+    width: 2rem;
+    line-height: 2.2rem;
 }
 .songwriter ul li span:nth-child(2){
     float: right;
-    display: inline-block;
-    height: 1.6rem;
-    line-height: 1.6rem;
+    width: 7.9rem;
+    height: 2.2rem;
+    line-height: 2.2rem;
 }
 .songwriter ul li span:nth-child(2) b:nth-child(1){
+    display: inline-block;
+    width: 5rem;
     color: black;
     font-size: 0.4rem;
-    margin-right: 4.2rem;
+    margin-left: 0.4rem;
+    margin-right: 0.6rem;
 }
 .songwriter ul li span:nth-child(2) b:nth-child(2){
     margin-right: 0.4rem;
-    background: #00a5e0;
     font-size: 0.4rem;
     border-radius: 50%;
     color: #ffffff;
@@ -666,6 +773,7 @@
 .userHome_k img{
     width: 1.6rem;
     height: 1.6rem;
+    border-radius: 50%;
 }
 .userHome_k ul li span{
     float: left;
@@ -683,6 +791,11 @@
 .userHome_k ul li span:nth-child(2) p:nth-child(2){
     font-size: 0.3rem;
     color: #7e8c8d;
+    width: 5rem;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+
 }
 .userHome_k ul li span:last-child{
     margin-top: 0.8rem;
@@ -696,4 +809,16 @@
     border-radius: 0.5rem;
     color: #ff2315;
     font-weight: bolder;
+}
+.sex_1{
+    font-style: oblique;
+    font-weight: bolder;
+    font-size: 0.4rem;
+    color: green;
+}
+.sex_2{
+    font-style: oblique;
+    font-weight: bolder;
+    font-size: 0.4rem;
+    color: red;
 }

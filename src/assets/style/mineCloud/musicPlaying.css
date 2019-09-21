@@ -48,7 +48,6 @@
     margin-top:2.5rem;
 }
 .cyImgBox{
-    background: red;
     width: 5.44rem;
     height: 5.44rem;
     border-radius: 50%;
@@ -57,11 +56,17 @@
     top:3.24rem;
     left: 2.72rem;
 }
-.cyImgBox img{
-    position: absolute;
-    top: 0;
-    left: 0;
+.cyImgBox{
     border-radius: 50%;
+    animation: rotate 8s linear infinite;
+}
+@keyframes rotate{
+    from{
+ transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(359deg);
+    }
 }
 .cyiconaixin{
     padding: 0 1.6rem 0 .4rem;
@@ -88,6 +93,7 @@
     background: #f0f4f3;
     display: flex;
     flex-direction: row;
+    box-sizing: border-box;
 }
 .cy_ml_box .cy_ml_num{
     display: inline-block;
@@ -137,6 +143,11 @@
      height: .62rem;
      padding: .4rem 0;
  }
+ .cy_lm_hh{
+     padding: .4rem .5rem;
+     background:#d53c34;
+     color: white;
+ }
  .cy_ml_hh span{
     font-size: .8rem;
 }
@@ -181,6 +192,7 @@
     vertical-align: middle;
 }
 .cy_ml_bm{
+    padding-bottom: .74rem;
     margin-top: .74rem;
    display: flex;
    flex-direction: row;
@@ -188,4 +200,56 @@
 }
 .cy_ml_bm span{
     font-size: .8rem;
+}
+.cy_ml_box .cy_ml_r span.cy_song_width{
+    display: inline-block;
+    max-width: 8rem;
+    white-space: nowrap;;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cy_ml_box .cy_ml_r span.cy-name-width{
+    display: inline-block;
+    max-width: 8rem;
+    white-space: nowrap;;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/*********************audio******************************/
+.audioBox{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.cyiconpause{
+    font-size: .8rem;
+    color:#e6e6e6;
+}
+.cy_timeline{
+    width: 8rem;
+    height: .1rem;
+    background: #e6e6e6;
+   position: relative;
+}
+.cy_audio_flex{
+    padding: .5rem; 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.playhead{
+    width: .4rem;
+    height: .4rem;
+    border-radius: 50%;
+    background: #e6e6e6;
+    position: absolute;
+    top:-.15rem;
+}
+.cyiconFather{
+    margin-top:.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
 }

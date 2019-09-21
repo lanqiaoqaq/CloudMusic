@@ -22,6 +22,50 @@ export const ChangeNewSong=function (payload) {
         payload
     }
 }
+//同步云村精选模块mv
+export const ChangeSelMv=function (payload) {
+    return{
+        type:actionType.CHANGE_SEL_MV,
+        payload
+    }
+}
+//同步find模块下方 Mv列表
+export const ChangeMvList=function (payload) {
+    return{
+        type:actionType.CHANGE_MV_LIST,
+        payload
+    }
+}
+//同步每日推荐歌曲
+export const ChangeRecommend=function (payload) {
+    return{
+        type:actionType.CHANGE_RECOMMEND_SONGS,
+        payload
+    }
+}
+
+//同步歌单模块banner
+export const ChangeSongListBanner=function (payload) {
+    return{
+        type:actionType.CHANGE_SONG_LIST_BANNER,
+        payload
+    }
+}
+
+//推荐歌单
+export const ChangeSonglistIntro=function (payload) {
+    return{
+        type:actionType.CHANGE_SONG_LIST_INTRO,
+        payload
+    }
+}
+//其他歌单
+export const ChangeSonglistOther=function (payload) {
+    return{
+        type:actionType.CHANGE_SONG_LIST_OTHER,
+        payload
+    }
+}
 export default {
     //请求banner图
     getBannerPic() {
@@ -53,6 +97,49 @@ export default {
             const data = await axios.get("/top/album?offset=2&limit=3");
             //console.log(data.albums)
             dispatch(ChangeNewSong(data.albums))
+        }
+    },
+    //请求云村精选 调用网易出品mv接口 offset limit
+    getSelMv(_offset){
+        return async (dispatch)=>{
+            const data = await axios.get(`/mv/all?limit=1&offset=${_offset}`);
+            dispatch(ChangeSelMv(data.data[0]))
+        }
+    },
+    //获取MvList 接口同上
+    getMvList(){
+        return async (dispatch)=>{
+            const data = await axios.get(`/mv/all?limit=30&offset=20`);
+            dispatch(ChangeMvList(data.data))
+        }
+    },
+    //获取每日推荐歌曲
+    getRecommendSongs(){
+        return async (dispatch)=>{
+            const data = await axios.get("/recommend/songs");
+            dispatch(ChangeRecommend(data.recommend))
+        }
+    },
+    //推荐歌单banner图 调用浪漫歌单接口取前三
+    getSonglist_intro_banner(){
+        return async (dispatch)=>{
+            const data = await axios.get("/top/playlist?limit=3&order=new&cat=浪漫");
+            dispatch(ChangeSongListBanner(data.playlists));
+        }
+    },
+    //推荐歌单 调用推荐歌单接口 去除前6个
+    getSonglist_intro(){
+        return async (dispatch)=>{
+           const data = await axios.get("/personalized?limit=36");
+           const result = data.result.splice(6,36);
+            dispatch(ChangeSonglistIntro(result));
+        }
+    },
+    //古风 精品 华语 流行 轻音乐 摇滚 民谣 共同异步actions 接受一个关键字keyword
+    getSonglist_other(keyword){
+        return async (dispatch)=>{
+            const data = await axios.get(`/top/playlist?limit=30&order=new&cat=${keyword}`);
+            dispatch(ChangeSonglistOther(data.playlists))
         }
     }
 }

@@ -1,5 +1,11 @@
 export default {
     banners:[],
     introPlaylist:[],
-    newSong:[]
+    newSong:[],
+    selMv:{},
+    mvList:[],
+    recommendSongs:[],
+    songListBanner:[],
+    songListIntro:[],
+    songListOther:[]
 }

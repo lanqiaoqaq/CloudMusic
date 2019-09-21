@@ -1,82 +1,47 @@
 import React from 'react';
+import {
+    connect
+} from 'react-redux'
+import {
+    bindActionCreators
+} from 'redux'
+import FindCreator from "../../../store/actionCreator/search"
 class Video extends React.Component{
     render() {
+        const videoList  = this.props.videoList
+        const videos = (this.props.videoList.result?this.props.videoList.result.videos:"");
+        // console.log(videos,"1")
         return(
             <div className={"video_k"}>
                 <ul>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/2.jpg")} alt=""/></span>
-                        <span>
-                                <p>董宝石《野狼disco》Live,摇舌郭富城，你的老舅~</p>
-                                <p>03:57 by Leeyy-李彦援</p>
+                    {
+                        videos?videos.map(v=>(
+                            <li key={v.vid}>
+                                <span><img src={v.coverUrl} alt=""/></span>
+                                <span>
+                                <p>{v.title}</p>
+                                <p>{v.playTime} ,  {v.creator[0].userName}</p>
                             </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/2.jpg")} alt=""/></span>
-                        <span>
-                                <p>董宝石《野狼disco》Live,摇舌郭富城，你的老舅~</p>
-                                <p>03:57 by Leeyy-李彦援</p>
-                            </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/2.jpg")} alt=""/></span>
-                        <span>
-                                <p>董宝石《野狼disco》Live,摇舌郭富城，你的老舅~</p>
-                                <p>03:57 by Leeyy-李彦援</p>
-                            </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/2.jpg")} alt=""/></span>
-                        <span>
-                                <p>董宝石《野狼disco》Live,摇舌郭富城，你的老舅~</p>
-                                <p>03:57 by Leeyy-李彦援</p>
-                            </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/2.jpg")} alt=""/></span>
-                        <span>
-                                <p>董宝石《野狼disco》Live,摇舌郭富城，你的老舅~</p>
-                                <p>03:57 by Leeyy-李彦援</p>
-                            </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/2.jpg")} alt=""/></span>
-                        <span>
-                                <p>董宝石《野狼disco》Live,摇舌郭富城，你的老舅~</p>
-                                <p>03:57 by Leeyy-李彦援</p>
-                            </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/2.jpg")} alt=""/></span>
-                        <span>
-                                <p>董宝石《野狼disco》Live,摇舌郭富城，你的老舅~</p>
-                                <p>03:57 by Leeyy-李彦援</p>
-                            </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/2.jpg")} alt=""/></span>
-                        <span>
-                                <p>董宝石《野狼disco》Live,摇舌郭富城，你的老舅~</p>
-                                <p>03:57 by Leeyy-李彦援</p>
-                            </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/2.jpg")} alt=""/></span>
-                        <span>
-                                <p>董宝石《野狼disco》Live,摇舌郭富城，你的老舅~</p>
-                                <p>03:57 by Leeyy-李彦援</p>
-                            </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/2.jpg")} alt=""/></span>
-                        <span>
-                                <p>董宝石《野狼disco》Live,摇舌郭富城，你的老舅~</p>
-                                <p>03:57 by Leeyy-李彦援</p>
-                            </span>
-                    </li>
+                            </li>
+                        )):[].map(v=>{
+
+                        })
+                    }
+
                 </ul>
             </div>
         )
     }
+    componentDidMount() {
+        this.props.getVideoList()
+    }
 }
-export default Video
+function mapStateToProps(state,props) {
+    return{
+        videoList: state.search.videoList
+    }
+}
+function mapDispatchProps(dispatch,props) {
+    return bindActionCreators(FindCreator, dispatch)
+}
+export default connect(mapStateToProps,mapDispatchProps) (Video)
