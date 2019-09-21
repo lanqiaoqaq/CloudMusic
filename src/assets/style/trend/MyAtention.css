@@ -14,6 +14,7 @@
     height: 3rem;
     width: 100%;
     /*background: pink;*/
+    overflow: hidden;
 }
 .ra_box ul li{
     padding-top: 0.2rem;
@@ -21,6 +22,7 @@
     height: 2.6rem;
     width: 3rem;
     text-align: center;
+    float: left;
 }
 .ra_box ul img{
     height: 2rem;

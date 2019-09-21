@@ -1,37 +1,52 @@
 import React from "react";
-import {getDate} from "../../tools/date";
+import {getDate, getPlayerTime} from "../../tools/date";
 import trendCreator from "../../store/actionCreator/trend";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
+import {Link} from "react-router-dom"
 class MvRankingCom extends React.Component{
     render() {
-        console.log(this.props.mvRankList)
-        const {updateTime,data}=this.props.mvRankList;
-        console.log(updateTime)
+        const {mvRankList}=this.props;
+        // console.log(mvRankList);
+        // console.log(updateTime,data);
         return(
             <>
-                <div className={"ra_mvR_time"}>
-                    <span>更新时间:</span>
-                    <span>{"updateTime?getDate(updateTime):"}</span>
-                </div>
-
-                <div className={"ra_mvR_Mv"}>
-                    <div className={"ra_mvR_Mv_in"}>
-                        <img src="" alt=""/>
-                        <div className={"ra_mvR_Mv_in_rank"}></div>
+                <div>
+                    <div className={"ra_mvR_time"}>
+                        <span>更新时间:</span>
+                        <span>{mvRankList.updateTime?getDate(mvRankList.updateTime):""}</span>
                     </div>
-                    <div className={"ra_mvR_Mv_in"}>
+                    {
+                        mvRankList.data?mvRankList.data.map((v, i) => (
+                            <Link to={"/mvDetails/"+v.id} className={"ra_mvR_Mv"} key={v.id}>
+                                <div className={"ra_mvR_Mv_in"}>
+                                    <img src={v.cover} alt=""/>
+                                    <div className={"ra_mvR_Mv_in_rank"}>
+                                        <span className={(v.lastRank===1||v.lastRank===2||v.lastRank===3)?"ra_mvR_Mv_in_rank_num_red":"ra_mvR_Mv_in_rank_num"}>{v.lastRank}</span>
+                                        <span className={"ra_mvR_Mv_in_rank_change"}></span>
+                                    </div>
+                                    <div className={"ra_mvR_Mv_in_singer"}>
+                                        {v.artistName}-{v.name}
+                                    </div>
 
-                    </div>
+                                    <div className={"ra_mvR_Mv_in_play"}><span className={"iconfont iconbofang3"}>{getPlayerTime(v.playCount)}</span></div>
+                                </div>
+                            </Link>
+                        )):[].map((v,i)=>{})
+                    }
                 </div>
             </>
         )
     }
+    componentWillReceiveProps(){
+        // console.log(123456)
+    }
+    componentWillMount(){
+        // console.log("componentWillMount")
+    }
     componentDidMount() {
+        // console.log("componentDidMount")
         console.log(this.props.location.pathname);
-        // if(this.props.location.pathname==="/mvRanking/hk"){
-        //     this.props.getMvRankListMl("港台");
-        // }
         switch (this.props.location.pathname) {
             case '/mvRanking/hk':this.props.getMvRankListMl("港台");break;
             case '/mvRanking/japan':this.props.getMvRankListMl("日本");break;

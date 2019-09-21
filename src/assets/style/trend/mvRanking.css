@@ -2,6 +2,9 @@
     width: 100%;
     height: 1.5rem;
     background: #ff2315;
+    position: fixed;
+    top: 0;
+    z-index: 333;
 }
 .ra_mvR_follow_header .iconfont{
     font-size: 1rem;
@@ -24,8 +27,9 @@
 .ra1_ui-tab-nav {
     /*padding-left: 2.5rem;*/
     /*padding-right: 2.5rem;*/
-    position: relative;
-    top: 0rem;
+    position: fixed;
+    z-index: 666;
+    top: 1.5rem;
     width: 100%;
     background-color: #ff2315;
     display: -webkit-box;
@@ -83,10 +87,11 @@
 }
 .ra1_ui-tab-content{
     width: 100%;
+    margin-top: 2.6rem;
 }
 
 .ra_mvR_time{
-    width: 100%;
+    width: 96%;
     height: 1rem;
     line-height: 1rem;
     padding-left: 0.2rem;
@@ -99,6 +104,72 @@
 .ra_mvR_Mv_in{
     width: 100%;
     height: 6rem;
-    background: #ff2315;
+    /*background: #ff2315;*/
     margin-bottom: 0.1rem;
+    position: relative;
+}
+.ra_mvR_Mv_in img{
+    width: 100%;
+    height: 100%;
+}
+
+.ra_mvR_Mv_in_rank{
+    width: 3rem;
+    height: 1rem;
+    /*background: #00a5e0;*/
+    position: absolute;
+    bottom: 1.5rem;
+    left:0.2rem;
+}
+.ra_mvR_Mv_in_rank_num{
+    float: left;
+    height: 1rem;
+    width: 50%;
+    /*background: #ff2315;*/
+    color: #f3f8fd;
+    line-height: 1rem;
+    text-align: center;
+    font-size: 0.6rem;
+    font-weight: 1000;
+}
+.ra_mvR_Mv_in_rank_num_red{
+    float: left;
+    height: 1rem;
+    width: 50%;
+    /*background: #ff2315;*/
+    color: #ff2315;
+    line-height: 1rem;
+    text-align: center;
+    font-size: 0.6rem;
+    font-weight: 1000;
+}
+
+.ra_mvR_Mv_in_rank_change{
+    float: left;
+    height: 100%;
+    width: 50%;
+    /*background: #DDDDDD;*/
+}
+.ra_mvR_Mv_in_singer{
+    width: 95%;
+    height: 1rem;
+    /*background: pink;*/
+    position: absolute;
+    bottom: 0.3rem;
+    left:0.2rem;
+    line-height: 1rem;
+    font-size: 0.4rem;
+    color: #f3f8fd;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.ra_mvR_Mv_in_play{
+    height: 0.6rem;
+    width: 2rem;
+    /*background: yellow;*/
+    position: absolute;
+    top: 0.1rem;
+    right: 0.1rem;
+    color: #f3f8fd;
 }
