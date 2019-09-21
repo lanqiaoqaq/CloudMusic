@@ -37,7 +37,7 @@ class Audio extends React.Component{
                 this.controlAudio('getCurrentTime')
                 this.timeUpdate();
                 this.controlAudio('allTime');
-                 this.timeChange(this.props.deg);
+                
             }}
             >
               您的浏览器不支持 audio 标签。
@@ -153,12 +153,17 @@ class Audio extends React.Component{
             audio.play()
             this.setState({
               isPlay: true
+            },()=>{
+              this.timeChange();
             })
+
             break
           case 'pause':
             audio.pause()
             this.setState({
               isPlay: false
+            },()=>{
+              this.timeChange();
             })
             break
           case 'muted':
@@ -203,8 +208,8 @@ class Audio extends React.Component{
       //       src:nextProps.music.data[0].url
       //     })
       // }
-      timeChange(deg){
-        // this.props.changeDeg(10+deg)
+      timeChange(){
+        this.props.changeDeg(this.state.isPlay);
       }
       componentDidMount(){
         // this.setState({
@@ -212,7 +217,6 @@ class Audio extends React.Component{
         // })
           this.timeUpdate();
         //  this.refs.timeline.addEventListener("click", this.timelineClick.bind(this));
-         
           this.props.getMusic(this.props.location.state.id);
       }
 }

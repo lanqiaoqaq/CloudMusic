@@ -7,5 +7,8 @@ export default {
     recommendSongs:[],
     songListBanner:[],
     songListIntro:[],
-    songListOther:[]
+    songListOther:[],
+    rewardTopList:{},
+    topList:[],
+    topListOther:[]
 }

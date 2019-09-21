@@ -41,7 +41,9 @@ class NewSong extends React.Component{
                 <ul>
                     {
                         newSong.map(v=>(
-                            <li key={v.id}>
+                            <li key={v.id} onClick={()=>{
+                                this.props.history.push("/musiclist/"+v.id)
+                            }}>
                                 <div style={{width:"3.1rem",height:"3.24rem"}}>
                                     <img style={{width:"100%",height:"100%",borderRadius:"5px"}} src={v.picUrl || v.album.picUrl} alt=""/>
                                 </div>
