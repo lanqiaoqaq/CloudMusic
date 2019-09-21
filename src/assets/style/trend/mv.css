@@ -32,6 +32,7 @@
     float: left;
     margin-left: 0.11rem;
     margin-bottom: 0.2rem;
+    width:48%
 }
 .ra_mv_featured_in_wor_in .name{
     height: 1.2rem;
@@ -71,8 +72,7 @@
     height: 2.5rem;
     /*background: palegreen;*/
     overflow: hidden;
-    border-bottom: #e6e6e6 solid 0.01re
-;
+    border-bottom: #e6e6e6 solid 0.01rem;
 }
 .ra_mv_leaderboard img{
     height: 1.5rem;
@@ -95,6 +95,7 @@
     float: left;
     width: 30%;
     height: 100%;
+    position: relative;
 }
 .ra_mv_leaderboard_in_left p{
     font-size: 0.43rem;

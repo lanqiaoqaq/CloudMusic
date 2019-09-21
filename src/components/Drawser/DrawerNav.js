@@ -1,5 +1,5 @@
 import React from 'react'
-
+import axios from 'axios'
 class DrawserNav extends React.Component {
     render() {
         return (
@@ -10,8 +10,12 @@ class DrawserNav extends React.Component {
                 <li>
                     <i className="iconfont iconshezhi"></i><span>设置</span>
                 </li>
-                <li>
-                    <i className="iconfont icontuichu"></i><span>退出</span>
+                <li onClick={async ()=>{
+                    localStorage.removeItem("userId");
+                    await axios.get("/logout");
+                    this.props.history.push("/")
+                }}>
+                    <i className="iconfont icontuichu"></i><span>退出登陆</span>
                 </li>
             </ul>
         )

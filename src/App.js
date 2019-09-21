@@ -29,6 +29,7 @@ import Live from './views/find/Live'
 import RadioStation from './views/find/RadioStation'
 import Ranking from  './views/find/Ranking'
 import SongList from './views/find/SongList'
+import VideoDetails from "./views/trend/Mv/VideoDetails";
 class App extends React.Component{
   render(){
       return (
@@ -54,11 +55,12 @@ class App extends React.Component{
                         <Route path={"/musicplaying"} component={MusicPlaying}></Route>
 
                         <Route path={"/mvRanking"} component={MvRanking}></Route>
-                        <Route path={"/mvDetails"} component={MvDetails}></Route>
+                        <Route path={"/mvDetails/:id"} component={MvDetails}></Route>
                         <Route path={"/mvFeatured"} component={MvFeatured}></Route>
-                        <Route path={"/userInfo"} component={UserInfo}></Route>
+                        <Route path={"/userInfo/:id"} component={UserInfo}></Route>
                         <Route path={"/allFollow"} component={AllFollow}></Route>
                         <Route path={"/trendDetails"} component={TrendDetails}></Route>
+                        <Route path={"/videoDetails/:id"} component={VideoDetails}></Route>
 
                         <Route path={"/Search"} component={Search}></Route>
                         <Route path={"/SearchDetails"} component={SearchDetails}></Route>

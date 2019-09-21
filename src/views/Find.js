@@ -19,11 +19,13 @@ class Find extends React.Component{
                 <div className={"intro_playlist"}>
                     <div className={"head_playlist"}>
                         <span>推荐歌单</span>
-                        <span>歌单广场</span>
+                        <span onClick={()=>{
+                            this.props.history.push("/songlist")
+                        }}>歌单广场</span>
                     </div>
                     <IntroPlaylist></IntroPlaylist>
                 </div>
-                <NewSong></NewSong>
+                <NewSong {...this.props}></NewSong>
                 <CloudSelection></CloudSelection>
                 <MvList></MvList>
             </div>

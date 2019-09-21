@@ -4,13 +4,12 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 class MvVideo extends React.Component{
     render() {
-        // console.log("render")
-        // console.log(this.props,111111);
         const {v,i,bground,mvUrlList,singerPic,mvLike,mvComment}=this.props;
+        // console.log(mvLike[i],1111111111111111111111111111);
         return(
-            <div className={"ra_mv_more_body" } key={v.id} >
+            <div className={"ra_mv_more_body" } key={v.id}>
                 <div onClick={()=>{
-                    this.props.history.push("/mvDetails")
+                    this.props.history.push("/mvDetails/"+v.id)
                 }} className={"ra_mv_more_body_top"}>
                     <div className={"ra_mv_more_body_top_position"}>
                         <div className={"playerNum"}>
@@ -29,10 +28,10 @@ class MvVideo extends React.Component{
                         <span>{v.artistName}</span>
                     </div>
                     <div className={"ra_mv_more_body_bottom_r"}>
-                        <span className={"iconfont iconthumb"}>{mvLike[i]}</span>
+                        <span className={"iconfont iconthumb"}>{mvLike[i]?mvLike[i].likeCount:""}</span>
                         <span onClick={()=>{
                             this.props.history.push("/mvDetails")
-                        }} className={"iconfont iconicon_comments"}>{mvComment[i]}</span>
+                        }} className={"iconfont iconicon_comments"}>{mvLike[i]?mvLike[i].commentCount:""}</span>
                         <span className={"iconfont icondiandiandian"}></span>
                     </div>
                 </div>

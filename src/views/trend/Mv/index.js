@@ -6,13 +6,19 @@ import trendCreator, {changeMvUrlList} from "../../../store/actionCreator/trend/
 import "../../../assets/style/trend/mv.css";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import {getDate} from "../../../tools/date";
+import {getDate, getNowDate, getPlayerTime} from "../../../tools/date";
 class Mv extends React.Component{
+    constructor(){
+        super();
+        this.state={
+            allMv:[],
+            videoFeatured:[],
+            rank:{}
+        }
+    }
     render() {
-        const {allMv}=this.props;
-    // ,mvUrlList,singerPic,mvLike
-    //     console.log(this.props);
-        // const str="";
+        const {allMv,videoFeatured,rank}=this.state;
+        console.log(this.state,"mvmvmvmvvm",rank.updateTime);
         return(
             <div className={"ra_mv"}>
                 <div className={"ra_mv_featured"}>
@@ -23,62 +29,28 @@ class Mv extends React.Component{
                             <span className={"word"}>MV精选</span>
                             <span className={"iconfont iconyou"}></span>
                         </div>
-                        <div onClick={()=>{
-                            this.props.history.push("/mvDetails")
-                        }} className={"ra_mv_featured_in_wor"}>
-                            <div className={"ra_mv_featured_in_wor_in"}>
-                                <Link className={"vedio"} to={"/"}>
-                                    <img src={require("../../../assets/img/TrendImg/1.jpg")} alt=""/>
-                                    <div className={"playerNum"}>
-                                        <span className={"iconfont iconbofang3"}></span>
-                                        <span>{"播放量"}</span>
+                        {
+                            videoFeatured.map((v,i)=>(
+                                <div onClick={()=>{
+                                    console.log(v.id)
+                                    this.props.history.push("/mvDetails/"+v.id)
+                                }} className={"ra_mv_featured_in_wor"}>
+                                    <div className={"ra_mv_featured_in_wor_in"}>
+                                        <Link className={"vedio"} to={"/"}>
+                                            <img src={v.picUrl} alt=""/>
+                                            <div className={"playerNum"}>
+                                                <span className={"iconfont iconbofang3"}></span>
+                                                <span>{getPlayerTime(v.playCount)}</span>
+                                            </div>
+                                        </Link>
+                                        <div className={"name"}>
+                                            <p>{v.name}</p>
+                                            <h2>{v.artistName}</h2>
+                                        </div>
                                     </div>
-                                </Link>
-                                <div className={"name"}>
-                                    <p>啦啦啦</p>
-                                    <h2>喵喵喵</h2>
                                 </div>
-                            </div>
-                            <div className={"ra_mv_featured_in_wor_in"}>
-                                <Link className={"vedio"} to={"/"}>
-                                    <img src={require("../../../assets/img/TrendImg/1.jpg")} alt=""/>
-                                    <div className={"playerNum"}>
-                                        <span className={"iconfont iconbofang3"}></span>
-                                        <span>{"播放量"}</span>
-                                    </div>
-                                </Link>
-                                <div className={"name"}>
-                                    <p>啦啦啦</p>
-                                    <h2>喵喵喵</h2>
-                                </div>
-                            </div>
-                            <div className={"ra_mv_featured_in_wor_in"}>
-                                <Link className={"vedio"} to={"/"}>
-                                    <img src={require("../../../assets/img/TrendImg/1.jpg")} alt=""/>
-                                    <div className={"playerNum"}>
-                                        <span className={"iconfont iconbofang3"}></span>
-                                        <span>{"播放量"}</span>
-                                    </div>
-                                </Link>
-                                <div className={"name"}>
-                                    <p>啦啦啦</p>
-                                    <h2>喵喵喵</h2>
-                                </div>
-                            </div>
-                            <div className={"ra_mv_featured_in_wor_in"}>
-                                <Link className={"vedio"} to={"/"}>
-                                    <img src={require("../../../assets/img/TrendImg/1.jpg")} alt=""/>
-                                    <div className={"playerNum"}>
-                                        <span className={"iconfont iconbofang3"}></span>
-                                        <span>{"播放量"}</span>
-                                    </div>
-                                </Link>
-                                <div className={"name"}>
-                                    <p>啦啦啦</p>
-                                    <h2>喵喵喵</h2>
-                                </div>
-                            </div>
-                        </div>
+                            ))
+                        }
                     </div>
                 </div>
                 <div onClick={()=>{
@@ -87,10 +59,26 @@ class Mv extends React.Component{
                     <div className={"ra_mv_leaderboard_in"}>
                         <div className={"ra_mv_leaderboard_in_left"}>
                             <p>排行榜<span className={"iconfont iconyou"}></span></p>
-                            <h2>更新时间 : {"getDate()"}</h2>
+                            <h2>更新时间 : {getDate(rank.updateTime)}</h2>
                         </div>
                         <div className={"ra_mv_leaderboard_in_right"}>
-                            <img src={require("../../../assets/img/TrendImg/1.jpg")} alt=""/>
+                            <img style={{
+                                height: "1.5rem",
+                                width: "2rem",
+                                float: "right",
+                                position:"absolute",
+                                top:"0.2rem",
+                                right:"0.3rem",
+                                zIndex:"2"
+                            }} src={rank.data?rank.data[0].cover:""} alt=""/>
+                            <img style={{
+                                height: "1.1rem",
+                                width: "2rem",
+                                float: "right",
+                                position:"absolute",
+                                top:"0.4rem",
+                                right:"0.6rem"
+                            }} src={rank.data?rank.data[1].cover:""} alt=""/>
                         </div>
                     </div>
                 </div>
@@ -113,6 +101,13 @@ class Mv extends React.Component{
                 </div>
             </div>
         )
+    }
+    componentWillReceiveProps(nextProps, nextContext) {
+        this.setState({
+            allMv:nextProps.allMv.allMv,
+            videoFeatured:nextProps.allMv.videoFeatured,
+            rank:nextProps.allMv.rank
+        })
     }
     componentDidMount() {
         this.props.getAllMv();
