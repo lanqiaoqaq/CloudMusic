@@ -1,8 +1,27 @@
 import React from "react";
 import "../../../../assets/style/trend/mvFeatured.css";
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import trendCreator from "../../../../store/actionCreator/trend";
+import {getPlayerTime} from "../../../../tools/date";
 class MvFeatured extends React.Component{
+    constructor(){
+        super();
+        this.state={
+            wyMv:[],
+            mainland:[],
+            HKaT:[],
+            europe:[],
+            Korea:[],
+            japan:[]
+        }
+    }
+
     render() {
+        // console.log(this.props.featuredMv)
+        const {wyMv,mainland,HKaT,europe,Korea,japan}=this.state;
+        console.log(wyMv,mainland,HKaT,europe,Korea,japan)
         return(
             <>
                 <div className={"ra_mvF_follow_header"}>
@@ -22,23 +41,27 @@ class MvFeatured extends React.Component{
                                 <span className={"word"}>网易出品</span>
                                 <span className={"iconfont iconyou"}></span>
                             </div>
-                            <div onClick={()=>{
-                                this.props.history.push("/mvDetails")
-                            }} className={"ra_Netease_mv_featured_in_wor"}>
-                                <div className={"ra_Netease_mv_featured_in_wor_in"}>
-                                    <Link className={"vedio"} to={"/"}>
-                                        <img src={require("../../../../assets/img/TrendImg/1.jpg")} alt=""/>
-                                        <div className={"playerNum"}>
-                                            <span className={"iconfont iconbofang3"}></span>
-                                            <span>{"播放量"}</span>
+                            {
+                                wyMv.map((v,i)=>(
+                                    <div onClick={()=>{
+                                        this.props.history.push("/mvDetails/"+v.id)
+                                    }} className={"ra_Netease_mv_featured_in_wor"}>
+                                        <div className={"ra_Netease_mv_featured_in_wor_in"}>
+                                            <Link className={"vedio"} to={"/"}>
+                                                <img src={v.cover} alt=""/>
+                                                <div className={"playerNum"}>
+                                                    <span className={"iconfont iconbofang3"}></span>
+                                                    <span>{getPlayerTime(v.playCount)}</span>
+                                                </div>
+                                            </Link>
+                                            <div className={"name"}>
+                                                <p>{v.artistName}</p>
+                                                <h2 className={"mvname"}>{v.name}</h2>
+                                            </div>
                                         </div>
-                                    </Link>
-                                    <div className={"name"}>
-                                        <p>啦啦啦</p>
-                                        <h2>喵喵喵</h2>
                                     </div>
-                                </div>
-                            </div>
+                                ))
+                            }
                         </div>
                     </div>
 
@@ -50,27 +73,29 @@ class MvFeatured extends React.Component{
                                 <span className={"word"}>内地</span>
                                 <span className={"iconfont iconyou"}></span>
                             </div>
-                            <div onClick={()=>{
-                                this.props.history.push("/mvDetails")
-                            }} className={"ra_Netease_mv_featured_in_wor"}>
-                                <div className={"ra_Netease_mv_featured_in_wor_in"}>
-                                    <Link className={"vedio"} to={"/"}>
-                                        <img src={require("../../../../assets/img/TrendImg/1.jpg")} alt=""/>
-                                        <div className={"playerNum"}>
-                                            <span className={"iconfont iconbofang3"}></span>
-                                            <span>{"播放量"}</span>
+                            {
+                                mainland.map((v,i)=>(
+                                    <div onClick={()=>{
+                                        this.props.history.push("/mvDetails/"+v.id)
+                                    }} className={"ra_Netease_mv_featured_in_wor"}>
+                                        <div className={"ra_Netease_mv_featured_in_wor_in"}>
+                                            <Link className={"vedio"} to={"/"}>
+                                                <img src={v.cover} alt=""/>
+                                                <div className={"playerNum"}>
+                                                    <span className={"iconfont iconbofang3"}></span>
+                                                    <span>{getPlayerTime(v.playCount)}</span>
+                                                </div>
+                                            </Link>
+                                            <div className={"name"}>
+                                                <p>{v.artistName}</p>
+                                                <h2 className={"mvname"}>{v.name}</h2>
+                                            </div>
                                         </div>
-                                    </Link>
-                                    <div className={"name"}>
-                                        <p>啦啦啦</p>
-                                        <h2>喵喵喵</h2>
                                     </div>
-                                </div>
-                            </div>
+                                ))
+                            }
                         </div>
                     </div>
-
-
 
                     <div className={"ra_Netease_mv_featured"}>
                         <div className={"ra_Netease_mv_featured_in"}>
@@ -80,25 +105,30 @@ class MvFeatured extends React.Component{
                                 <span className={"word"}>港台</span>
                                 <span className={"iconfont iconyou"}></span>
                             </div>
-                            <div onClick={()=>{
-                                this.props.history.push("/mvDetails")
-                            }} className={"ra_Netease_mv_featured_in_wor"}>
-                                <div className={"ra_Netease_mv_featured_in_wor_in"}>
-                                    <Link className={"vedio"} to={"/"}>
-                                        <img src={require("../../../../assets/img/TrendImg/1.jpg")} alt=""/>
-                                        <div className={"playerNum"}>
-                                            <span className={"iconfont iconbofang3"}></span>
-                                            <span>{"播放量"}</span>
+                            {
+                                HKaT.map((v,i)=>(
+                                    <div onClick={()=>{
+                                        this.props.history.push("/mvDetails/"+v.id)
+                                    }} className={"ra_Netease_mv_featured_in_wor"}>
+                                        <div className={"ra_Netease_mv_featured_in_wor_in"}>
+                                            <Link className={"vedio"} to={"/"}>
+                                                <img src={v.cover} alt=""/>
+                                                <div className={"playerNum"}>
+                                                    <span className={"iconfont iconbofang3"}></span>
+                                                    <span>{getPlayerTime(v.playCount)}</span>
+                                                </div>
+                                            </Link>
+                                            <div className={"name"}>
+                                                <p>{v.artistName}</p>
+                                                <h2 className={"mvname"}>{v.name}</h2>
+                                            </div>
                                         </div>
-                                    </Link>
-                                    <div className={"name"}>
-                                        <p>啦啦啦</p>
-                                        <h2>喵喵喵</h2>
                                     </div>
-                                </div>
-                            </div>
+                                ))
+                            }
                         </div>
                     </div>
+
                     <div className={"ra_Netease_mv_featured"}>
                         <div className={"ra_Netease_mv_featured_in"}>
                             <div onClick={()=>{
@@ -107,28 +137,30 @@ class MvFeatured extends React.Component{
                                 <span className={"word"}>欧美</span>
                                 <span className={"iconfont iconyou"}></span>
                             </div>
-                            <div onClick={()=>{
-                                this.props.history.push("/mvDetails")
-                            }} className={"ra_Netease_mv_featured_in_wor"}>
-                                <div className={"ra_Netease_mv_featured_in_wor_in"}>
-                                    <Link className={"vedio"} to={"/"}>
-                                        <img src={require("../../../../assets/img/TrendImg/1.jpg")} alt=""/>
-                                        <div className={"playerNum"}>
-                                            <span className={"iconfont iconbofang3"}></span>
-                                            <span>{"播放量"}</span>
+                            {
+                                europe.map((v,i)=>(
+                                    <div onClick={()=>{
+                                        this.props.history.push("/mvDetails/"+v.id)
+                                    }} className={"ra_Netease_mv_featured_in_wor"}>
+                                        <div className={"ra_Netease_mv_featured_in_wor_in"}>
+                                            <Link className={"vedio"} to={"/"}>
+                                                <img src={v.cover} alt=""/>
+                                                <div className={"playerNum"}>
+                                                    <span className={"iconfont iconbofang3"}></span>
+                                                    <span>{getPlayerTime(v.playCount)}</span>
+                                                </div>
+                                            </Link>
+                                            <div className={"name"}>
+                                                <p>{v.artistName}</p>
+                                                <h2 className={"mvname"}>{v.name}</h2>
+                                            </div>
                                         </div>
-                                    </Link>
-                                    <div className={"name"}>
-                                        <p>啦啦啦</p>
-                                        <h2>喵喵喵</h2>
                                     </div>
-                                </div>
-
-
-
-                            </div>
+                                ))
+                            }
                         </div>
                     </div>
+
                     <div className={"ra_Netease_mv_featured"}>
                         <div className={"ra_Netease_mv_featured_in"}>
                             <div onClick={()=>{
@@ -137,26 +169,31 @@ class MvFeatured extends React.Component{
                                 <span className={"word"}>韩国</span>
                                 <span className={"iconfont iconyou"}></span>
                             </div>
-                            <div onClick={()=>{
-                                this.props.history.push("/mvDetails")
-                            }} className={"ra_Netease_mv_featured_in_wor"}>
-                                <div className={"ra_Netease_mv_featured_in_wor_in"}>
-                                    <Link className={"vedio"} to={"/"}>
-                                        <img src={require("../../../../assets/img/TrendImg/1.jpg")} alt=""/>
-                                        <div className={"playerNum"}>
-                                            <span className={"iconfont iconbofang3"}></span>
-                                            <span>{"播放量"}</span>
+                            {
+                                Korea.map((v,i)=>(
+                                    <div onClick={()=>{
+                                        this.props.history.push("/mvDetails/"+v.id)
+                                    }} className={"ra_Netease_mv_featured_in_wor"}>
+                                        <div className={"ra_Netease_mv_featured_in_wor_in"}>
+                                            <Link className={"vedio"} to={"/"}>
+                                                <img src={v.cover} alt=""/>
+                                                <div className={"playerNum"}>
+                                                    <span className={"iconfont iconbofang3"}></span>
+                                                    <span>{getPlayerTime(v.playCount)}</span>
+                                                </div>
+                                            </Link>
+                                            <div className={"name"}>
+                                                <p>{v.artistName}</p>
+                                                <h2 className={"mvname"}>{v.name}</h2>
+                                            </div>
                                         </div>
-                                    </Link>
-                                    <div className={"name"}>
-                                        <p>啦啦啦</p>
-                                        <h2>喵喵喵</h2>
                                     </div>
-                                </div>
-
-                            </div>
+                                ))
+                            }
                         </div>
                     </div>
+
+
                     <div className={"ra_Netease_mv_featured"}>
                         <div className={"ra_Netease_mv_featured_in"}>
                             <div onClick={()=>{
@@ -165,23 +202,27 @@ class MvFeatured extends React.Component{
                                 <span className={"word"}>日本</span>
                                 <span className={"iconfont iconyou"}></span>
                             </div>
-                            <div onClick={()=>{
-                                this.props.history.push("/mvDetails")
-                            }} className={"ra_Netease_mv_featured_in_wor"}>
-                                <div className={"ra_Netease_mv_featured_in_wor_in"}>
-                                    <Link className={"vedio"} to={"/"}>
-                                        <img src={require("../../../../assets/img/TrendImg/1.jpg")} alt=""/>
-                                        <div className={"playerNum"}>
-                                            <span className={"iconfont iconbofang3"}></span>
-                                            <span>{"播放量"}</span>
+                            {
+                                japan.map((v,i)=>(
+                                    <div onClick={()=>{
+                                        this.props.history.push("/mvDetails/"+v.id)
+                                    }} className={"ra_Netease_mv_featured_in_wor"}>
+                                        <div className={"ra_Netease_mv_featured_in_wor_in"}>
+                                            <Link className={"vedio"} to={"/"}>
+                                                <img src={v.cover} alt=""/>
+                                                <div className={"playerNum"}>
+                                                    <span className={"iconfont iconbofang3"}></span>
+                                                    <span>{getPlayerTime(v.playCount)}</span>
+                                                </div>
+                                            </Link>
+                                            <div className={"name"}>
+                                                <p>{v.artistName}</p>
+                                                <h2 className={"mvname"}>{v.name}</h2>
+                                            </div>
                                         </div>
-                                    </Link>
-                                    <div className={"name"}>
-                                        <p>啦啦啦</p>
-                                        <h2>喵喵喵</h2>
                                     </div>
-                                </div>
-                            </div>
+                                ))
+                            }
                         </div>
                     </div>
                 </div>
@@ -195,5 +236,20 @@ class MvFeatured extends React.Component{
             </>
         )
     }
+    componentWillReceiveProps(nextProps, nextContext) {
+        this.setState({
+            wyMv:nextProps.featuredMv.wyMv,
+            mainland:nextProps.featuredMv.mainland,
+            HKaT:nextProps.featuredMv.HKaT,
+            europe:nextProps.featuredMv.europe,
+            Korea:nextProps.featuredMv.Korea,
+            japan:nextProps.featuredMv.japan
+        })
+
+    }
+
+    componentDidMount() {
+        this.props.getFeaturedMv();
+    }
 }
-export default MvFeatured;
+export default connect(state=>({featuredMv:state.trend.featuredMv}),dispatch=>bindActionCreators(trendCreator,dispatch))(MvFeatured)

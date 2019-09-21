@@ -63,4 +63,7 @@
     width: 8.65rem;
     /*background: #899809;*/
     color: #8b8585;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
 }

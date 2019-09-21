@@ -1,5 +1,6 @@
 import axios from "axios";
 import actionType from "../../actionType/trend/index";
+
 export const changeAllMv = function (payload) {
     return {
         type:actionType.CHANGE_ALL_MV,
@@ -75,9 +76,69 @@ export const changeVideoDetails = function (payload) {//改变视频详情
         payload
     }
 };
+export const changeFeaturedMv = function (payload) {//改变视频详情
+    return {
+        type:actionType.CHANGE_FEATURED_MV,
+        payload
+    }
+};
 
+export const changeTrend = function (payload) {//改变视频详情
+    return {
+        type:actionType.CHANGE_TREND,
+        payload
+    }
+};
 
 export default {
+
+    getTrend(){//获取动态页数据
+        const uid=localStorage.userId;
+        return async (dispatch)=>{
+            const data=await axios.get("/user/follows?uid="+uid);
+            // console.log(data);
+            if(data.code===200){
+                const follow=data.follow
+                dispatch(changeTrend({
+                    follow
+                }))
+            }
+        }
+    },
+
+
+    getFeaturedMv(){
+        return async (dispatch)=>{
+            const data=await axios.get("/mv/exclusive/rcmd?limit=4");
+            // console.log(data);
+            if (data.code===200){
+                const wyMv=data.data;//网易mv
+                const mainland=await this.getMvrank("内地");
+                const HKaT=await this.getMvrank("港台");
+                const europe=await this.getMvrank("欧美");
+                const Korea=await this.getMvrank("韩国");
+                const japan=await this.getMvrank("日本");
+
+                dispatch(changeFeaturedMv({
+                    wyMv,
+                    mainland,
+                    HKaT,
+                    europe,
+                    Korea,
+                    japan
+                }))
+            }
+        }
+    },
+    getMvrank(area){//各地mv
+        return async (dispatch)=>{
+            const data=await axios.get("/top/mv?limit=4&area="+area);
+            if (data.code===200){
+                return data.data;
+            }
+        }
+    },
+
     getVideoDetails(id){//获取视频数据
         return async (dispatch)=>{
             console.log(id)
@@ -277,7 +338,6 @@ export default {
             }
         }
     },
-
     getInfo(urlId,picId,likeId){
         return async (disaptch)=>{
             // console.log(123)

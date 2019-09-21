@@ -38,6 +38,12 @@ export default function (state = initState,{type,payload}) {
     if(type===actionType.CHANGE_VIDEO_DETAILS){
         state.videoDetails=payload
     }
+    if(type===actionType.CHANGE_FEATURED_MV){
+        state.featuredMv=payload
+    }
+    if(type===actionType.CHANGE_TREND){
+        state.trend=payload
+    }
 
     return state
 }

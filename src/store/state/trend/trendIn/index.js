@@ -10,5 +10,7 @@ export default {
     mvBrs:["480",0],
     relatedVideos:[],
     mvComments:{},//mv评论,
-    videoDetails:{}
+    videoDetails:{},
+    featuredMv:{},
+    trend:{}
 }
