@@ -34,7 +34,7 @@ class Find extends React.Component{
     }
     async fn(){
         const data= await axios.get("/setting")
-        console.log(data)
+        //console.log(data)
     }
     componentDidMount(){
         this.fn()
