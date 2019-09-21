@@ -6,6 +6,7 @@ import IntroPlaylist from '../components/Find/IntroPlaylist'
 import NewSong from '../components/Find/NewSong'
 import CloudSelection from '../components/Find/CloudSelection'
 import MvList from '../components/Find/MvList'
+import axios from 'axios'
 class Find extends React.Component{
     render(){
         return(
@@ -30,6 +31,13 @@ class Find extends React.Component{
                 <MvList {...this.props}></MvList>
             </div>
         )
+    }
+    async fn(){
+        const data= await axios.get("/setting")
+        console.log(data)
+    }
+    componentDidMount(){
+        this.fn()
     }
 }
 export default Find;

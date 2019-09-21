@@ -46,8 +46,7 @@ class DailySpecial extends React.Component{
                         {
                             recommendSongs.map(v=>(
                                 <li className="dauly_song_s" key={v.id} onClick={()=>{
-                                    // this.props.history.push({ pathname:'/musicplaying',state:{id:v.id,song:v} })
-                                    console.log("假装播方音乐")
+                                    this.props.history.push({ pathname:'/musicplaying',state:{id:v.id}})
                                 }}>
                                     <div className="song_info_s">
                                 <span className="song_img_s">
