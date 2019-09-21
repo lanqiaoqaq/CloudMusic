@@ -43,6 +43,20 @@ export function changeMusic(payload){
         payload
     }
 }
+//歌词
+export function changeLyric(payload){
+    return {
+        type:actionType.CHANGE_LYRIC,
+        payload
+    }
+}
+//电台
+export function changeDj(payload){
+    return {
+        type:actionType.CHANGE_DJ,
+        payload
+    }
+}
 export default {
     //获取用户歌单
     getPlayList(){//异步action
@@ -99,6 +113,20 @@ export default {
         return async (dispatch)=>{
             const data=await axios.get("/song/url?id="+id);
             dispatch(changeMusic(data));
+        }
+    },
+    //歌词
+    getLyric(id){
+        return async (dispatch)=>{
+            const data=await axios.get("/lyric?id="+id);
+            dispatch(changeLyric(data));
+        }
+    },
+    //电台
+    getDj(id){
+        return async (dispatch)=>{
+            const data=await axios.get("/dj/sublist");
+            dispatch(changeDj(data));
         }
     }
 }
