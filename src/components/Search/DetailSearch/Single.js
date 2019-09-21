@@ -13,7 +13,8 @@ class Single extends React.Component{
         // console.log(songs,"1")
         return(
             <div className={"single_k"}>
-                <p>
+                <div className={"my_kwc"} style={{display:songs?"none":"block"}}>未找到与"{localStorage._k}"相关的内容</div>
+                <p style={{display:songs?"block":"none"}}>
                     <i className={"iconfont iconbofang"}></i>
                     <i>播放全部</i>
                     <i className={"iconfont icon-duoxuantiankong"}></i>
@@ -41,7 +42,7 @@ class Single extends React.Component{
         )
     }
     componentDidMount() {
-        this.props.getSingleList()
+        this.props.getSingleList(localStorage._k)
     }
 }
 function mapStateToProps(state,props) {

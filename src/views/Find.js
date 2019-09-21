@@ -6,6 +6,7 @@ import IntroPlaylist from '../components/Find/IntroPlaylist'
 import NewSong from '../components/Find/NewSong'
 import CloudSelection from '../components/Find/CloudSelection'
 import MvList from '../components/Find/MvList'
+import axios from 'axios'
 class Find extends React.Component{
     render(){
         return(
@@ -23,13 +24,20 @@ class Find extends React.Component{
                             this.props.history.push("/songlist")
                         }}>歌单广场</span>
                     </div>
-                    <IntroPlaylist></IntroPlaylist>
+                    <IntroPlaylist {...this.props}></IntroPlaylist>
                 </div>
                 <NewSong {...this.props}></NewSong>
-                <CloudSelection></CloudSelection>
-                <MvList></MvList>
+                <CloudSelection {...this.props}></CloudSelection>
+                <MvList {...this.props}></MvList>
             </div>
         )
+    }
+    async fn(){
+        const data= await axios.get("/setting")
+        console.log(data)
+    }
+    componentDidMount(){
+        this.fn()
     }
 }
 export default Find;

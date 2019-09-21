@@ -16,50 +16,46 @@ class SearchView extends React.Component {
     }
 
     getabc() {
-        this.refs.abc.value = this.refs.abc.value.replace(/[, ]/g,'');
+        this.refs.abc.value = this.refs.abc.value.replace(/[, ]/g, '');
         if (this.refs.abc.value) {
             this.props.getFuzzySearchList(this.refs.abc.value)
             this.setState({
                 StrList: this.refs.abc.value
             })
-        } else {
+        }else {
             this.setState({
-                StrList: ""
+                StrList:""
             })
         }
     }
-
-    getcontext(){
-        this.props.getCompositeList(this.state.StrList)
-        this.props.history.push("/SearchDetails")
+    getcontext() {
+        localStorage._k = this.refs.abc.value;
+        this.props.location.pathname === '/SearchDetails'?this.props.history.push("/SearchDetails/Single"):this.props.history.push("/SearchDetails");
+        this.setState({
+            StrList:""
+        });
     }
-
-    missabc() {
-        if (this.props.location.pathname !== '/search') {
-            this.setState({
-                StrList: ""
-            })
-            this.refs.abc.value = ""
-        }
-    }
-
     render() {
-        const {fuzzySearchList} = this.props
-        // console.log(fuzzySearchList)
+        const {fuzzySearchList} = this.props;
         return (
             <div className={"heard"}>
                 <i className={"iconfont iconzuojiantou"} onClick={() => {
                     this.props.location.pathname === '/search' ? this.props.history.push("/") : this.props.history.push("/search")
                 }}></i>
-                <input type="text" placeholder={"去年夏天 - 王大毛"} ref={"abc"} onChange={this.getabc.bind(this)}
-                       onBlur={this.missabc.bind(this)}/>
+                <input type="text" placeholder={"去年夏天 - 王大毛"} ref={"abc"} onChange={this.getabc.bind(this)}/>
                 <i className={this.props.location.pathname === '/search' ? 'iconfont iconrenyuansousuo' : 'iconfont iconchahao'}></i>
                 <div className={"mySearch"} style={{display: this.state.StrList ? "block" : "none"}}>
                     <h5 onClick={this.getcontext.bind(this)} ref={"context"}>搜索 "{this.state.StrList}"</h5>
                     <ul>
                         {
                             fuzzySearchList.map(v => (
-                                <li key={v.id} className={"iconfont iconfangdajing"}>{v.name}</li>
+                                <li key={v.id} className={"iconfont iconfangdajing"} onClick={()=>{
+                                    this.props.location.pathname === '/SearchDetails'?this.props.history.push("/SearchDetails/Single"):this.props.history.push("/SearchDetails");
+                                    localStorage._k = v.name
+                                    this.setState({
+                                        StrList:""
+                                    })
+                                }}>{v.name}</li>
                             ))
                         }
                     </ul>

@@ -1,0 +1,296 @@
+.userInfo_k{
+    width: 10.8rem;
+}
+/*详情头部*/
+.userInfo_heard{
+    width: 10.8rem;
+    height: 9rem;
+    background-image: url("../../search-images/109951164264556757.jpg");
+    background-size: 100% 110%;
+}
+.userInfo_heard p:nth-child(1){
+    width: 100%;
+    height: 1.16rem;
+    line-height: 1.16rem;
+    color: #7e8c8d;
+}
+.userInfo_heard p:nth-child(1) span:nth-child(1){
+    font-size: 0.6rem;
+    margin-left: 0.5rem;
+    font-weight: bolder;
+}
+.userInfo_heard p:nth-child(1) span:nth-child(2){
+    font-size: 0.45rem;
+    margin-left: 0.3rem;
+}
+.userInfo_heard p:nth-child(1) span:nth-child(3){
+    font-size: 0.7rem;
+    margin-left: 4.3rem;
+    font-weight: bolder;
+}
+.userInfo_heard p:nth-child(2){
+    width: 100%;
+    height: 3.75rem;
+}
+.userInfo_heard p:nth-child(2) img{
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    margin-top: 0.7rem;
+    margin-left: 0.5rem;
+}
+.userInfo_heard p:nth-child(3){
+    width: 100%;
+    height: 0.5rem;
+    line-height: 0.5rem;
+    color: #ffffff;
+}
+.userInfo_heard p:nth-child(3) span:nth-child(1){
+    font-size: 0.45rem;
+    margin-left: 0.5rem;
+    font-weight: bolder;
+}
+.userInfo_heard p:nth-child(3) span:nth-child(2){
+    font-size: 0.3rem;
+    margin-left: 4.2rem;
+}
+.userInfo_heard p:nth-child(4){
+    width: 100%;
+    height: 0.88rem;
+    line-height: 0.88rem;
+    font-size: 0.35rem;
+    color: #6a6a6a;
+}
+.userInfo_heard p:nth-child(4) span:nth-child(1){
+   margin-left: 0.5rem;
+}
+.userInfo_heard p:nth-child(4) span:nth-child(2){
+    margin-left: 0.7rem;
+}
+.userInfo_heard ul{
+    width: 100%;
+    height: 1.07rem;
+    color: #ffffff;
+}
+.userInfo_heard ul li{
+    float: left;
+    margin-top: 0.3rem;
+}
+.userInfo_heard ul li:nth-child(1){
+    width: 1.8rem;
+    height: 0.55rem;
+    line-height: 0.55rem;
+    background: lightpink;
+    border-radius: 5rem;
+    margin-left: 0.4rem;
+    opacity: 0.5;
+}
+.userInfo_heard ul li:nth-child(1) i:nth-child(1){
+    margin-left: 0.3rem;
+    font-size: 0.35rem;
+    color: red;
+}
+.userInfo_heard ul li:nth-child(1) i:nth-child(2){
+    font-size: 0.3rem;
+    margin-left: 0.2rem;
+}
+.userInfo_heard ul li:nth-child(2){
+    width: 1.08rem;
+    height: 0.55rem;
+    background: #7e8c8d;
+    opacity: 0.5;
+    border-radius: 4rem;
+    line-height: 0.55rem;
+    font-weight: bolder;
+    padding-left: 0.3rem;
+    margin-left: 0.5rem;
+}
+.userInfo_heard ul li:nth-child(3){
+    width: 0.5rem;
+    height: 0.5rem;
+    line-height: 0.5rem;
+    border-radius: 50%;
+    background: #7e8c8d;
+    margin-left: 2.8rem;
+    opacity: 0.5;
+}
+.userInfo_heard ul li:nth-child(4){
+    width: 2.2rem;
+    height: 0.5rem;
+    line-height: 0.5rem;
+    border-radius: 3rem;
+    background: #7e8c8d;
+    padding-left: 0.2rem;
+    margin-left: 0.3rem;
+    opacity: 0.5;
+    font-size: 0.4rem;
+}
+
+/*详情尾部*/
+.userInfo_footer{
+    width: 100%;
+}
+#myHome{
+    width: 100%;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    border-bottom: 0.01rem solid #7e8c8d;
+    border-radius: 1rem 1rem 0 0;
+    position: absolute;
+    background: #ffffff;
+    top:7.5rem;
+}
+#myHome li{
+    float: right;
+    margin-left: 3rem;
+    font-size: 0.35rem;
+}
+#myHome li{
+    float: left;
+    font-size: 0.35rem;
+}
+
+/*主页的样式*/
+.home_k{
+    width: 100%;
+}
+.home_k img{
+    width: 1.38rem;
+    height: 1.38rem;
+ }
+.home_k ul:nth-child(1) {
+    width: 100%;
+    height: 4rem;
+    margin-top: 0.5rem;
+}
+.home_k ul:nth-child(1) li{
+    display: flex;
+    margin-left: 0.3rem;
+    line-height: 0.7rem;
+}
+.home_k ul:nth-child(1) li:nth-child(2){
+    margin-top: 0.5rem;
+}
+.home_k ul:nth-child(1) li span:nth-child(2) p:nth-child(1){
+    font-size: 0.4rem;
+}
+.home_k ul:nth-child(1) li span:nth-child(2){
+    margin-left: 0.3rem;
+}
+.home_k ul:nth-child(1) li span:nth-child(2) p:nth-child(2){
+    color: #7e8c8d;
+    font-size: 0.3rem;
+}
+.home_k ul:nth-child(2){
+    width: 100%;
+    height: 7.2rem;
+    margin-top: 1.2rem;
+}
+.home_k ul:nth-child(2) h5:nth-child(1){
+    width: 100%;
+    height: 0.8rem;
+    line-height: 0.8rem;
+}
+.home_k ul:nth-child(2) h5:nth-child(1) span:nth-child(1){
+    font-size: 0.45rem;
+    font-weight: bolder;
+    margin-left: 0.3rem;
+}
+.home_k ul:nth-child(2) h5:nth-child(1) span:nth-child(2){
+    font-size: 0.3rem;
+    color: #7e8c8d;
+    margin-left: 0.2rem;
+}
+.home_k ul:nth-child(2) li{
+    display: flex;
+    margin-top: 0.25rem;
+    line-height: 0.7rem;
+    margin-left: 0.3rem;
+}
+.home_k ul:nth-child(2) li span:nth-child(2) p:nth-child(1){
+    font-size: 0.36rem;
+}
+.home_k ul:nth-child(2) li span:nth-child(2) p:nth-child(2){
+    font-size: 0.25rem;
+    color: #7e8c8d;
+}
+.home_k ul:nth-child(2) li span:nth-child(2){
+    margin-left: 0.3rem;
+}
+.home_k ul:nth-child(2) h5:last-child{
+    width: 100%;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    text-align: center;
+    font-size: 0.3rem;
+    color: #7e8c8d;
+    margin-top: 0.3rem;
+}
+.home_k ul:nth-child(3){
+    width: 100%;
+    height: 7.2rem;
+    margin-top: 1.2rem;
+}
+.home_k ul:nth-child(3) h5:nth-child(1){
+    width: 100%;
+    height: 0.8rem;
+    line-height: 0.8rem;
+}
+.home_k ul:nth-child(3) h5:nth-child(1) span:nth-child(1){
+    font-size: 0.45rem;
+    font-weight: bolder;
+    margin-left: 0.3rem;
+}
+.home_k ul:nth-child(3) h5:nth-child(1) span:nth-child(2){
+    font-size: 0.3rem;
+    color: #7e8c8d;
+    margin-left: 0.2rem;
+}
+.home_k ul:nth-child(3) li{
+    display: flex;
+    margin-top: 0.25rem;
+    line-height: 0.7rem;
+    margin-left: 0.3rem;
+}
+.home_k ul:nth-child(3) li span:nth-child(2) p:nth-child(1){
+    font-size: 0.36rem;
+}
+.home_k ul:nth-child(3) li span:nth-child(2) p:nth-child(2){
+    font-size: 0.25rem;
+    color: #7e8c8d;
+}
+.home_k ul:nth-child(3) li span:nth-child(2){
+    margin-left: 0.3rem;
+}
+.home_k ul:nth-child(3) h5:last-child {
+    width: 100%;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    text-align: center;
+    font-size: 0.3rem;
+    color: #7e8c8d;
+    margin-top: 0.3rem;
+}
+.home_k ul:nth-child(4){
+    width: 100%;
+    height: 2rem;
+    margin-left: 0.3rem;
+}
+.home_k ul:nth-child(4) li:nth-child(1){
+    height: 0.6rem;
+    line-height: 0.6rem;
+    font-size: 0.4rem;
+    font-weight: bolder;
+}
+.home_k ul:nth-child(4) li:nth-child(2){
+    font-size: 0.3rem;
+    color: #7e8c8d;
+    margin-top: 0.2rem;
+}
+.home_k ul:nth-child(4) li:nth-child(3){
+    height: 0.6rem;
+    margin-top: 0.2rem;
+    color: #7e8c8d;
+    line-height: 0.6rem;
+    margin-left: 4.5rem;
+}

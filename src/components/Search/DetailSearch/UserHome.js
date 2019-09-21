@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from "axios"
 import {
     connect
 } from 'react-redux'
@@ -15,11 +16,14 @@ class Album extends React.Component{
         // console.log(userHomeList,"3");
         return(
             <div className={"userHome_k"}>
+                <div className={"my_kwc"} style={{display:userHomeList?"none":"block"}}>未找到与"{localStorage._k}"相关的内容</div>
                 <ul>
                     {
                         userHomeList?userHomeList.map(v=>(
-                            <li key={v.userId}>
-                                <span><img src={v.avatarUrl} alt=""/></span>
+                            <li key={v.userId} onClick={()=>{
+                                this.props.history.push(`/UserInfo/${v.userId}`)
+                            }}>
+                                <span><img onError={(e) => {e.target.onerror = null;e.target.src="http://p1.music.126.net/VnZiScyynLG7atLIZ2YPkw==/18686200114669622.jpg"}}  src={v.avatarUrl} alt=""/></span>
                                 <span>
                                 <p>{v.nickname}
                                     <i className={"sex_1"} style={{display:v.gender===1?"inline-block":"none"}}>♂</i>
@@ -27,7 +31,7 @@ class Album extends React.Component{
                                 </p>
                                 <p>{v.signature}</p>
                             </span>
-                                <span className={"iconfont iconjiahao"}>关注</span>
+                                <span className={"iconfont iconjiahao"} id={"attention"}>关注</span>
                             </li>
                         )):[].map(v=>{
 
@@ -38,7 +42,8 @@ class Album extends React.Component{
         )
     }
     componentDidMount() {
-        this.props.getUserHomeList()
+        this.props.getUserHomeList(localStorage._k)
+        // console.log(this.props)
     }
 }
 function mapStateToProps(state,props) {

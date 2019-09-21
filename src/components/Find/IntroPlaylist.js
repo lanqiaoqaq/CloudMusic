@@ -14,7 +14,9 @@ class IntroPlaylist extends React.Component {
             <ul className={"playlist_list"}>
                 {
                     introPlaylist.map(v=>(
-                        <li key={v.id} className={"playlist_s"}>
+                        <li key={v.id} className={"playlist_s"} onClick={()=>{
+                            this.props.history.push("/musiclist/"+v.id)
+                        }}>
                             <div style={{width:"3.1rem",height:"3.24rem"}}>
                                 <img style={{width:"100%",height:"100%",borderRadius:"5px"}} src={v.picUrl} alt=""/>
                             </div>

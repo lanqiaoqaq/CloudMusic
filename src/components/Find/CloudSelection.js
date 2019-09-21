@@ -18,7 +18,9 @@ class CloudSelection extends React.Component{
         const offset = this.state.offset;
         const {selMv} = this.props;
         return(
-            <div className="cloud_selection">
+            <div className="cloud_selection" onClick={()=>{
+                this.props.history.push("/mvDetails/"+selMv.id)
+            }}>
                 <div className="selec_con">
                     <p className="selec_head">
                         <span>云村精选</span>

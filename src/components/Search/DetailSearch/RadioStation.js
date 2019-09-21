@@ -13,7 +13,8 @@ class RadioStation extends React.Component{
         //console.log(this.props.radioStationList.result,"1")
         return(
             <div className={"radioStation_k"}>
-                <h5>电台</h5>
+                <div className={"my_kwc"} style={{display:djRadios?"none":"block"}}>未找到与"{localStorage._k}"相关的内容</div>
+                <h5 style={{display:djRadios?"block":"none"}}>电台</h5>
                 <ul>
                     {
                         djRadios?djRadios.map(v=>(
@@ -33,7 +34,7 @@ class RadioStation extends React.Component{
         )
     }
     componentDidMount() {
-        this.props.getRadioStationList()
+        this.props.getRadioStationList(localStorage._k)
     }
 }
 function mapStateToProps(state,props) {

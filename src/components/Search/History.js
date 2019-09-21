@@ -9,9 +9,9 @@ class History extends React.Component {
                     <i className={"iconfont iconlajixiang"}></i>
                 </p>
                 <p>
-                    <b>去年夏天</b>
-                    <b>去年夏天</b>
-                    <b>去年夏天</b>
+                    <b>{localStorage._k}</b>
+                    <b>{localStorage._k}</b>
+                    <b>{localStorage._k}</b>
                 </p>
             </div>
         )
