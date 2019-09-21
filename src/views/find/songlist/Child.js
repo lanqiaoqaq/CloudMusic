@@ -20,7 +20,9 @@ class SongListBanner extends React.Component{
                         <div className="swiper-wrapper">
                             {
                                 songListBanner.map(v=>(
-                                    <div  className="swiper-slide" style={{width:"4.8rem"}} key={v.id}>
+                                    <div  className="swiper-slide" style={{width:"4.8rem"}} key={v.id} onClick={()=>{
+                                        this.props.history.push("/musiclist/"+v.id)
+                                    }}>
                                         <img style={{width:"100%",height:"80%"}} src={v.coverImgUrl} alt=""/>
                                         <p style={{marginTop:".2rem",fontSize:".3rem",color:"#383838"}}>{v.name}</p>
                                     </div>
@@ -32,7 +34,9 @@ class SongListBanner extends React.Component{
                     <ul className={"playlist_list"}>
                         {
                             songListIntro.map(v=>(
-                                <li key={v.id} className={"playlist_s"}>
+                                <li key={v.id} className={"playlist_s"} onClick={()=>{
+                                    this.props.history.push("/musiclist/"+v.id)
+                                }}>
                                     <div style={{width:"3.1rem",height:"3.24rem"}}>
                                         <img style={{width:"100%",height:"100%",borderRadius:"5px"}} src={v.picUrl} alt=""/>
                                     </div>
@@ -64,6 +68,7 @@ class SongListBanner extends React.Component{
     mySwiper(){
         setTimeout(() =>{
             new Swiper('.swiper-container', {
+                loop:true,
                 autoplay: {
                     disableOnInteraction : false,
                 },
@@ -72,7 +77,6 @@ class SongListBanner extends React.Component{
                 pagination: {
                     el: '.swiper-pagination',
                 },
-                loop:true,
                 effect : 'coverflow',
                 slidesPerView: 3,
                 centeredSlides: true,

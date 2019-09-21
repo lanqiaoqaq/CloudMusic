@@ -43,27 +43,12 @@ class DailySpecial extends React.Component{
                         </span>
                     </div>
                     <ul >
-                        {/*<li className="dauly_song_s">*/}
-                            {/*<div className="song_info_s">*/}
-                                {/*<span className="song_img_s">*/}
-                                    {/*<img src="" alt=""/>*/}
-                                {/*</span>*/}
-                                {/*<span>*/}
-                                    {/*<p>盗将行</p>*/}
-                                    {/*<p>*/}
-                                        {/*<b>花粥/马雨阳 - </b>*/}
-                                        {/*<b>粥请客(2)</b>*/}
-                                    {/*</p>*/}
-                                {/*</span>*/}
-                            {/*</div>*/}
-                            {/*<div className="song_icon_s ">*/}
-                                {/*<i className="iconfont iconbofang1"></i>*/}
-                                {/*<i className="iconfont icondiandiandian"></i>*/}
-                            {/*</div>*/}
-                        {/*</li>*/}
                         {
                             recommendSongs.map(v=>(
-                                <li className="dauly_song_s" key={v.id}>
+                                <li className="dauly_song_s" key={v.id} onClick={()=>{
+                                    // this.props.history.push({ pathname:'/musicplaying',state:{id:v.id,song:v} })
+                                    console.log("假装播方音乐")
+                                }}>
                                     <div className="song_info_s">
                                 <span className="song_img_s">
                                     <img src={v.album.picUrl} style={{height:"100%",width:"100%"}} alt=""/>

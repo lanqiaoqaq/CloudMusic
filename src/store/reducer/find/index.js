@@ -30,5 +30,14 @@ export default function (state = initState,{type,payload}) {
     if(type === actionType.CHANGE_SONG_LIST_OTHER){
         state.songListOther=payload;
     }
+    if(type === actionType.CHANGE_REWARD_TOP_LIST){
+        state.rewardTopList=payload;
+    }
+    if(type === actionType.CHANGE_TOP_LIST){
+        state.topList=payload;
+    }
+    if(type === actionType.CHANGE_LIST_OTHERS){
+        state.topListOther=payload;
+    }
     return state
 }

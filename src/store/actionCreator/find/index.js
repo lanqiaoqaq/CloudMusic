@@ -66,6 +66,27 @@ export const ChangeSonglistOther=function (payload) {
         payload
     }
 }
+//rewardToplist 音乐赞赏榜
+export const ChangeRewardToplist=function (payload) {
+    return{
+        type:actionType.CHANGE_REWARD_TOP_LIST,
+        payload
+    }
+}
+//官方排行榜 list 前四
+export const ChangeToplist=function (payload) {
+    return{
+        type:actionType.CHANGE_TOP_LIST,
+        payload
+    }
+}
+//其他榜单 后22
+export const ChangeListOthers=function (payload) {
+    return{
+        type:actionType.CHANGE_LIST_OTHERS,
+        payload
+    }
+}
 export default {
     //请求banner图
     getBannerPic() {
@@ -140,6 +161,30 @@ export default {
         return async (dispatch)=>{
             const data = await axios.get(`/top/playlist?limit=30&order=new&cat=${keyword}`);
             dispatch(ChangeSonglistOther(data.playlists))
+        }
+    },
+    //获取音乐赞赏榜 rewardToplist
+    getRankingRewardToplist(){
+        return async (dispatch)=>{
+            const data = await axios.get("/toplist/detail");
+            //console.log(data.rewardToplist)
+            dispatch(ChangeRewardToplist(data.rewardToplist))
+        }
+    },
+    //获取官方排行
+    getRankingList(){
+        return async (dispatch)=>{
+            const data = await axios.get("/toplist/detail");
+            //console.log(data.list)
+            dispatch(ChangeToplist(data.list.splice(0,4)))
+        }
+    },
+    //获取其他排行
+    getRankingListOthers(){
+        return async (dispatch)=>{
+            const data = await axios.get("/toplist/detail");
+            //console.log(data.list.splice(4,22))
+            dispatch(ChangeListOthers(data.list.splice(4,22)))
         }
     }
 }
