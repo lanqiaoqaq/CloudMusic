@@ -12,13 +12,12 @@ class MusicPlaying extends React.Component{
             picUrl:"",
             name:"",
             isPlay:true,
-            deg:0
+            deg:true
         }
     }
     render(){
-        console.log(this.props)
-        
         return(
+            
             <div >
             
                      <div className={"cyHead"}>
@@ -34,7 +33,7 @@ class MusicPlaying extends React.Component{
                 <div className={"cyMusic"}>
                     <div className={"cyson1"}>
                          <img className={"cyimg1"} src={require("../assets/mine_img/changpian.jpg")}></img>
-                        <img className={"cyImgBox"} src={this.props.songDetail.code?this.props.songDetail.songs[0].al.picUrl:""}  />
+                        <img className={"cyImgBox"} style={{animationPlayState:!this.state.deg?"paused":"running"}} src={this.props.songDetail.code?this.props.songDetail.songs[0].al.picUrl:""}  />
                          <div>
                          <span className={"iconfont iconaixin cyiconaixin"} ></span>
                          <span className={"iconfont iconxiazai1"} ></span>
@@ -53,8 +52,6 @@ class MusicPlaying extends React.Component{
     changeDeg(data) {
         this.setState({
             deg: data //把父组件中的deg替换为子组件传递的值
-        },() =>{
-           console.log(this.state.deg);//setState是异步操作，但是我们可以在它的回调函数里面进行操作
         });
  
     }

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import profileCreators from "../../store/actionCreator/profile/index";
 class Type extends React.Component{
     render(){
-        const {subcount}=this.props;
+        const {subcount,record}=this.props;
          return(
         <div className={"mineLine"}>
             
@@ -14,15 +14,11 @@ class Type extends React.Component{
                 </div>
                 <div className={"divCen"}  onClick={()=>this.props.history.push("/recently")}>
                     <span className={"iconfont iconzuijinbofang iconStyle"}></span>
-                    <p  className={"fontCen"}>最近播放<span>({"lalalal"})</span></p>
-                </div>
-                <div className={"divCen"}>
-                    <span className={"iconfont iconxiazai iconStyle"}></span>
-                    <p  className={"fontCen"}>下载管理<span>({"lalalal"})</span></p>
+                    <p  className={"fontCen"}>最近播放<span>({record?record.length:0})</span></p>
                 </div>
                 <div className={"divCen"}>
                     <span className={"iconfont icondiantai iconStyle"}></span>
-                    <p  className={"fontCen"}>我的电台<span>({})</span></p>
+                    <p  className={"fontCen"}>我的电台<span>({subcount?subcount.djRadioCount:0})</span></p>
                 </div>
                 <div className={"divCen"}>
                     <span className={"iconfont iconwodeshoucang iconStyle"}></span>
@@ -35,12 +31,14 @@ class Type extends React.Component{
     }
     componentDidMount(){
         this.props.getSubcount();
+        this.props.getRecord();
     }
    
 }
 function mapStateToprops(state,props){
     return {
-        subcount:state.profile.sySubcount
+        subcount:state.profile.cySubcount,
+        record:state.profile.cyRecord
     }
 }
 function mapDispatchToprops(dispatch,props){
