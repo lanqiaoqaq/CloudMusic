@@ -71,6 +71,13 @@ export const ChangeUserHomeList = function (payload) {
         payload
     }
 };
+//同步跟新用户详情列表
+export const ChangeUserInfoList = function (payload) {
+    return{
+        type: actionType.CHANGE_USER_INFO_LIST,
+        payload
+    }
+};
 export default {
     //获取热搜列表
     getHotList(){
@@ -159,9 +166,9 @@ export default {
     //获取用户详情
     getFlow(_id){
         return async (dispatch) => {
-            // const data = await axios.get(`/user/detail?uid=${_id}`);
             const data = await axios.get(`/user/detail?uid=${_id}`);
             console.log(data)
+            dispatch(ChangeUserInfoList(data))
         }
     },
 }

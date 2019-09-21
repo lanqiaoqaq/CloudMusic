@@ -20,7 +20,9 @@ class Album extends React.Component{
                 <ul>
                     {
                         userHomeList?userHomeList.map(v=>(
-                            <li key={v.userId}>
+                            <li key={v.userId} onClick={()=>{
+                                this.props.history.push(`/UserInfo/${v.userId}`)
+                            }}>
                                 <span><img onError={(e) => {e.target.onerror = null;e.target.src="http://p1.music.126.net/VnZiScyynLG7atLIZ2YPkw==/18686200114669622.jpg"}}  src={v.avatarUrl} alt=""/></span>
                                 <span>
                                 <p>{v.nickname}
@@ -41,7 +43,7 @@ class Album extends React.Component{
     }
     componentDidMount() {
         this.props.getUserHomeList(localStorage._k)
-        this.props.getFlow(452990086)
+        // console.log(this.props)
     }
 }
 function mapStateToProps(state,props) {
