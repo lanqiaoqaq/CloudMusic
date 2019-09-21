@@ -34,7 +34,7 @@ class App extends React.Component{
                         <Route path={"/"} exact component={Find}></Route>
                     </Switch>
                 </section>
-                <footer className={"footer"}>
+                <footer className={"footer"} style={{display:"none"}}>
                     <AudioPlayer {...this.props}></AudioPlayer>
                 </footer>
             </>

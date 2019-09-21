@@ -14,9 +14,9 @@ export default function ContinuousSlider(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(30);
   const {audio,currentTime,controlAudio}=props;
-  (function getProps() {
-    console.log(5)
-  }) ()
+  // (function getProps() {
+  //   console.log(5)
+  // }) ()
   const handleChange = (event, newValue) => {
     //  newValue=100*(currentTime/audio.duration);
     const current=newValue/100*audio.duration;

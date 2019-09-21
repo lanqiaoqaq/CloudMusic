@@ -1,6 +1,9 @@
 import React from 'react'
 import "../assets/style/mineCloud/musicPlaying.css";
-import Audio from "../components/MineCloud/Audio"
+import Audio from "../components/MineCloud/Audio";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import profileCreators from "../store/actionCreator/profile/index";
 class MusicPlaying extends React.Component{
     constructor(){
         super();
@@ -13,7 +16,8 @@ class MusicPlaying extends React.Component{
         }
     }
     render(){
-        const {song,picUrl,name,deg}=this.state;
+        console.log(this.props)
+        
         return(
             <div >
             
@@ -21,8 +25,8 @@ class MusicPlaying extends React.Component{
                     <div>
                         <span className={"iconfont iconzuojiantou"} onClick={()=>this.props.history.go(-1)}></span>
                         <p>
-                            <span>{song.name}</span>
-                            <span>{name}</span>
+                            <span>{this.props.songDetail.code?this.props.songDetail.songs[0].name:""}</span>
+                            <span>{this.props.songDetail.code?this.props.songDetail.songs[0].ar[0].name:""}</span>
                         </p>
                     </div>
                     <span className={"iconfont iconshare"} ></span>
@@ -30,7 +34,7 @@ class MusicPlaying extends React.Component{
                 <div className={"cyMusic"}>
                     <div className={"cyson1"}>
                          <img className={"cyimg1"} src={require("../assets/mine_img/changpian.jpg")}></img>
-                        <img className={"cyImgBox"} src={picUrl}  />
+                        <img className={"cyImgBox"} src={this.props.songDetail.code?this.props.songDetail.songs[0].al.picUrl:""}  />
                          <div>
                          <span className={"iconfont iconaixin cyiconaixin"} ></span>
                          <span className={"iconfont iconxiazai1"} ></span>
@@ -55,11 +59,21 @@ class MusicPlaying extends React.Component{
  
     }
     componentDidMount(){
-        this.setState({
-            song:this.props.location.state.song,
-            picUrl:this.props.location.state.song.al.picUrl,
-            name:this.props.location.state.song.ar[0].name
-        })
+        // this.setState({
+        //     song:this.props.location.state.song,
+        //     picUrl:this.props.location.state.song.al.picUrl,
+        //     name:this.props.location.state.song.ar[0].name
+        // })
+        this.props.getSonDetail(this.props.location.state.id);
     }
 }
-export default MusicPlaying;
+function mapStateToProps(state,props){
+    return {
+        music:state.profile.cyMusic,
+        songDetail:state.profile.cySongDetail
+    }
+  }
+  function mapDispatchToProps(dispatch,props){
+    return bindActionCreators(profileCreators,dispatch);
+  }
+  export default connect(mapStateToProps,mapDispatchToProps)(MusicPlaying);

@@ -11,7 +11,8 @@ class Profile extends React.Component{
     constructor(){
         super();
         this.state={
-            isShow:true
+            isShow:true,
+            isShow2:true
         }
     }
     render(){
@@ -34,6 +35,35 @@ class Profile extends React.Component{
                    <div style={{display:this.state.isShow?"block":"none"}}>
                         {
                        playList.map((v)=>(
+                           !(v.userId.toString()===localStorage.userId)?<></>:
+                           <div key={v.id} className={"collList"} onClick={()=>this.props.history.push("/musiclist/"+v.id)}>
+                                <div className={"collImg"}>
+                                        <img className={"collBox"} src={v.coverImgUrl}/>
+                                    
+                                    <div className={"collMiddle"}>
+                                        <span className={"collName"}>{v.name}</span>
+                                        <span className={"collCheck"}>{v.trackCount}首 by {v.creator.nickname}</span>
+                                    </div>
+                                </div>
+                                <span className={"iconfont icondiandiandian iconCollM2"}></span>
+                            </div>
+                       ))
+                   }
+                   </div>
+                   <div className={"collMusic"}>
+                       <div className={"collM1"}>
+                           <span style={{transition:".1s ease-in",transform:this.state.isShow2?"rotate(0deg)":"rotate(-90deg)"}} className={"iconfont iconarrow-bottom2 iconCollM1"} onClick={()=>this.setState({isShow2:!this.state.isShow2})}></span>
+                           <p className={"weightFont"}>收藏的歌单 <span>({"lalalal"})</span></p>
+                       </div>
+                       <div className={"collM2"}>
+                       <span className={"iconfont iconjiahao iconCollM2"}></span>
+                       <span className={"iconfont icondiandiandian iconCollM2"}></span>
+                       </div>
+                   </div>
+                   <div style={{display:this.state.isShow2?"block":"none"}}>
+                        {
+                       playList.map((v)=>(
+                        v.userId.toString()===localStorage.userId?<></>:
                            <div key={v.id} className={"collList"} onClick={()=>this.props.history.push("/musiclist/"+v.id)}>
                                 <div className={"collImg"}>
                                         <img className={"collBox"} src={v.coverImgUrl}/>
@@ -49,7 +79,6 @@ class Profile extends React.Component{
                    }
                    </div>
                   
-                   
                </div>
             </>
         )
@@ -59,7 +88,12 @@ class Profile extends React.Component{
             freeMode : true,
             slidesPerView: "auto"
             })
-            this.props.getPlayList();
+            if(localStorage.userId){
+                this.props.getPlayList();
+            }else{
+                alert("您好，请先登录");
+            }
+            
     }
 }
 function mapStateToProps(state,props){

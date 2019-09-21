@@ -10,7 +10,7 @@ class Type extends React.Component{
             
                  <div className={"divCen"} onClick={()=>this.props.history.push("/localmusic")}>
                     <span className={"iconfont iconyinyue iconStyle"}></span>
-                    <p  className={"fontCen"}>本地音乐<span>({"lalalal"})</span></p>
+                    <p  className={"fontCen"}>本地音乐<span>({"0"})</span></p>
                 </div>
                 <div className={"divCen"}  onClick={()=>this.props.history.push("/recently")}>
                     <span className={"iconfont iconzuijinbofang iconStyle"}></span>
