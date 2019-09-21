@@ -14,6 +14,7 @@ class Album extends React.Component{
         // console.log(albums,"1")
         return(
             <div className={"album_k"}>
+                <div className={"my_kwc"} style={{display:albums?"none":"block"}}>未找到与"{localStorage._k}"相关的内容</div>
                 <ul>
                     {
                         albums?albums.map(v=>(
@@ -36,7 +37,7 @@ class Album extends React.Component{
         )
     }
     componentDidMount() {
-        this.props.getAlbumList()
+        this.props.getAlbumList(localStorage._k)
     }
 }
 function mapStateToProps(state,props) {

@@ -33,5 +33,8 @@ export default function (state = initState,{type,payload}) {
     if (type === actionType.CHANGE_USER_HOME_LIST){
         state.userHomeList = payload
     }
+    if (type === actionType.CHANGE_USER_INFO_LIST){
+        state.userInfoList = payload
+    }
     return state
 }

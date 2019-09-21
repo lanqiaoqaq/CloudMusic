@@ -22,7 +22,6 @@ class LocalMusic extends React.Component{
                                <img  className="cy_ml_sq" src={require("../../assets/mine_img/微信图片_201909171736161.jpg")}/>
                                 <span>描述</span>
                            </p>
-                            
                         </div>
                         <span  style={{paddingRight:".9rem"}} className={"iconfont icondiandiandian"} ></span>
                     </div>
