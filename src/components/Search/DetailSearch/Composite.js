@@ -21,7 +21,7 @@ class Composite extends React.Component{
         const album = (this.props.compositeList.result?this.props.compositeList.result.album:"");
         const djRadio = (this.props.compositeList.result?this.props.compositeList.result.djRadio:"");
         const user = (this.props.compositeList.result?this.props.compositeList.result.user:"");
-        // console.log(djRadio)
+        // console.log(song)
         return(
             <div className={"composite_k"}>
                 <div className={"composite_singe"}>

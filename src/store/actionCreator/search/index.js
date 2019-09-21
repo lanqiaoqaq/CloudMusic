@@ -156,10 +156,11 @@ export default {
             dispatch(ChangeUserHomeList(data))
         }
     },
+    //获取用户详情
     getFlow(_id){
-        console.log(_id)
         return async (dispatch) => {
-            const data = await axios.get(`/user/follows?uid=${_id}`);
+            // const data = await axios.get(`/user/detail?uid=${_id}`);
+            const data = await axios.get(`/user/detail?uid=${_id}`);
             console.log(data)
         }
     },

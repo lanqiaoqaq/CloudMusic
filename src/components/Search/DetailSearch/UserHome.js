@@ -8,15 +8,12 @@ import {
 } from 'redux'
 import FindCreator from "../../../store/actionCreator/search"
 class Album extends React.Component{
-    // unfollow(_id){
-    //     this.props.getFlow(_id)
-    // }
     render() {
         let userHomeList
         if(this.props.userHomeList) {
             userHomeList  = this.props.userHomeList.result.userprofiles
         }
-        console.log(userHomeList,"3");
+        // console.log(userHomeList,"3");
         return(
             <div className={"userHome_k"}>
                 <div className={"my_kwc"} style={{display:userHomeList?"none":"block"}}>未找到与"{localStorage._k}"相关的内容</div>
@@ -44,6 +41,7 @@ class Album extends React.Component{
     }
     componentDidMount() {
         this.props.getUserHomeList(localStorage._k)
+        this.props.getFlow(452990086)
     }
 }
 function mapStateToProps(state,props) {
