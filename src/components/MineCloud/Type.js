@@ -16,7 +16,7 @@ class Type extends React.Component{
                     <span className={"iconfont iconzuijinbofang iconStyle"}></span>
                     <p  className={"fontCen"}>最近播放<span>({record?record.length:0})</span></p>
                 </div>
-                <div className={"divCen"}>
+                <div className={"divCen"} onClick={()=>this.props.history.push("/mydj/"+localStorage.userId)}>
                     <span className={"iconfont icondiantai iconStyle"}></span>
                     <p  className={"fontCen"}>我的电台<span>({subcount?subcount.djRadioCount:0})</span></p>
                 </div>

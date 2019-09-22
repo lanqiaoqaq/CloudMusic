@@ -36,3 +36,81 @@
     text-align: center;
     color: #8b8585;
 }
+
+.ra_trend_add{
+    height: 1.5rem;
+    width: 1.5rem;
+    background: #ff2315;
+    opacity: 0.6;
+    position: fixed;
+    bottom: 1.5rem;
+    left: 0.3rem;
+    z-index: 1200;
+    border-radius: 50%;
+    color: #f3f8fd;
+    text-align: center;
+    line-height: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.ra_trend_add_type{
+    height: 3rem;
+    width: 100%;
+    border-radius: 0.3rem;
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 0;
+    background: #f3f8fd;
+    z-index: 3000;
+}
+.ra_trend_add_type span{
+    display: inline-block;
+    height: 2rem;
+    width: 2rem;
+    color: #f3f8fd;
+    text-align: center;
+    line-height: 2rem;
+    font-size: 1.1rem;
+    background: #ff2315;
+    border-radius: 50%;
+    margin-top: 0.5rem;
+}
+
+
+/************发动态**************/
+
+
+.ra_addTrands_text textarea {
+    height: 5rem;
+    width: 85%;
+    border: none;
+    margin-top: 0.2rem;
+    outline: none;
+}
+.ra_addTrands_go{
+    float: right;
+    height: 100%;
+    width: 1.2rem;
+    text-align: center;
+    line-height: 1.5rem;
+    color: #f3f8fd;
+    font-size: 0.5rem;
+    margin-right: 0.3rem;
+}
+.ra_addTrands_text_pic{
+    height: 1.5rem;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    font-size: 1.2rem;
+    border: #8b8585 dotted 0.02rem;
+}
+.ra_addTrands_song{
+    height:1.2rem;
+    width: 100%;
+    line-height: 1.2rem;
+    font-size: 0.43rem;
+    border-bottom: #8b8585 solid 0.02rem;
+    border-top: #8b8585 solid 0.02rem;
+}
