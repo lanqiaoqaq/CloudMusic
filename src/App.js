@@ -30,6 +30,7 @@ import RadioStation from './views/find/RadioStation'
 import Ranking from  './views/find/Ranking'
 import SongList from './views/find/SongList'
 import VideoDetails from "./views/trend/Mv/VideoDetails";
+import myDj from "./views/MyMusics/myDj";
 class App extends React.Component{
   render(){
       return (
@@ -39,6 +40,7 @@ class App extends React.Component{
                         {/* 我的音乐 */}
                         <Route path={"/localmusic"}  component={LocalMusic}></Route>
                         <Route path={"/recently"}  component={Recently}></Route>
+                        <Route path={"/mydj/:id"}  component={myDj}></Route>
                          {/* 我的音乐 */}
                         <Route path={"/dailyspecial"} component={DailySpecial}></Route>
                         <Route path={"/live"} component={Live}></Route>

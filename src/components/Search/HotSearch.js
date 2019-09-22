@@ -22,7 +22,8 @@ class HotSearch extends React.Component {
                     {
                         hotList.map((v, i) => (
                             <li key={v.score} onClick={() => {
-                                this.props.history.push("/SearchDetails")
+                                this.props.history.push("/SearchDetails");
+                                localStorage._k = v.searchWord
                             }}>
                                 <span className={"red:i+1"}>{i + 1}</span>
                                 <span>

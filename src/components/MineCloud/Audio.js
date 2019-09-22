@@ -19,6 +19,7 @@ class Audio extends React.Component{
     }
   }
     render(){
+      // console.log(this.props.music)
         const {isPlay,id,currentTime,allTime}=this.state;
         const src=this.props.music;
         return(
@@ -37,7 +38,7 @@ class Audio extends React.Component{
                 this.controlAudio('getCurrentTime')
                 this.timeUpdate();
                 this.controlAudio('allTime');
-                 this.timeChange(this.props.deg);
+                
             }}
             >
               您的浏览器不支持 audio 标签。
@@ -47,10 +48,10 @@ class Audio extends React.Component{
                     {this.millisecondToDate(currentTime)}
                     </span>
                     {/* 精度条 */}
-                     {/* <p ref="timeline" className="cy_timeline">
-                            <span ref="playhead" className="playhead"></span>
-                        </p> */}
-                       <ContinuousSlider audio={document.getElementById(`audio${this.state.id}`)} currentTime={this.state.currentTime} controlAudio={(a,b)=>this.controlAudio(a,b)}></ContinuousSlider>
+                     <p ref="timeline" className="cy_timeline">
+                            <span ref="playhead" className="playhead" onMouseDown={this.down.bind(this)}></span>
+                        </p>
+                       {/* <ContinuousSlider audio={document.getElementById(`audio${this.state.id}`)} currentTime={this.state.currentTime} controlAudio={(a,b)=>this.controlAudio(a,b)}></ContinuousSlider> */}
                     {/* 显示时间 */}
                     <span className="current">
                     {this.millisecondToDate(allTime)}
@@ -58,14 +59,14 @@ class Audio extends React.Component{
             </div>
            <div className={"cyiconFather"}>
            <i className={"cyiconpause iconfont iconliebiaobofang"}></i>
-             <i className={"cyiconpause iconfont iconshangyishou1"}></i>
+             <i  onClick={()=>this.props.prevSong()} className={"cyiconpause iconfont iconshangyishou1"}></i>
                 {/* 控制播放暂停  */}
             <i 
               className={`cyiconpause iconfont ${isPlay ? `iconbofang2` : `iconbofang`}`} 
               onClick={() => this.controlAudio(isPlay ? 'pause' : 'play')}
             />
             
-            <i onClick={()=>console.log(1)} className={"cyiconpause iconfont iconshangyishou"}></i>
+            <i onClick={()=>this.props.nextSong()} className={"cyiconpause iconfont iconshangyishou"}></i>
             <i className={"cyiconpause iconfont iconicon"}></i>
            </div>
             {/* 修改当前时间 */}
@@ -95,36 +96,37 @@ class Audio extends React.Component{
    
       
       timeUpdate() {
-        // const audio = document.getElementById(`audio${this.state.id}`)
-        // var playPercent = 7.6 * (this.state.currentTime / audio.duration);
-        // this.refs.playhead.style.webkitTransform  = "translateX("+playPercent + "rem)";
-        // this.refs.playhead.style.transform = "translateX("+playPercent + "rem)";
-        // if (this.state.currentTime == audio.duration) {
-        //     this.setState({
-        //         isPlay: false
-        //     })
-        // }
+        const audio = document.getElementById(`audio${this.state.id}`)
+        var playPercent = 7.6 * (this.state.currentTime / audio.duration);
+        this.refs.playhead.style.webkitTransform  = "translateX("+playPercent + "rem)";
+        this.refs.playhead.style.transform = "translateX("+playPercent + "rem)";
+        if (this.state.currentTime == audio.duration) {
+            this.setState({
+                isPlay: false
+            })
+        }
     }
 
     timelineClick(e) {
                 //更新坐标位置
-                // if(e.target.nodeName==='P'){
-                //      const playhead=this.refs.playhead;
-                //     const audio = document.getElementById(`audio${this.state.id}`)
-                //     var newLeft = (e.offsetX - this.refs.timeline.offsetLeft)/100;
-                //     console.log((e.pageX - this.refs.timeline.offsetLeft)/100)
-                //     if (newLeft >= 0 && newLeft <= 7.6) {
-                //         playhead.style.transform = "translateX("+ newLeft +"px)";
-                //     }
-                //     if (newLeft < 0) {
-                //         playhead.style.transform = "translateX(0)";
-                //     }
-                //     if (newLeft > 7.6) {
-                //         playhead.style.transform = "translateX("+ 7.6 + "px)";
-                //     }
-                //     // 更新时间
-                //     audio.currentTime = audio.duration * (newLeft / 7.6);
-                // }
+                let clientWd=document.body.clientWidth||document.documentElement.clientWidth;
+                if(e.target.nodeName==='P'){
+                     const playhead=this.refs.playhead;
+                    const audio = document.getElementById(`audio${this.state.id}`)
+                    var newLeft = (e.clientX - this.refs.timeline.offsetLeft);
+                    console.log(newLeft,this.refs.timeline.offsetLeft,this.refs.timeline.clientWidth)
+                    if (newLeft >= 0 && newLeft <= this.refs.timeline.clientWidth) {
+                        playhead.style.transform = "translateX("+ newLeft +"px)";
+                    }
+                    if (newLeft < 0) {
+                        playhead.style.transform = "translateX(0)";
+                    }
+                    if (newLeft >this.refs.timeline.clientWidth) {
+                        playhead.style.transform = "translateX("+ this.refs.timeline.clientWidth + "px)";
+                    }
+                    // 更新时间
+                    audio.currentTime = audio.duration * (newLeft / this.refs.timeline.clientWidth);
+                }
                
             }
 
@@ -153,12 +155,17 @@ class Audio extends React.Component{
             audio.play()
             this.setState({
               isPlay: true
+            },()=>{
+              this.timeChange();
             })
+
             break
           case 'pause':
             audio.pause()
             this.setState({
               isPlay: false
+            },()=>{
+              this.timeChange();
             })
             break
           case 'muted':
@@ -203,17 +210,47 @@ class Audio extends React.Component{
       //       src:nextProps.music.data[0].url
       //     })
       // }
-      timeChange(deg){
-        // this.props.changeDeg(10+deg)
+      timeChange(){
+        this.props.changeDeg(this.state.isPlay);
       }
+      down(e) {
+        const dv=this.refs.playhead;
+        console.log(dv)
+        //获取x坐标和y坐标
+        let x = e.clientX;
+        //获取左部和顶部的偏移量
+       let l =  dv.offsetLeft;
+        //开关打开
+        let isDown = true;
+        //设置样式  
+        dv.style.cursor = 'move';
+
+    //     window.onmousemove=function(e) {
+    //       if (isDown == false) {
+    //           return;
+    //       }
+    //       //获取x和y
+    //       var nx = e.clientX;
+    //       //计算移动后的左偏移量和顶部的偏移量
+    //       var nl = nx - (x - l);
+      
+    //       dv.style.left = nl + 'px';
+    //   }
+    //   dv.onmouseup = function() {
+    //     //开关关闭
+    //     isDown = false;
+    //     dv.style.cursor = 'default';
+    // }
+    }
       componentDidMount(){
         // this.setState({
         //   isPlay:this.props.isPlay
         // })
           this.timeUpdate();
-        //  this.refs.timeline.addEventListener("click", this.timelineClick.bind(this));
-         
-          this.props.getMusic(this.props.location.state.id);
+          this.refs.timeline.addEventListener("click", this.timelineClick.bind(this));
+          this.refs.playhead.addEventListener("mousedown", this.down.bind(this));
+        console.log(this.props)
+          // this.props.getMusic(this.props.id?this.props.id:this.props.location.state.id);
       }
 }
 function mapStateToProps(state,props){

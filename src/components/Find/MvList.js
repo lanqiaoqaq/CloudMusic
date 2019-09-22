@@ -14,7 +14,9 @@ class MvList extends React.Component {
             <>
                 {
                     mvList.map(v=>(
-                        <div className="cloud_selection" key={v.id}>
+                        <div className="cloud_selection" key={v.id} onClick={()=>{
+                            this.props.history.push("/mvDetails/"+v.id)
+                        }}>
                             <div className="selec_con">
                                 <p className="selec_img">
                                     <img src={v.cover} alt=""/>

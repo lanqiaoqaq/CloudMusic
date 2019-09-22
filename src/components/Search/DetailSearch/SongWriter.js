@@ -13,6 +13,7 @@ class SongWriter extends React.Component{
         // console.log(artists,"1")
         return(
             <div className={"songwriter"}>
+                <div className={"my_kwc"} style={{display:artists?"none":"block"}}>未找到与"{localStorage._k}"相关的内容</div>
                 <ul>
                     {
                         artists?artists.map(v=>(
@@ -33,7 +34,7 @@ class SongWriter extends React.Component{
         )
     }
     componentDidMount() {
-        this.props.getSongWriterList()
+        this.props.getSongWriterList(localStorage._k)
     }
 }
 function mapStateToProps(state,props) {
