@@ -20,5 +20,11 @@ export default function (state = initState,{type,payload}) {
     if(type===actionType.CHANGE_MUSIC){
         state.cyMusic=payload;
     }
+    if(type===actionType.CHANGE_LYRIC){
+        state.cylyric=payload;
+    }
+    if(type===actionType.CHANGE_DJ){
+        state.cydj=payload;
+    }
     return state
 }

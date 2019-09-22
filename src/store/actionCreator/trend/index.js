@@ -98,14 +98,58 @@ export default {
             const data=await axios.get("/user/follows?uid="+uid);
             // console.log(data);
             if(data.code===200){
-                const follow=data.follow
+                const follow=data.follow;
+                const trends=await this.getTrends();
+                let urlArr=[],coverArr=[];
+                trends.map((v,i)=>{
+                    const json =JSON.parse(v.json);
+                    if(json.video){
+                        urlArr.push(json.video.videoId)
+                    }else {
+                        urlArr.push("89ADDE33C0AAE8EC14B99F6750DB954D")
+                    }
+                    if(json.song){
+                        coverArr.push(json.song.id)
+                    }else {
+                        coverArr.push("347230")
+                    }
+                });
+                console.log(urlArr,coverArr);
+                let url=[];
+                let cover=[];
+                let url1= await Promise.all(urlArr.map(async (v,i)=>{
+                    return  ( async ()=>{
+                        const data=await axios.get("/video/url?id="+v);
+                        url.push(data.urls[0].url);
+                        return url
+                    })()
+                }));
+                let cover1= await Promise.all(coverArr.map(async (v,i)=>{
+                    return  ( async ()=>{
+                        const data=await axios.get("/song/detail?ids="+v);
+                        cover.push(data.songs[0].al.picUrl);
+                        return cover
+                    })()
+                }));
                 dispatch(changeTrend({
-                    follow
+                    follow,
+                    trends,
+                    url,
+                    cover
                 }))
             }
         }
     },
-
+    getTrends(){
+        const date=Date.now()
+        return async (dispatch)=>{
+            const data =await axios.get("/event?pagesize=30&lasttime="+date);
+            const data1=await axios.get("/user/event?uid=32953014")
+            console.log(data1)
+            // console.log(JSON.parse(data.event[0].json))
+            return data.event
+        }
+    },
 
     getFeaturedMv(){
         return async (dispatch)=>{

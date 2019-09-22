@@ -4,5 +4,7 @@ export default {
     cySubcount:[],
     cyPlaylistDetail:[],
     cySongDetail:[],
-    cyMusic:[]
+    cyMusic:[],
+    cylyric:[],
+    cydj:[]
 }
