@@ -25,12 +25,30 @@ class TrendIn extends React.Component{
         //     backgroundSize: "100% 100%",
         //     backgroundPosition: "0 0"
         // };
-        // console.log(this.props.trend);
         const {follow,trends,url,cover}=this.state;
         console.log(follow,trends,url,cover);
 
         return(
             <>
+                {/**********************发表动态********************/}
+                <sapn onClick={()=>{
+                    document.querySelector(".ra_trend_add_type").style.display="flex"
+                }} className={"ra_trend_add iconfont iconjiahao"}>
+                </sapn>
+                {/*********************选择动态类型********************/}
+                <div onClick={(e)=>{
+                    if(e.target===document.querySelector(".ra_trend_add_type"))
+                    e.target.style.display="none"
+                }} style={{display:"none"}} className={"ra_trend_add_type"}>
+                    <Link to={"/addTrends/asd/kgkh"}><span className={"iconfont iconxie"}></span></Link>
+                    <Link to={"/addVideo"}><span className={"iconfont iconshipin"}></span></Link>
+                </div>
+                    {/*************************发动态************************/}
+
+                    {/**************************发视频*****************************/}
+                    <div>
+                        
+                    </div>
                 {/****************我的关注************************/}
                 <div className={"ra_box"} >
                     <p onClick={()=>{
@@ -38,14 +56,14 @@ class TrendIn extends React.Component{
                     }}>我关注的他们 ></p>
                     <ul>
                         {
-                            follow.map((v,i)=>(
+                            follow?follow.map((v,i)=>(
                                 <li onClick={()=>{
                                     this.props.history.push("/userInfo")
                                 }}>
                                     <div><img src={v.avatarUrl}/></div>
                                     <h2>{v.nickname}</h2>
                                 </li>
-                            ))
+                            )):[]
                         }
                     </ul>
                 </div>
