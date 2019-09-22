@@ -23,7 +23,14 @@ class Single extends React.Component{
                 <ul>
                     {
                         songs?songs.map(v=>(
-                            <li key={v.id}>
+                            <li key={v.id} onClick={()=>{
+                                this.props.history.push({
+                                    pathname:"/musicplaying",
+                                    state:{
+                                        id:v.id,
+                                    }
+                                })
+                            }}>
                         <span>
                             <h5>{v.name}</h5>
                             <p>{v.artists[0].name}-{v.album.name}</p>
