@@ -92,6 +92,19 @@ export const changeTrend = function (payload) {//改变视频详情
 
 export default {
 
+    addSong(id){//发布动态
+        console.log(id)
+        const text=document.querySelector("textarea").value;
+        document.querySelector("textarea").value="";
+        console.log(text)
+        return async (dispatch)=>{
+            if (text!=""){
+                await axios.get(`/share/resource?id=${id}&msg=${text}`);
+                this.props.history.push("/trend");
+            }
+        }
+    },
+
     getTrend(){//获取动态页数据
         const uid=localStorage.userId;
         return async (dispatch)=>{
@@ -182,8 +195,8 @@ export default {
             }
         }
     },
-
     getVideoDetails(id){//获取视频数据
+        console.log("asdf")
         return async (dispatch)=>{
             console.log(id)
             const data= await axios.get("/video/detail?id="+id);
@@ -390,5 +403,36 @@ export default {
             })
         }
     },
+    async addCom(data,e){//发评论
+        const {t,type,id,commentId,content1}=data;
+        const content=content1.value;
+        const commentid=commentId.getAttribute("commentid");
+        content1.value=""
+        console.log(t,type,id,commentId.getAttribute("commentid"),content);
+        if(t===1){
+            await axios.get(`/comment?t=${t}&type=${type}&id=${id}&content=${content}`);
+        }
+        if(t===2){
+            await axios.get(`/comment?t=${t}&type=${type}&id=${id}&content=${content}&commentId=${commentid}`);
+        }
+        // console.log(this.props.getVideoDetails);
+        await this.props.getVideoDetails(id);
+    },
 
+    isFollow(data,e){//关注用户
+            const {type,id,vid}=data;
+            console.log(type,id,vid)
+            return async (dispatch)=>{
+                await axios.get(`/follow?id=${id}&t=${type}`);
+                this.props.getVideoDetails(vid);
+            }
+    },
+    isLike(data,e){//点赞
+        const {t,type,id,cid}=data;
+        console.log(t,type,id,cid);
+        return async (dispatch)=>{
+            await axios.get(`/comment/like?id=${id}&cid=${cid}&t=${t}&type=${type}`)
+            this.props.getVideoDetails(id);
+        }
+    }
 }

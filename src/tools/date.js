@@ -42,7 +42,7 @@ export function getNowDate() {
 
 export function getDate(date) {
     const data = new Date(date);
-    console.log(data,date)
+    // console.log(data,date)
     return (data.getMonth()+1).toString()+"月"+
         (data.getDate()).toString()+"日";
 }
