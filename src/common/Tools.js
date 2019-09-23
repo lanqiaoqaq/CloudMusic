@@ -6,6 +6,16 @@ class Tools {
             (time.getDate()).toString().padStart(2,);
     }
 
+    static date2(v){
+        const time = new Date(v);
+        return time.getFullYear()+"年"+
+            (time.getMonth()+1).toString().padStart(2,"0")+"月"
+    }
+    static date3(v){
+        const time = new Date(v);
+        return time.getFullYear()
+    }
+
     static currency(v, n = 2) {
         return "$" + v.toFixed(n);
     }

@@ -10,4 +10,6 @@ export default {
     radioStationList:[],
     uerHomeList:[],
     userInfoList: [],
+    userPlayList:[],
+    userPlayListTow:[],
 }

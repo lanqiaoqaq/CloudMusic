@@ -18,7 +18,11 @@ class Video extends React.Component{
                     {
                         videos?videos.map(v=>(
                             <li key={v.vid} onClick={()=>{
-
+                                if (v.type==0) {
+                                    this.props.history.push(`/mvDetails/${v.vid}`)
+                                }else {
+                                    this.props.history.push(`/videoDetails/${v.vid}`)
+                                }
                             }}>
                                 <span><img src={v.coverUrl} alt=""/></span>
                                 <span>
