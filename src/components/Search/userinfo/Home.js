@@ -13,7 +13,7 @@ class Home extends React.Component{
         const userInfoList = this.props.userInfoList;
         const userPlayList = this.props.userPlayList?this.props.userPlayList:"";
         const userPlayListTwo = this.props.userPlayListTwo?this.props.userPlayListTwo:"";
-        // console.log(userPlayListTwo);
+        console.log(userPlayListTwo);
         return(
             <div className={"home_k"}>
                 <ul>

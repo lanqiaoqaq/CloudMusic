@@ -63,7 +63,7 @@ class Composite extends React.Component{
                     <ul>
                         {
                             video?video.videos.map(v=>(
-                                <li key={v.playTime} onClick={()=>{
+                                <li key={v.vid} onClick={()=>{
                                     if (v.type==0) {
                                         this.props.history.push(`/mvDetails/${v.vid}`)
                                     }else {
