@@ -1,3 +1,6 @@
+import React from "react";
+import ReactDOM from "react-dom";
+import Spin from "../views/spin";
 export function getTime() {
     const data = new Date();
     return data.getFullYear()+"-"+
@@ -66,4 +69,34 @@ export function getVideoLong(time) {//视频时长
     const mint=(time/1000).toFixed(0);
     return (Math.floor(mint/60)).toString().padStart(2,"0")+":"+((mint-Math.floor(mint/60)*60)).toString().padStart(2,"0")
 
+}
+
+
+export const tools = {
+    /**
+     * 显示loading框
+     * @return {[type]}
+     */
+    showLoading() {
+        if (this.loadingCount <= 0) {
+            ReactDOM.render(
+                <div className="sy-loadingwrap">
+                    <Spin size="large"></Spin>
+                </div>,
+                document.getElementById("root")
+            );
+        }
+        this.loadingCount++;
+    },
+    /**
+     * 隐藏loading框
+     * @return {[type]}
+     */
+    hideLoading() {
+        if (this.loadingCount === 0) return;
+        this.loadingCount--;
+        if (this.loadingCount === 0) {
+            ReactDOM.unmountComponentAtNode(document.getElementById("root"));
+        }
+    },
 }

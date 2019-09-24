@@ -24,16 +24,17 @@ import MvRanking from "./views/trend/Mv/MvRanking";
 import LocalMusic from './views/MyMusics/LocalMusic';
 import Recently from './views/MyMusics/Recently';
 import Recently1 from "./views/trend/Recently1";
-
-import DailySpecial from './views/find/DailySpecial'
-import Live from './views/find/Live'
-import RadioStation from './views/find/RadioStation'
+import RelayTrends from "./views/trend/RelayTrends";
+import DailySpecial from './views/find/DailySpecial';
+import Live from './views/find/Live';
+import RadioStation from './views/find/RadioStation';
 import Ranking from  './views/find/Ranking'
 import SongList from './views/find/SongList'
 import VideoDetails from "./views/trend/Mv/VideoDetails";
 import myDj from "./views/MyMusics/myDj";
 import AddVideo from "./views/trend/AddVideo";
 import AddTrends from "./views/trend/AddTrends";
+import Spin from "./views/spin";
 class App extends React.Component{
   render(){
       return (
@@ -64,15 +65,18 @@ class App extends React.Component{
                         <Route path={"/mvFeatured"} component={MvFeatured}></Route>
                         <Route path={"/userInfo/:id"} component={UserInfo}></Route>
                         <Route path={"/allFollow"} component={AllFollow}></Route>
-                        <Route path={"/trendDetails"} component={TrendDetails}></Route>
+                        <Route path={"/trendDetails/:id"} component={TrendDetails}></Route>
                         <Route path={"/videoDetails/:id"} component={VideoDetails}></Route>
                         <Route path={"/addVideo"} component={AddVideo}></Route>
                         <Route path={"/addTrends/:id/:name"} component={AddTrends}></Route>
                         <Route path={"/recently1"} component={Recently1}></Route>
+                        <Route path={"/relayTrends/:id/:userId"} component={RelayTrends}></Route>
 
                         <Route path={"/Search"} component={Search}></Route>
                         <Route path={"/SearchDetails"} component={SearchDetails}></Route>
                         <Route path={"/"} component={Home}></Route>
+
+                        <Route path={"/spin"} component={Spin}></Route>
                     </Switch>
                 </Router>
 
