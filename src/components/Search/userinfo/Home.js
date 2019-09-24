@@ -1,22 +1,34 @@
 import React from "react"
+import {
+    connect
+} from 'react-redux'
+import {
+    bindActionCreators
+} from 'redux'
+import Tools from "../../../common/Tools"
+import FindCreator from "../../../store/actionCreator/search";
 import "../../../assets/style/Search/userInfo.css"
 class Home extends React.Component{
     render() {
+        const userInfoList = this.props.userInfoList;
+        const userPlayList = this.props.userPlayList?this.props.userPlayList:"";
+        const userPlayListTwo = this.props.userPlayListTwo?this.props.userPlayListTwo:"";
+        console.log(userPlayListTwo);
         return(
             <div className={"home_k"}>
                 <ul>
                     <li>
                         <span><img src={require("../../../assets/search-images/listen.jpg")} alt=""/></span>
                         <span>
-                            <p>将故事写给我们——的听歌排行</p>
-                            <p>累计听歌7690首</p>
+                            <p>{userInfoList.profile.nickname}的听歌排行</p>
+                            <p>累计听歌{userInfoList.listenSongs}首</p>
                         </span>
                     </li>
                     <li>
                         <span><img src={require("../../../assets/search-images/love.jpg")} alt=""/></span>
                         <span>
-                            <p>将故事写给我们——喜欢的音乐</p>
-                            <p>231首，播放4113次</p>
+                            <p>{userInfoList.profile.nickname}喜欢的音乐</p>
+                            <p>{userPlayListTwo.length>1?userPlayListTwo[0].trackCount:""}首，播放{userPlayListTwo.length>1?userPlayListTwo[0].playCount:""}次</p>
                         </span>
                     </li>
                 </ul>
@@ -25,27 +37,20 @@ class Home extends React.Component{
                         <span>创建的歌单</span>
                         <span>（4个，被收藏3次）</span>
                     </h5>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/5.jpg")} alt=""/></span>
-                        <span>
-                            <p>浪漫满屋</p>
-                            <p>1首，播放4次</p>
+                    {
+                        userPlayListTwo?userPlayListTwo.splice(0,3).map(v=>(
+                            <li key={v.id}>
+                                <span><img src={v.coverImgUrl} alt=""/></span>
+                                <span>
+                            <p>{v.name}</p>
+                            <p>{userPlayListTwo.length>1?v.trackCount:""}首，播放{v.playCount}次</p>
                         </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/5.jpg")} alt=""/></span>
-                        <span>
-                            <p>浪漫满屋</p>
-                            <p>1首，播放4次</p>
-                        </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/5.jpg")} alt=""/></span>
-                        <span>
-                            <p>浪漫满屋</p>
-                            <p>1首，播放4次</p>
-                        </span>
-                    </li>
+                            </li>
+                        )):[].map(v=>{
+
+                        })
+                    }
+
                     <h5>更多歌单</h5>
                 </ul>
                 <ul>
@@ -53,36 +58,39 @@ class Home extends React.Component{
                         <span>收藏的歌单</span>
                         <span>（1193）</span>
                     </h5>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/5.jpg")} alt=""/></span>
-                        <span>
-                            <p>浪漫满屋</p>
-                            <p>1首，by 夜尽天名，播放8次</p>
+                    {
+                        userPlayList?userPlayList.splice(0,3).map(v=>(
+                            <li key={v.id}>
+                                <span><img src={v.coverImgUrl} alt=""/></span>
+                                <span>
+                            <p>{v.name}</p>
+                            <p>{v.trackCount?v.trackCount:""}首，by {v.creator.nickname}，播放{v.playCount}次</p>
                         </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/5.jpg")} alt=""/></span>
-                        <span>
-                            <p>浪漫满屋</p>
-                            <p>1首，by 夜尽天名，播放8次</p>
-                        </span>
-                    </li>
-                    <li>
-                        <span><img src={require("../../../assets/search-images/5.jpg")} alt=""/></span>
-                        <span>
-                            <p>浪漫满屋</p>
-                            <p>1首，by 夜尽天名，播放8次</p>
-                        </span>
-                    </li>
+                            </li>
+                        )):[].map(v=>{
+
+                        })
+                    }
+
                     <h5>更多歌单</h5>
                 </ul>
                 <ul>
                     <li>基本信息</li>
-                    <li>村龄：2年（2017年8月注册）</li>
+                    <li>村龄：2年（{Tools.date2(userPlayListTwo.length>1?userPlayListTwo[0].createTime:"")}）</li>
                     <li>跟多信息</li>
                 </ul>
             </div>
         )
     }
 }
-export default Home
+function mapStateToProps(state,props) {
+    return{
+        userInfoList: state.search.userInfoList,
+        userPlayList: state.search.userPlayList,
+        userPlayListTwo: state.search.userPlayListTwo
+    }
+}
+function mapDispatchProps(dispatch,props) {
+    return bindActionCreators(FindCreator, dispatch)
+}
+export default connect(mapStateToProps,mapDispatchProps) (Home)

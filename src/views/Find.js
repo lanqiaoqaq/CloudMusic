@@ -32,12 +32,5 @@ class Find extends React.Component{
             </div>
         )
     }
-    async fn(){
-        const data= await axios.get("/setting")
-        console.log(data)
-    }
-    componentDidMount(){
-        this.fn()
-    }
 }
 export default Find;

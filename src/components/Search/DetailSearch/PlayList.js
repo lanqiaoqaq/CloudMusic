@@ -18,7 +18,9 @@ class PlayList extends React.Component{
                 <ul>
                     {
                         playLists?playLists.map(v=>(
-                            <li key={v.id}>
+                            <li key={v.id} onClick={()=>{
+                                this.props.history.push(`/musiclist/${v.id}`)
+                            }}>
                                 <span><img src={v.coverImgUrl} alt=""/></span>
                                 <span>
                                 <p>{v.name}</p>

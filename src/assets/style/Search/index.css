@@ -35,6 +35,9 @@
     font-size: 0.45rem;
     color: #00a5e0;
     border-bottom: 1px solid #7e8c8d;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
 }
 .mySearch ul li{
     height: 1.3rem;
@@ -44,6 +47,8 @@
     color: #333333;
     border-bottom: 1px solid #7e8c8d;
     overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
 }
 .heard i{
     font-size: 0.65rem;

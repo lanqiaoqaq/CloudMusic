@@ -36,5 +36,11 @@ export default function (state = initState,{type,payload}) {
     if (type === actionType.CHANGE_USER_INFO_LIST){
         state.userInfoList = payload
     }
+    if (type === actionType.CHANGE_USER_PLAY_LIST){
+        state.userPlayList = payload
+    }
+    if (type === actionType.CHANGE_USER_PLAY_LIST_TWO){
+        state.userPlayListTwo = payload
+    }
     return state
 }
