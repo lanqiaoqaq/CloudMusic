@@ -11,6 +11,11 @@ import Find from './Find'
 import Trend from "./Trend";
 import AudioPlayer from '../components/AudioPlayer'
 import Drawer from '../components/Drawser/DrawerIndex.js'
+
+import Audio from "../components/MineCloud/Audio"
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import  profileCreators  from "../store/actionCreator/profile/index";
 class App extends React.Component{
 
     render(){
@@ -34,11 +39,20 @@ class App extends React.Component{
                         <Route path={"/"} exact component={Find}></Route>
                     </Switch>
                 </section>
-                <footer className={"footer"}>
+                <footer className={"footer"} style={{display:this.props.cySongDetail.songs?"block":"none"}}>
                     <AudioPlayer {...this.props}></AudioPlayer>
+                    {/* <Audio></Audio> */}
                 </footer>
             </>
         );
     }
 }
-export default App;
+function mapStateToProps(state, props) {
+    return {
+        cySongDetail:state.profile.cySongDetail
+    }
+}
+function mapDispatchToProps(dispatch, props) {
+    return bindActionCreators(profileCreators, dispatch)
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App);
