@@ -78,6 +78,20 @@ export const ChangeUserInfoList = function (payload) {
         payload
     }
 };
+//同步跟新用户收藏歌单详情列表
+export const ChangeUserPlayList = function (payload) {
+    return{
+        type: actionType.CHANGE_USER_PLAY_LIST,
+        payload
+    }
+};
+//同步跟新用户创建歌单详情列表
+export const ChangeUserPlayListTwo = function (payload) {
+    return{
+        type: actionType.CHANGE_USER_PLAY_LIST_TWO,
+        payload
+    }
+};
 export default {
     //获取热搜列表
     getHotList(){
@@ -167,8 +181,36 @@ export default {
     getFlow(_id){
         return async (dispatch) => {
             const data = await axios.get(`/user/detail?uid=${_id}`);
-            console.log(data)
+            // console.log(data)
             dispatch(ChangeUserInfoList(data))
         }
     },
+    //获取用户收藏歌单详情
+    getUserPlayList(_id){
+        return async (dispatch) => {
+            const {playlist} = await axios.get(`/user/playlist?uid=${_id}`);
+            playlist.splice(0,1);
+            for (let i=0;i<playlist.length;i++){
+                if (_id == playlist[i].userId){
+                        playlist.splice(i,1);
+                        i--;
+                }
+            }
+            dispatch(ChangeUserPlayList(playlist))
+        }
+    },
+    //获取用户创建歌单详情
+    getUserPlayListTwo(_id){
+        return async (dispatch) => {
+            const {playlist} = await axios.get(`/user/playlist?uid=${_id}`);
+            // playlist.splice(0,1);
+            for (let i=0;i<playlist.length;i++){
+                if (_id != playlist[i].userId){
+                    playlist.splice(i,1);
+                    i--;
+                }
+            }
+            dispatch(ChangeUserPlayListTwo(playlist))
+        }
+    }
 }

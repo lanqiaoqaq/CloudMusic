@@ -16,34 +16,40 @@ import FindCreator from "../../../store/actionCreator/search";
 class UserInfo extends React.Component{
     render() {
         const userInfoList = this.props.userInfoList;
-        // console.log(userInfoList.userPoint)
-        const userId = (userInfoList.userPoint?userInfoList.userPoint.userId:"");
-        console.log(userId)
+        const userId = userInfoList.userPoint?userInfoList.userPoint.userId:"";
+        const nickname = userInfoList.profile?userInfoList.profile.nickname:"";
+        const newFollows = userInfoList.profile?userInfoList.profile.newFollows:"";
+        const followeds = userInfoList.profile?userInfoList.profile.followeds:"";
+        const vipType = userInfoList.profile?userInfoList.profile.vipType:"";
+        const avatarUrl = userInfoList.profile?userInfoList.profile.avatarUrl:"";
+        const backgroundUrl = userInfoList.profile?userInfoList.profile.backgroundUrl:"";
+        const gender = userInfoList.profile?userInfoList.profile.gender:"";
+        // console.log(gender,"111111");
         return(
             <div className={"userInfo_k"}>
-                <div className={"userInfo_heard"}>
+                <div className={"userInfo_heard"} style={{backgroundImage:backgroundUrl?`url(${backgroundUrl})`:"" ,backgroundSize: "100% 110%"}}>
                     <p>
                         <span className={"iconfont iconzuojiantou"} onClick={()=>{
                             this.props.history.push("/SearchDetails/UserHome")
                         }}></span>
-                        <span>将故事写给我们——</span>
+                        <span></span>
                         <span className={"iconfont icondiandiandian"}></span>
                     </p>
-                    <p><img src={require("../../../assets/search-images/15.jpg")} alt=""/></p>
+                    <p><img src={avatarUrl} alt=""/></p>
                     <p>
-                        <span>将故事写给我们——</span>
+                        <span>{nickname}</span>
                         <span>已关注1天</span>
                     </p>
                     <p>
-                        <span>关注12</span>
-                        <span>粉丝110</span>
+                        <span>关注{newFollows}</span>
+                        <span>粉丝{followeds}</span>
                     </p>
                     <ul>
-                        <li>
-                            <i>♀</i>
+                        <li className={"sex_0"} style={{background:gender===2?"lightpink":"#00a5e0"}}>
+                            <i>{gender===2?"♀":"♂"}</i>
                             <i>95后</i>
                         </li>
-                        <li>Lv.8</li>
+                        <li>Lv.{userInfoList.level}</li>
                         <li className={"iconfont iconren"}></li>
                         <li className={"iconfont iconxiaoxi"}>发私信</li>
                     </ul>
@@ -62,12 +68,16 @@ class UserInfo extends React.Component{
         )
     }
     componentDidMount() {
-        this.props.getFlow(this.props.match.params.id)
+        this.props.getFlow(this.props.match.params.id);
+        this.props.getUserPlayList(this.props.match.params.id);
+        this.props.getUserPlayListTwo(this.props.match.params.id)
     }
 }
 function mapStateToProps(state,props) {
     return{
-        userInfoList: state.search.userInfoList
+        userInfoList: state.search.userInfoList,
+        userPlayList: state.search.userPlayList,
+        userPlayListTwo: state.search.userPlayListTwo
     }
 }
 function mapDispatchProps(dispatch,props) {

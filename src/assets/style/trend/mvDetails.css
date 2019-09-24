@@ -330,3 +330,52 @@
     float: left;
     margin-right: 0.3rem;
 }
+
+
+/*发评论*/
+.ra_mvdetails_addcom{
+    height: 1.5rem;
+    width: 100%;
+    background: #f3f8fd;
+    position: fixed;
+    bottom: 0;
+    z-index: 1320;
+}
+.ra_mvdetails_addcom input{
+    height: 1.2rem;
+    width: 85%;
+    border: none;
+    border-bottom: 1px solid #9f9f9f;
+    margin-top: 0.2rem;
+    outline: none;
+}
+.ra_mvdetails_addcom span{
+    display: inline-block;
+    height: 1.2rem;
+    width: 10%;
+    text-align: center;
+}
+
+/*回复评论*/
+.ra_mvdetails_addcom1{
+    height: 1.5rem;
+    width: 100%;
+    background: pink;
+    position: fixed;
+    bottom: 0;
+    z-index: 1400;
+}
+.ra_mvdetails_addcom1 input{
+    height: 1.2rem;
+    width: 85%;
+    border: none;
+    border-bottom: 1px solid #9f9f9f;
+    margin-top: 0.2rem;
+    outline: none;
+}
+.ra_mvdetails_addcom1 span{
+    display: inline-block;
+    height: 1.2rem;
+    width: 10%;
+    text-align: center;
+}

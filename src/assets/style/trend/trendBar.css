@@ -1,7 +1,7 @@
 .ra_box1{
     width: 100%;
     overflow: hidden;
-    border-bottom: #00a5e0 solid 0.01rem;
+    border-bottom: #e6e6e6 solid 0.01rem;
  }
 .ra_box1in{
     width: 96%;
@@ -43,12 +43,14 @@
     /*background: #f3f8fd;*/
     line-height: 0.4rem;
     height: 0.4rem;
+    overflow: hidden;
 }
 .ra_Content_userName{
     color: #00a5e0;
+    font-size: 0.43rem;
 }
 .ra_Content_2{
-    height: 5rem;
+
     /*background: purple;*/
     width: 100%;
     padding-top: 0.1rem;
@@ -58,17 +60,22 @@
     font-size:0.43rem ;
     line-height: 0.6rem;
 }
-.ra_Content_2_vedio{
-
-}
 .ra_Content_3{
     overflow: hidden;
     /*background: pink;*/
     width: 100%;
 }
+.ra_Content_3>div{
+    height: 0.8rem;
+    width:1rem;
+    /*background: pink;*/
+    line-height: 0.8rem;
+    text-align: center;
+}
 .ra_Content_3 span{
     vertical-align: bottom;
     margin-right: 0.15rem;
+    font-size: 0.36rem;
 }
 .ra_Content_3_like{
     float: left;
@@ -84,4 +91,182 @@
 }
 .ra_Content_3_more{
     float: right;
+}
+.ra_Content_origin{
+    padding-bottom: 0.3rem;
+    font-size: 0.36rem;
+}
+.pubimg{
+    height: 5rem;
+    width: 2.7rem;
+}
+.pubimg2{
+    height: 4.6rem;
+    width: 4.4rem;
+    border-radius: 0.2rem;
+}
+.pubimg3{
+    height: 3rem;
+    width: 3rem;
+    border-radius: 0.2rem;
+}
+.pubimg4{
+    height: 3.3rem;
+    width: 3.3rem;
+    border-radius: 0.2rem;
+}
+.pubimg50{
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 0.2rem;
+}
+.pubimg51{
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 0.2rem;
+}
+.pubimg52{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.2rem;
+}
+.pubimg53{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.2rem;
+}
+.pubimg54{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.2rem;
+}
+.pubimg6,.pubimg9{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.2rem;
+}
+.pubimg70{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.2rem;
+}
+.pubimg71{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.2rem;
+}
+.pubimg72{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.2rem;
+}
+.pubimg73{
+    height: 2.25rem;
+    width: 2.25rem;
+    border-radius: 0.2rem;
+}
+.pubimg74{
+    height: 2.25rem;
+    width: 2.25rem;
+    border-radius: 0.2rem;
+}
+.pubimg75{
+    height: 2.25rem;
+    width: 2.25rem;
+    border-radius: 0.2rem;
+}
+.pubimg76{
+    height: 2.25rem;
+    width: 2.25rem;
+    border-radius: 0.2rem;
+}
+.pubimg8{
+    height: 2.25rem;
+    width: 2.25rem;
+    border-radius: 0.2rem;
+}
+.ra_Content_2_vedio_s{
+    width: 100%;
+    height: 4.8rem;
+    position: relative;
+}
+.ra_Content_2_vedio_s video{
+    width: 100%;
+    height: 100%;
+}
+.ra_Content_2_vedio_s_one{
+    display: block;
+    position: absolute;
+    bottom: 0.2rem;
+    left: 0.2rem;
+    font-size: 0.32rem;
+    color: #f3f8fd;
+}
+.ra_Content_2_vedio_s_two{
+    display: block;
+    position: absolute;
+    bottom: 0.2rem;
+    right: 0.2rem;
+    font-size: 0.32rem;
+    color: #f3f8fd;
+}
+.ra_Content_2_song{
+    width: 100%;
+    height: 1.5rem;
+    background: #e6e6e6;
+    border-radius: 0.2rem;
+    margin-bottom: 0.2rem;
+}
+.ra_Content_2_song_in{
+    height: 1.05rem;
+    padding-top: 0.2rem;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    /*background: pink;*/
+    position: relative;
+}
+.ra_Content_2_song_in img{
+    height: 1.05rem;
+    width: 1.05rem;
+    border-radius: 0.1rem;
+    float: left;
+}
+.ra_Content_2_song_in>span{
+    height: 0.4rem;
+    width: 0.4rem;
+    border-radius: 50%;
+    background: #e6e6e6;
+    position: absolute;
+    top: 0.6rem;
+    left: 0.6rem;
+}
+.ra_Content_2_song_in div{
+    height: 100%;
+    float: left;
+    padding-left: 0.2rem;
+    width:80%;
+}
+.ra_Content_2_song_in p{
+    padding-top: 0.1rem;
+    font-size: 0.40rem;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.ra_Content_2_song_in h2{
+    padding-top: 0.2rem;
+    font-size: 0.36rem;
+    color: #7e8c8d;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+
+}
+.ra_Content_2_song_in h2>span{
+    border: #ff2315 solid 0.01rem;
+    margin-right: 0.1rem;
+}
+
+.ra_zhuanfa{
+    background: #DDDDDD;
 }

@@ -21,7 +21,7 @@ class Composite extends React.Component{
         const album = (this.props.compositeList.result?this.props.compositeList.result.album:"");
         const djRadio = (this.props.compositeList.result?this.props.compositeList.result.djRadio:"");
         const user = (this.props.compositeList.result?this.props.compositeList.result.user:"");
-        // console.log(djRadio)
+        // console.log(video)
         return(
             <div className={"composite_k"}>
                 <div className={"composite_singe"}>
@@ -32,7 +32,14 @@ class Composite extends React.Component{
                     <ul>
                         {
                             song?song.songs.map(v=>(
-                                <li key={v.id}>
+                                <li key={v.id} onClick={()=>{
+                                    this.props.history.push({
+                                        pathname:"/musicplaying",
+                                        state:{
+                                            id:v.id,
+                                        }
+                                    })
+                                }}>
                             <span>
                                 <p>{v.name} {v.alia}</p>
                                 <p>{v.ar[0].name}-{v.al.name}</p>
@@ -56,7 +63,13 @@ class Composite extends React.Component{
                     <ul>
                         {
                             video?video.videos.map(v=>(
-                                <li key={v.playTime}>
+                                <li key={v.vid} onClick={()=>{
+                                    if (v.type==0) {
+                                        this.props.history.push(`/mvDetails/${v.vid}`)
+                                    }else {
+                                        this.props.history.push(`/videoDetails/${v.vid}`)
+                                    }
+                                }}>
                                     <span><img src={v.coverUrl} alt=""/></span>
                                     <span>
                                 <p>{v.title}</p>
@@ -77,7 +90,9 @@ class Composite extends React.Component{
                     <ul>
                         {
                             playList?playList.playLists.map(v=>(
-                                <li key={v.id}>
+                                <li key={v.id} onClick={()=>{
+                                    this.props.history.push(`/musiclist/${v.id}`)
+                                }}>
                                     <span><img src={v.coverImgUrl} alt=""/></span>
                                     <span>
                                 <p>{v.name}</p>

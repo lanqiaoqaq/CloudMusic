@@ -15,8 +15,10 @@ class VideoDetails extends React.Component{
         }
     }
     render(){
+        console.log("render");
         const {videoDetails,pic,related,comment,vurl}=this.state;
-        console.log(this.props.videoDetails,this.props,this.state);
+        // console.log(comment);
+        // console.log(this.props.videoDetails,this.props,this.state);
 
         const bground={
             background: `url(${videoDetails.coverUrl})`,
@@ -27,6 +29,20 @@ class VideoDetails extends React.Component{
         const lable=videoDetails.videoGroup?"block":"none";//有没有小标签
         return(
             <>
+
+                {/*********************回复评论************************/}
+                <div style={{display:"none"}} className={"ra_mvdetails_addcom1"}>
+                    <input className={"ra_mvdetails_addcom_in1"} placeholder={"写评论"} type="text"/>
+                    <span onClick={
+                        this.props.addCom.bind(this,{t:2,type:5,id:this.props.match.params.id,commentId:document.querySelector(".ra_mvdetails_addcom1"),content1:document.querySelector(".ra_mvdetails_addcom_in1")})} className={"ra_mvdetails_new_discuss_in1"} className={"iconfont iconjiantou-copy"}></span>
+                </div>
+                {/************************发评论*********************/}
+
+                <div className={"ra_mvdetails_addcom"}>
+                    <input className={"ra_mvdetails_addcom_in"} placeholder={"写评论"} type="text"/>
+                    <span onClick={this.props.addCom.bind(this,{t:1,type:5,id:this.props.match.params.id,commentId:"",content1:document.querySelector(".ra_mvdetails_addcom_in")})} className={"iconfont iconjiantou-copy"}></span>
+                </div>
+                {/************************视频*********************/}
                 {
                     <div className={"ra_mvdetails_video_out"}>
                         <video className={"ra_mvdetails_video"} poster={"j.jpg"} controls style={bground} src={vurl}>
@@ -51,16 +67,16 @@ class VideoDetails extends React.Component{
                         </div>
                     </div>
                 </div>
-            {/*************************视频标签****不能点***************************/}
-            <div style={{display:{lable}}} className={"ra_mvdetails_lable"}>
-                {
-                    videoDetails.videoGroup?videoDetails.videoGroup.map((v,i)=>(
-                        <div className={"ra_mvdetails_lable_sq"} key={v.id}>
-                            {v.name}
-                        </div>
-                    )):[].map(()=>{})
-                }
-            </div>
+                {/*************************视频标签****不能点***************************/}
+                <div style={{display:{lable}}} className={"ra_mvdetails_lable"}>
+                    {
+                        videoDetails.videoGroup?videoDetails.videoGroup.map((v,i)=>(
+                            <div className={"ra_mvdetails_lable_sq"} key={v.id}>
+                                {v.name}
+                            </div>
+                        )):[].map(()=>{})
+                    }
+                </div>
                 {/*******************点赞评论收藏***********************************/}
 
                 <div className={"ra_mvdetails_thum"}>
@@ -71,17 +87,19 @@ class VideoDetails extends React.Component{
                 </div>
 
                 {/******************作者的简介*******************/}
-                <div onClick={()=>{
-                    this.props.history.push("/userInfo/"+videoDetails.creator.userId);
+                <div onClick={(e)=>{
+                    if(e.target===document.querySelector(".ra_mvdetails_artist")){
+                        this.props.history.push("/userInfo/"+videoDetails.creator.userId);
+                    }
                 }} className={"ra_mvdetails_artist"}>
                     <div className={"ra_mvdetails_artist_pic"}>
                         <img style={{position:"absolute",left:"0.2rem",top:"0.2rem"}} src={videoDetails.creator?videoDetails.creator.avatarUrl:""}/>
                     </div>
                     <div className={"ra_mvdetails_artist_name"}>
-                                <span>{videoDetails.creator?videoDetails.creator.nickname:""}</span>
+                        <span>{videoDetails.creator?videoDetails.creator.nickname:""}</span>
                     </div>
-                    <div className={"ra_mvdetails_artist_sc"}>
-                        +关注
+                    <div onClick={this.props.isFollow.bind(this,{type:videoDetails.creator?videoDetails.creator.followed?0:1:"",id:videoDetails.creator?videoDetails.creator.userId:"",vid:this.props.match.params.id})} className={"ra_mvdetails_artist_sc"}>
+                        {videoDetails.creator?videoDetails.creator.followed?"已关注":"+关注":""}
                     </div>
                 </div>
 
@@ -114,12 +132,20 @@ class VideoDetails extends React.Component{
                 </div>
 
                 {/***********************热评****************************/}
-                <div className={"ra_mvdetails_recom"}>精彩评论</div>
+                <div onClick={()=>{
+                    document.querySelector(".ra_mvdetails_addcom1").style.display="none"
+                }} className={"ra_mvdetails_recom"}>精彩评论</div>
 
                 <div className={"ra_mvdetails_new_discuss"}>
                     {
                         comment.hotComments?comment.hotComments.map((v,i)=>(
-                            <div className={"ra_mvdetails_new_discuss_in"}>
+                            <div onClick={(e)=>{
+                                if(e.target===document.querySelector(".ra_asdf")){
+                                    document.querySelector(".ra_mvdetails_addcom1").style.display="block";
+                                    document.querySelector(".ra_mvdetails_addcom1").setAttribute("commentId",v.commentId);
+                                }
+                            }
+                            }  className={"ra_asdf"}>
                                 <div className={"ra_mvdetails_new_discuss_in_user"}>
                                     <img  onClick={()=>{
                                         if(v.user.userId)
@@ -129,28 +155,45 @@ class VideoDetails extends React.Component{
                                         <p>{v.user?v.user.nickname:""}</p>
                                         <p>{getDate(v.time)}</p>
                                     </div>
-                                    <div className={"ra_mvdetails_new_discuss_in_user_z"}>{v.likedCount}  <span className={"iconfont iconthumb"}></span></div>
+                                    <div onClick={this.props.isLike.bind(this,{t:v.liked?0:1,id:videoDetails.vid,type:5,cid:v.commentId})} style={{
+                                        color:v.liked?"red":"#8b8585"
+                                    }} className={"ra_mvdetails_new_discuss_in_user_z"}>{v.likedCount}  <span  className={"iconfont iconthumb"}></span></div>
                                 </div>
                                 <div className={"ra_mvdetails_new_discuss_content"}>{v.content}</div>
                             </div>
                         )):[]
                     }
                 </div>
-{/****************************最新评论*******************/}
-                <div className={"ra_mvdetails_recom"}>最新评论</div>
+                {/****************************最新评论*******************/}
+                <div onClick={()=>{
+                    document.querySelector(".ra_mvdetails_addcom1").style.display="none";
+                }} className={"ra_mvdetails_recom"}>最新评论</div>
                 <div className={"ra_mvdetails_new_discuss"}>
                     {
                         comment.comments?comment.comments.map((v,i)=>(
-                            <div className={"ra_mvdetails_new_discuss_in"}>
+                            <div onClick={(e)=>{
+                                if(e.target===document.querySelector(".ra_mvdetails_new_discuss_in")){
+                                    document.querySelector(".ra_mvdetails_addcom1").style.display="block";
+                                    document.querySelector(".ra_mvdetails_addcom1").setAttribute("commentId",v.commentId);
+                                }
+                            }
+                            } className={"ra_mvdetails_new_discuss_in"}>
                                 <div className={"ra_mvdetails_new_discuss_in_user"}>
                                     <img src={v.user?v.user.avatarUrl:""} alt=""/>
                                     <div className={"ra_mvdetails_new_discuss_in_user_s"}>
                                         <p>{v.user?v.user.nickname:""}</p>
                                         <p>{getDate(v.time)}</p>
                                     </div>
-                                    <div className={"ra_mvdetails_new_discuss_in_user_z"}>{v.likedCount}  <span className={"iconfont iconthumb"}></span></div>
+                                    <div onClick={this.props.isLike.bind(this,{t:v.liked?0:1,id:videoDetails.vid,type:5,cid:v.commentId})} style={{
+                                        color:v.liked?"red":"#8b8585"
+                                    }} className={"ra_mvdetails_new_discuss_in_user_z"}>{v.likedCount}<span className={"iconfont iconthumb"}></span></div>
                                 </div>
-                                <div className={"ra_mvdetails_new_discuss_content"}>{v.content}</div>
+                                <div>
+                                    <div className={"ra_mvdetails_new_discuss_content"}>{v.content}</div>
+                                    <div style={{background:"#9f9f9f",marginLeft:"1rem",width:"80%",lineHeight:"1rem",fontSize:"0.36rem"}}>{v.beReplied.length>0?("@"+v.beReplied[0].user.nickname+":"+v.beReplied[0].content):""}</div>
+
+                                </div>
+
                             </div>
                         )):[]
                     }
@@ -159,6 +202,13 @@ class VideoDetails extends React.Component{
         )
     }
     componentWillReceiveProps(nextProps, nextContext) {
+        console.log("componentWillReceiveProps");
+        console.log(this.props.videoDetails===nextProps.videoDetails,"******");
+        if(this.props.videoDetails===nextProps.videoDetails){//同路由跳转执行不到componentDidMount，先判断数据有没有改变，没改变执行componentDidMount
+            setTimeout(()=>{
+                this.props.getVideoDetails(this.props.match.params.id);
+            },50);
+        }
         this.setState({
             videoDetails:nextProps.videoDetails.videoDetails.data,
             pic:nextProps.videoDetails.pic,
@@ -170,7 +220,7 @@ class VideoDetails extends React.Component{
 
     componentDidMount() {
         const vId=this.props.match.params.id;
-        console.log(vId,this.props.match.params)
+        // console.log(vId,this.props.match.params)
         this.props.getVideoDetails(vId);
     }
 }
