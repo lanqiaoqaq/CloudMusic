@@ -25,11 +25,11 @@ body,html{
     line-height: 1.3rem;
     font-size:0.38rem;
 }
-section{
+.section{
     flex:1;
     overflow-y: auto;
 }
-section::-webkit-scrollbar{
+.section::-webkit-scrollbar{
     display:none;
 }
 .footer{
