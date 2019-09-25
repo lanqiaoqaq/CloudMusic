@@ -15,7 +15,7 @@ class NewSong extends React.Component{
     }
     render(){
         const newSong = this.props.newSong;
-        console.log(newSong)
+       // console.log(newSong)
         return(
             <div className={"new_disc"}>
                 <div className={"head_disc"}>

@@ -12,7 +12,6 @@ body,html{
     font-size: 0.48rem;
 }
 .top_nav{
-    height: 1.3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
