@@ -19,7 +19,6 @@ class Audio extends React.Component{
     }
   }
     render(){
-      // console.log(this.props.music)
         const {isPlay,id,currentTime,allTime}=this.state;
         const src=this.props.music;
         return(
@@ -38,7 +37,6 @@ class Audio extends React.Component{
                 this.controlAudio('getCurrentTime')
                 this.timeUpdate();
                 this.controlAudio('allTime');
-                
             }}
             >
               您的浏览器不支持 audio 标签。
@@ -97,6 +95,7 @@ class Audio extends React.Component{
       
       timeUpdate() {
         const audio = document.getElementById(`audio${this.state.id}`)
+        this.props.getTime(this.state.currentTime);
         var playPercent = 7.6 * (this.state.currentTime / audio.duration);
         this.refs.playhead.style.webkitTransform  = "translateX("+playPercent + "rem)";
         this.refs.playhead.style.transform = "translateX("+playPercent + "rem)";
@@ -205,10 +204,12 @@ class Audio extends React.Component{
         }
       }
       // componentWillReceiveProps(nextProps){
-      //   console.log(nextProps.music.data)
-      //   this.setState({
-      //       src:nextProps.music.data[0].url
+      //   if(nextProps.currentTime!==this.props.currentTime){
+      //    this.setState({
+      //       currentTime:nextProps.currentTime.time
       //     })
+      // }
+        
       // }
       timeChange(){
         this.props.changeDeg(this.state.isPlay);
@@ -255,7 +256,7 @@ class Audio extends React.Component{
 }
 function mapStateToProps(state,props){
   return {
-      music:state.profile.cyMusic
+      music:state.profile.cyMusic,currentTime:state.profile.cyCurrentTime
   }
 }
 function mapDispatchToProps(dispatch,props){

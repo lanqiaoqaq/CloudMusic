@@ -65,7 +65,7 @@ class Recently extends React.Component {
 }
 function mapStateToProps(state, props) {
     return {
-        record: state.profile.cyRecord
+        record:state.profile.cyRecord
     }
 }
 function mapDispatchToProps(dispatch, props) {

@@ -7,30 +7,38 @@ import NewSong from '../components/Find/NewSong'
 import CloudSelection from '../components/Find/CloudSelection'
 import MvList from '../components/Find/MvList'
 import axios from 'axios'
-class Find extends React.Component{
-    render(){
-        return(
+
+class Find extends React.Component {
+    render() {
+        return (
             <div>
-                <div className={"f_banner"}>
-                    <div className={"banner_pic"}>
-                        <Banner></Banner>
+                    <div className={"f_banner"}>
+                        <div className={"banner_pic"}>
+                            <Banner></Banner>
+                        </div>
                     </div>
-                </div>
-                <MidNav {...this.props}></MidNav>
-                <div className={"intro_playlist"}>
-                    <div className={"head_playlist"}>
-                        <span>推荐歌单</span>
-                        <span onClick={()=>{
-                            this.props.history.push("/songlist")
-                        }}>歌单广场</span>
+                    <MidNav {...this.props}></MidNav>
+                    <div className={"intro_playlist"}>
+                        <div className={"head_playlist"}>
+                            <span>推荐歌单</span>
+                            <span onClick={() => {
+                                this.props.history.push("/songlist")
+                            }}>歌单广场</span>
+                        </div>
+                        <IntroPlaylist {...this.props}></IntroPlaylist>
                     </div>
-                    <IntroPlaylist {...this.props}></IntroPlaylist>
-                </div>
-                <NewSong {...this.props}></NewSong>
-                <CloudSelection {...this.props}></CloudSelection>
-                <MvList {...this.props}></MvList>
+                    <NewSong {...this.props}></NewSong>
+                    <CloudSelection {...this.props}></CloudSelection>
+                    <MvList {...this.props}></MvList>
             </div>
         )
     }
+    componentDidMount(){
+        // let scroll = new BScroll('.f_wrapper',{
+        //     scrollY: true,
+        //     click:true
+        // })
+    }
 }
+
 export default Find;

@@ -17,7 +17,7 @@ class Trend extends React.Component{
                         <li><span><NavLink style={{display:"block",height:"0.75rem"}} activeStyle={{color:"red",borderBottom:"0.054rem solid red"}} to={"/trend/mv"}>MV</NavLink></span></li>
                     </ul>
                         <ul className="ra_ui-tab-content">
-                            <li><Route path={"/trend"} exact component={TrendIn}></Route></li>
+                            <li className={"ra_ui-tab-content_1"}><Route path={"/trend"} exact component={TrendIn}></Route></li>
                             <li><Route path={"/trend/mv"} component={Mv}></Route></li>
                         </ul>
 
