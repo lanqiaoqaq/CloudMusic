@@ -65,10 +65,17 @@
     /*background: pink;*/
     width: 100%;
 }
+.ra_Content_3>div{
+    height: 0.8rem;
+    width:1rem;
+    /*background: pink;*/
+    line-height: 0.8rem;
+    text-align: center;
+}
 .ra_Content_3 span{
     vertical-align: bottom;
     margin-right: 0.15rem;
-    font-size: 0.32rem;
+    font-size: 0.36rem;
 }
 .ra_Content_3_like{
     float: left;

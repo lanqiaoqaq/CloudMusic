@@ -15,10 +15,10 @@ class VideoDetails extends React.Component{
         }
     }
     render(){
-        console.log("render")
+        console.log("render");
         const {videoDetails,pic,related,comment,vurl}=this.state;
-        console.log(comment);
-        console.log(this.props.videoDetails,this.props,this.state);
+        // console.log(comment);
+        // console.log(this.props.videoDetails,this.props,this.state);
 
         const bground={
             background: `url(${videoDetails.coverUrl})`,
@@ -202,6 +202,13 @@ class VideoDetails extends React.Component{
         )
     }
     componentWillReceiveProps(nextProps, nextContext) {
+        console.log("componentWillReceiveProps");
+        console.log(this.props.videoDetails===nextProps.videoDetails,"******");
+        if(this.props.videoDetails===nextProps.videoDetails){//同路由跳转执行不到componentDidMount，先判断数据有没有改变，没改变执行componentDidMount
+            setTimeout(()=>{
+                this.props.getVideoDetails(this.props.match.params.id);
+            },50);
+        }
         this.setState({
             videoDetails:nextProps.videoDetails.videoDetails.data,
             pic:nextProps.videoDetails.pic,
@@ -213,7 +220,7 @@ class VideoDetails extends React.Component{
 
     componentDidMount() {
         const vId=this.props.match.params.id;
-        console.log(vId,this.props.match.params)
+        // console.log(vId,this.props.match.params)
         this.props.getVideoDetails(vId);
     }
 }

@@ -19,7 +19,7 @@ class AddTrends extends React.Component{
                         this.props.history.push("/trend")
                     }} className={"iconfont iconzuojiantou"}></span>
                     <span className={"ra_follow_header_w"}>发动态</span>
-                    <span onClick={this.props.addSong.bind(this,this.props.match.params.id)} className={"ra_addTrands_go"}>发送</span>
+                    <span onClick={this.props.addSong.bind(this,{id:this.props.match.params.id})} className={"ra_addTrands_go"}>发送</span>
                 </div>
                 <div className={"ra_addTrands_text"} >
                     <textarea placeholder={"一起聊聊吧"} />

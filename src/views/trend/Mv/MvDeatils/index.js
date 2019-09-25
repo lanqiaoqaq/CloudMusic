@@ -53,9 +53,9 @@ class MvDetails extends React.Component{
                 <div className={"ra_mvdetails_title"}>
                     <div className={"ra_mvdetails_title_top"}>
                         <div className={"ra_mvdetails_title_top_l"}>
-                            <p>{mvdd.artistName}</p>
+                            <p>{mvdd?mvdd.artistName:""}</p>
                             <div>
-                                <span className={"ra_mvdetails_title_top_l_span1"}>发布：{mvdd.publishTime}</span>|
+                                <span className={"ra_mvdetails_title_top_l_span1"}>发布：{mvdd?mvdd.publishTime:""}</span>|
                                 <span className={"ra_mvdetails_title_top_l_span2"}>播放：{getPlayerTime(mvdd.playCount)}</span>
                             </div>
                         </div>
@@ -201,12 +201,17 @@ class MvDetails extends React.Component{
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
+        if(this.props.mvDetails===nextProps.mvDetails){
+            setTimeout(()=>{
+                this.props.getMvDetails(this.props.match.params.id);
+            },50)
+        }
         this.setState({
             mvdd:nextProps.mvDetails.data,
-            artists:nextProps.mvDetails.data.artists,
-            pic:nextProps.mvDetails.data.artists[0],
-            comments:nextProps.mvComments.comments||[],
-            hotComments:nextProps.mvComments.hotComments||[]
+            artists:nextProps.mvDetails.data?nextProps.mvDetails.data.artists:[],
+            pic:nextProps.mvDetails.data?nextProps.mvDetails.data.artists[0]:{},
+            comments:nextProps.mvComments?nextProps.mvComments.comments||[]:[],
+            hotComments:nextProps.mvComments?nextProps.mvComments.hotComments||[]:[]
         })
     }
     componentDidUpdate(prevProps, prevState, snapshot) {

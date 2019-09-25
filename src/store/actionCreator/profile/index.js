@@ -1,5 +1,6 @@
 import axios from "axios";
 import actionType from "../../actionType/profile"
+import { getTime } from "../../../tools/date";
 //获取用户歌单
 export  function changePlayList(payload){
     return {
@@ -57,6 +58,25 @@ export function changeDj(payload){
         payload
     }
 }
+export function changeCreateDj(payload){
+    return {
+        type:actionType.CHANGE_CREATEDJ,
+        payload
+    }
+}
+export function changepaygift(payload){
+    return {
+        type:actionType.CHANGE_PAYGIFT,
+        payload
+    }
+}
+export function changeTime(payload){
+    // console.log(payload,93274892738)
+    return {
+        type:actionType.CHANGE_TIME,
+        payload
+    }
+}
 export default {
     //获取用户歌单
     getPlayList(){//异步action
@@ -87,7 +107,6 @@ export default {
             if(data.code===200){
                 dispatch(changePlayListDetail(data));
                 let ids="";
-                console.log(data.privileges);
                 if( data.privileges){
                     data.privileges.map(v=>{
                             ids+=v.id+","
@@ -126,7 +145,29 @@ export default {
     getDj(id){
         return async (dispatch)=>{
             const data=await axios.get("/dj/sublist");
+            if(data.code===200){
+                this.getCreateDj(id);
+            }
             dispatch(changeDj(data));
         }
+    },
+    //创建的电台
+    getCreateDj(id){
+        return async (dispatch)=>{
+            const data=await axios.get("/user/audio?uid="+id);
+            dispatch(changeCreateDj(data));
+        }
+    },
+    //精品电台
+    getpaygift(){
+        return async (dispatch)=>{
+            const data=await axios.get("/dj/paygift?limit=3");
+            dispatch(changepaygift(data));
+        }
+    },
+    //歌曲时间
+    getTime(time){
+        return async (dispatch)=>
+        dispatch(changeTime({time}));   
     }
 }
