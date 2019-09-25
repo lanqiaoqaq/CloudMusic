@@ -2,11 +2,12 @@
   "name": "cloudmusic",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://118.31.103.23",
+  "proxy": "http://118.31.103.23:8080",
   "dependencies": {
     "@material-ui/core": "^4.4.2",
     "@material-ui/icons": "^4.4.1",
     "axios": "^0.19.0",
+    "better-scroll": "^1.15.2",
     "mint-ui": "^2.2.13",
     "pubsub-js": "^1.7.0",
     "react": "^16.9.0",
