@@ -6,5 +6,8 @@ export default {
     cySongDetail:[],
     cyMusic:[],
     cylyric:[],
-    cydj:[]
+    cydj:[],
+    cyCreateDj:[],
+    cypaygift:[],
+    cyCurrentTime:{},
 }

@@ -26,5 +26,15 @@ export default function (state = initState,{type,payload}) {
     if(type===actionType.CHANGE_DJ){
         state.cydj=payload;
     }
+    if(type===actionType.CHANGE_CREATEDJ){
+        state.cyCreateDj=payload;
+    }
+    if(type===actionType.CHANGE_PAYGIFT){
+        state.cypaygift=payload;
+    }
+    
+    if(type===actionType.CHANGE_TIME){
+        state.cyCurrentTime=payload;
+    }
     return state
 }

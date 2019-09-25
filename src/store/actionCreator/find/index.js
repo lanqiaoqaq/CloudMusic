@@ -107,7 +107,7 @@ export default {
     //请求新碟
     getNewDisc(){
         return async (dispatch)=>{
-                const data = await axios.get("/top/album?offset=0&limit=3");
+                const data = await axios.get("/top/album?offset=1&limit=3");
                 //console.log(data.albums)
                 dispatch(ChangeNewSong(data.albums))
         }

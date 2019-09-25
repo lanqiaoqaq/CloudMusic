@@ -16,7 +16,7 @@ class MusicPlaying extends React.Component {
     }
     render() {
         // console.log(this.state.songList, this.state.id)
-        console.log(this.props)
+        // console.log(this.props)
         return (
 
             <div  className="cy_au_box">

@@ -114,3 +114,20 @@
     border-bottom: #8b8585 solid 0.02rem;
     border-top: #8b8585 solid 0.02rem;
 }
+
+
+.ra_trendIn_delete{
+    height: 1.5rem;
+    width: 3rem;
+    position: fixed;
+    top:50%;
+    left: 50%;
+    margin-top: -1.25rem;
+    margin-left: -1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    background: #e6e6e6;
+    font-size: 0.6rem;
+}
+
+

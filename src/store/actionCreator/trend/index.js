@@ -91,17 +91,47 @@ export const changeTrend = function (payload) {//改变视频详情
 };
 
 export default {
+    deleteTrends(e){//删除动态//我的页面
+        const id= e.target.getAttribute("comId");
+        return async ()=>{
+            await axios.get(`/event/del?evId=${id}`);
+        }
+    },
+    resourceLike(data){//资源点赞//t: 操作,1 为点赞,其他未取消点赞
+        // type:资源类型,对应以下类型
+        // 1: mv
+        // 4: 电台
+        // 5: 视频
+        // 6: 动态
+        const {type,threadId,t}=data;
+        return async ()=>{
+            await axios.get(`/resource/like?t=${t}&type=${type}&threadId=${threadId}`);
+            console.log("shuaxin");
+            this.props.getTrend();
+        }
+    },
+    relayTrends(data){//转发动态
+        const {id,uId}=data;
+        const text=document.querySelector("textarea").value;
+        return async ()=>{
+            await axios.get(`/event/forward?evId=${id}&uid=${uId}&forwards=${text}`);
+            this.props.getTrend();
+            setTimeout(()=>{
+                this.props.history.push("/trend");
+            },500);
 
-    addSong(id){//发布动态
-        console.log(id)
+        }
+    },
+    addSong(data){//发布动态/转发动态
+        const {id}=data;
+        console.log(id);
         const text=document.querySelector("textarea").value;
         document.querySelector("textarea").value="";
-        console.log(text)
+        console.log(text);
         return async (dispatch)=>{
-            if (text!=""){
                 await axios.get(`/share/resource?id=${id}&msg=${text}`);
                 this.props.history.push("/trend");
-            }
+
         }
     },
 
@@ -127,7 +157,7 @@ export default {
                         coverArr.push("347230")
                     }
                 });
-                console.log(urlArr,coverArr);
+                // console.log(urlArr,coverArr);
                 let url=[];
                 let cover=[];
                 let url1= await Promise.all(urlArr.map(async (v,i)=>{
@@ -154,11 +184,11 @@ export default {
         }
     },
     getTrends(){
-        const date=Date.now()
+        const date=Date.now();
         return async (dispatch)=>{
             const data =await axios.get("/event?pagesize=30&lasttime="+date);
-            const data1=await axios.get("/user/event?uid=32953014")
-            console.log(data1)
+            const data1=await axios.get("/user/event?uid=32953014");
+            // console.log(data1);
             // console.log(JSON.parse(data.event[0].json))
             return data.event
         }
@@ -196,9 +226,9 @@ export default {
         }
     },
     getVideoDetails(id){//获取视频数据
-        console.log("asdf")
+        console.log("getVideoDetails");
         return async (dispatch)=>{
-            console.log(id)
+            // console.log(id)；
             const data= await axios.get("/video/detail?id="+id);
             if(data.code===200){
                 const pic=await  this.getVideoUserPic(data.data.creator.userId);//头像
@@ -259,15 +289,6 @@ export default {
                     videoFeatured,
                     rank
                 }));
-                // data.data.map((v)=>{
-                //     this.getVideoSrc(v.id);this.getSingerPic(v.artists[0].id);this.getMvLike(v.id);
-                // });
-                // data.data.map((v)=>{
-                //
-                // });
-                // data.data.map((v)=>{
-                //
-                // });
             }
         }
     },
@@ -416,7 +437,7 @@ export default {
             await axios.get(`/comment?t=${t}&type=${type}&id=${id}&content=${content}&commentId=${commentid}`);
         }
         // console.log(this.props.getVideoDetails);
-        await this.props.getVideoDetails(id);
+        this.props.getVideoDetails(id);
     },
 
     isFollow(data,e){//关注用户
@@ -427,7 +448,7 @@ export default {
                 this.props.getVideoDetails(vid);
             }
     },
-    isLike(data,e){//点赞
+    isLike(data,e){//评论的点赞
         const {t,type,id,cid}=data;
         console.log(t,type,id,cid);
         return async (dispatch)=>{

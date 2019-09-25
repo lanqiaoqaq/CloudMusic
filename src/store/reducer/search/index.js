@@ -42,5 +42,8 @@ export default function (state = initState,{type,payload}) {
     if (type === actionType.CHANGE_USER_PLAY_LIST_TWO){
         state.userPlayListTwo = payload
     }
+    if (type === actionType.CHANGE_USER_DYNAMIC_LIST){
+        state.userDynamicList = payload
+    }
     return state
 }
