@@ -12,4 +12,5 @@ export default {
     userInfoList: [],
     userPlayList:[],
     userPlayListTow:[],
+    userDynamicList:[],
 }

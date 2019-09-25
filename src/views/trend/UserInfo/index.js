@@ -32,7 +32,9 @@ class UserInfo extends React.Component{
                         <span className={"iconfont iconzuojiantou"} onClick={()=>{
                             this.props.history.push("/SearchDetails/UserHome")
                         }}></span>
-                        <span></span>
+                        <span>
+                            {nickname}
+                        </span>
                         <span className={"iconfont icondiandiandian"}></span>
                     </p>
                     <p><img src={avatarUrl} alt=""/></p>
@@ -70,14 +72,16 @@ class UserInfo extends React.Component{
     componentDidMount() {
         this.props.getFlow(this.props.match.params.id);
         this.props.getUserPlayList(this.props.match.params.id);
-        this.props.getUserPlayListTwo(this.props.match.params.id)
+        this.props.getUserPlayListTwo(this.props.match.params.id);
+        this.props.getUserDynamicList(this.props.match.params.id)
     }
 }
 function mapStateToProps(state,props) {
     return{
         userInfoList: state.search.userInfoList,
         userPlayList: state.search.userPlayList,
-        userPlayListTwo: state.search.userPlayListTwo
+        userPlayListTwo: state.search.userPlayListTwo,
+        userDynamicList: state.search.userDynamicList
     }
 }
 function mapDispatchProps(dispatch,props) {

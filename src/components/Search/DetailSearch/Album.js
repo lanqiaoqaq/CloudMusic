@@ -9,7 +9,7 @@ import FindCreator from "../../../store/actionCreator/search"
 import Tools from "../../../common/Tools";
 class Album extends React.Component{
     render() {
-        const albumList  = this.props.albumList
+        const albumList  = this.props.albumList;
         const albums = (this.props.albumList.result?this.props.albumList.result.albums:"");
         // console.log(albums,"1")
         return(

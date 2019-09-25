@@ -92,6 +92,13 @@ export const ChangeUserPlayListTwo = function (payload) {
         payload
     }
 };
+//同步跟新用户动态详情列表
+export const ChangeUserDynamicList = function (payload) {
+    return{
+        type: actionType.CHANGE_USER_DYNAMIC_LIST,
+        payload
+    }
+};
 export default {
     //获取热搜列表
     getHotList(){
@@ -212,5 +219,13 @@ export default {
             }
             dispatch(ChangeUserPlayListTwo(playlist))
         }
-    }
+    },
+    //获取用户动态列表详情
+    getUserDynamicList(id){
+        return async (dispatch) => {
+            const data = await axios.get(`/user/event?uid=${id}`);
+            //console.log(data)
+            dispatch(ChangeUserDynamicList(data))
+        }
+    },
 }

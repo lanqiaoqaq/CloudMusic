@@ -13,7 +13,7 @@ class Home extends React.Component{
         const userInfoList = this.props.userInfoList;
         const userPlayList = this.props.userPlayList?this.props.userPlayList:"";
         const userPlayListTwo = this.props.userPlayListTwo?this.props.userPlayListTwo:"";
-        console.log(userPlayListTwo);
+        // console.log(userInfoList)
         return(
             <div className={"home_k"}>
                 <ul>
@@ -28,18 +28,20 @@ class Home extends React.Component{
                         <span><img src={require("../../../assets/search-images/love.jpg")} alt=""/></span>
                         <span>
                             <p>{userInfoList.profile.nickname}喜欢的音乐</p>
-                            <p>{userPlayListTwo.length>1?userPlayListTwo[0].trackCount:""}首，播放{userPlayListTwo.length>1?userPlayListTwo[0].playCount:""}次</p>
+                            <p>{userPlayListTwo?userPlayListTwo[0].trackCount:""}首，播放{userPlayListTwo?userPlayListTwo[0].playCount:""}次</p>
                         </span>
                     </li>
                 </ul>
-                <ul>
+                <ul style={{display:userPlayListTwo.length>1?"block":"none"}}>
                     <h5>
                         <span>创建的歌单</span>
-                        <span>（4个，被收藏3次）</span>
+                        <span>（{userPlayListTwo.length>1?userPlayListTwo.length-1:"1"}个，被收藏3次）</span>
                     </h5>
                     {
-                        userPlayListTwo?userPlayListTwo.splice(0,3).map(v=>(
-                            <li key={v.id}>
+                        userPlayListTwo?userPlayListTwo.slice(1,4).map(v=>(
+                            <li key={v.id} onClick={()=>{
+                                this.props.history.push(`/musiclist/${v.id}`)
+                            }}>
                                 <span><img src={v.coverImgUrl} alt=""/></span>
                                 <span>
                             <p>{v.name}</p>
@@ -50,17 +52,18 @@ class Home extends React.Component{
 
                         })
                     }
-
-                    <h5>更多歌单</h5>
+                    <h5 style={{display:userPlayListTwo.length>3?"block":"none"}}>更多歌单</h5>
                 </ul>
-                <ul>
+                <ul >
                     <h5>
                         <span>收藏的歌单</span>
-                        <span>（1193）</span>
+                        <span>（{userPlayList.length}）</span>
                     </h5>
                     {
-                        userPlayList?userPlayList.splice(0,3).map(v=>(
-                            <li key={v.id}>
+                        userPlayList?userPlayList.slice(0,3).map(v=>(
+                            <li key={v.id} onClick={()=>{
+                                this.props.history.push(`/musiclist/${v.id}`)
+                            }}>
                                 <span><img src={v.coverImgUrl} alt=""/></span>
                                 <span>
                             <p>{v.name}</p>
@@ -72,7 +75,7 @@ class Home extends React.Component{
                         })
                     }
 
-                    <h5>更多歌单</h5>
+                    <h5 style={{display:userPlayList.length>3?"block":"none"}}>更多歌单</h5>
                 </ul>
                 <ul>
                     <li>基本信息</li>
