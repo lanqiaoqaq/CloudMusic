@@ -35,6 +35,7 @@ import myDj from "./views/MyMusics/myDj";
 import AddVideo from "./views/trend/AddVideo";
 import AddTrends from "./views/trend/AddTrends";
 import Spin from "./views/spin";
+import SingerDeatils from "./views/trend/SingerDetails";
 class App extends React.Component{
   render(){
       return (
@@ -64,13 +65,14 @@ class App extends React.Component{
                         <Route path={"/mvDetails/:id"} component={MvDetails}></Route>
                         <Route path={"/mvFeatured"} component={MvFeatured}></Route>
                         <Route path={"/userInfo/:id"} component={UserInfo}></Route>
-                        <Route path={"/allFollow"} component={AllFollow}></Route>
+                        <Route path={"/allFollow/:page"} component={AllFollow}></Route>
                         <Route path={"/trendDetails/:id"} component={TrendDetails}></Route>
                         <Route path={"/videoDetails/:id"} component={VideoDetails}></Route>
                         <Route path={"/addVideo"} component={AddVideo}></Route>
                         <Route path={"/addTrends/:id/:name"} component={AddTrends}></Route>
                         <Route path={"/recently1"} component={Recently1}></Route>
                         <Route path={"/relayTrends/:id/:userId"} component={RelayTrends}></Route>
+                        <Route path={"/singerDetails"} component={SingerDeatils}></Route>
 
                         <Route path={"/Search"} component={Search}></Route>
                         <Route path={"/SearchDetails"} component={SearchDetails}></Route>

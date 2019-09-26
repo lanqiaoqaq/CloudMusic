@@ -30,22 +30,16 @@ class TrendIn extends React.Component{
                 </div>
             )
         }
-        // console.log("render");
-        // const bground={
-        //     background: `url(${videoDetails.coverUrl})`,
-        //     backgroundSize: "100% 100%",
-        //     backgroundPosition: "0 0"
-        // };
         const {follow,trends,url,cover}=this.state;
         // console.log(follow,trends,url,cover);
 
         return(
             <>
                 {/**********************发表动态********************/}
-                <sapn onClick={()=>{
+                <span onClick={()=>{
                     document.querySelector(".ra_trend_add_type").style.display="flex"
                 }} className={"ra_trend_add iconfont iconjiahao"}>
-                </sapn>
+                </span>
                 {/*********************选择动态类型********************/}
                 <div onClick={(e)=>{
                     if(e.target===document.querySelector(".ra_trend_add_type"))
@@ -63,14 +57,14 @@ class TrendIn extends React.Component{
                 {/****************我的关注************************/}
                 <div className={"ra_box"} >
                     <p onClick={()=>{
-                        this.props.history.push("/allFollow")
+                        this.props.history.push("/allFollow/"+this.state.page);
                     }}>我关注的他们 ></p>
                     <ul>
                         {
                             follow?follow.map((v,i)=>(
                                 <li onClick={()=>{
                                     this.props.history.push("/userInfo/"+v.userId);
-                                }}>
+                                }} key={i}>
                                     <div><img src={v.avatarUrl}/></div>
                                     <h2>{v.nickname}</h2>
                                 </li>
@@ -114,7 +108,7 @@ class TrendIn extends React.Component{
                             return(
                                 <div onClick={()=>{
                                     this.props.history.push("/trendDetails/"+v.info.threadId);
-                                }} className={"ra_box1"}>
+                                }} className={"ra_box1"} key={i}>
                                     <div className={"ra_box1in"}>
                                         <div onClick={(e)=>{
                                             e.stopPropagation();
