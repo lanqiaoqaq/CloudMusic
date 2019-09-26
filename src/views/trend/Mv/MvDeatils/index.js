@@ -14,11 +14,20 @@ class MvDetails extends React.Component{
             artists:[],
             pic:{},
             comments:[],
-            hotComments:[]
+            hotComments:[],
+            isLoading:true
         }
     }
 
     render() {
+        if(this.state.isLoading){
+            return (
+                <div style={{fontSize:"1rem",width:"100%",textAlign:"center"}}>
+                    加载中...
+                    <video style={{display:"none"}} src=""></video>
+                </div>
+            )
+        }
         // console.log(this.props,123);
         // console.log(this.props.mvDetails,this.props.mvBrs);
         // console.log(this.state.mvdd);
@@ -194,7 +203,11 @@ class MvDetails extends React.Component{
     }
     componentDidMount() {
         const mvId=Number(this.props.match.params.id);
-        this.props.getMvDetails(mvId);
+        this.props.getMvDetails(mvId).then(()=>{
+            this.setState({
+                isLoading:false
+            })
+        });
         // console.log(this.props.mvBrs)
         console.log("aaa")
         document.querySelector("video").currentTime=this.props.mvBrs[1];
