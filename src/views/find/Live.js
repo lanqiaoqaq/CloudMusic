@@ -8,7 +8,7 @@ class Live extends React.Component{
     }
     render(){
         return(
-            <div className="container_s wrapper_s">
+            <div>
                 {/*<div>*/}
                     {/*<header></header>*/}
                     {/*<section className="ads" >*/}
