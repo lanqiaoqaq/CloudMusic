@@ -31,7 +31,7 @@ class App extends React.Component {
                     this.props.history.push("/search")
                 }}><i className={"iconfont iconfangdajing"}></i></span>
             </nav>
-                <section>
+                <section className={"section"}>
                     <Switch>
                         <Route path={"/profile"} component={Profile}></Route>
                         <Route path={"/trend"} component={Trend}></Route>

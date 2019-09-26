@@ -15,7 +15,7 @@ class Single extends React.Component {
         return (
             <div className={"single_k"}>
                 <div className={"my_kwc"} style={{display: songs ? "none" : "block"}}>
-                    未找到与"{localStorage._k}"相关的内容
+                    "{localStorage._k}"相关的内容加载中.....
                 </div>
 
                 <p style={{display: songs ? "block" : "none"}}>

@@ -14,7 +14,7 @@ class PlayList extends React.Component{
         // console.log(playLists,"1")
         return(
             <div className={"playList_k"}>
-                <div className={"my_kwc"} style={{display:playLists?"none":"block"}}>未找到与"{localStorage._k}"相关的内容</div>
+                <div className={"my_kwc"} style={{display:playLists?"none":"block"}}>"{localStorage._k}"相关的内容加载中.....</div>
                 <ul>
                     {
                         playLists?playLists.map(v=>(

@@ -16,8 +16,8 @@ class Album extends React.Component{
         // console.log(userHomeList,"3");
         return(
             <div className={"userHome_k"}>
-                <div className={"my_kwc"} style={{display:userHomeList?"none":"block"}}>未找到与"{localStorage._k}"相关的内容</div>
-                <ul>
+                <div className={"my_kwc"} style={{display:userHomeList?"none":"block"}}>"{localStorage._k}"相关的内容加载中.....</div>
+        <ul>
                     {
                         userHomeList?userHomeList.map(v=>(
                             <li key={v.userId} onClick={()=>{
