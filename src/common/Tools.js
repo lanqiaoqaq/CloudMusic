@@ -20,6 +20,11 @@ class Tools {
         return "$" + v.toFixed(n);
     }
 
+    static getVideoLong(time) {//视频时长
+        const mint=(time/1000).toFixed(0);
+        return (Math.floor(mint/60)).toString().padStart(2,"0")+":"+((mint-Math.floor(mint/60)*60)).toString().padStart(2,"0")
+    }
+
     static tranNumber(num, point) {
         let numStr = num.toString();
         // 十万以内直接返回

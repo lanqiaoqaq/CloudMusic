@@ -14,7 +14,7 @@ class Album extends React.Component{
         // console.log(albums,"1")
         return(
             <div className={"album_k"}>
-                <div className={"my_kwc"} style={{display:albums?"none":"block"}}>未找到与"{localStorage._k}"相关的内容</div>
+                <div className={"my_kwc"} style={{display:albums?"none":"block"}}>"{localStorage._k}"相关的内容加载中.....</div>
                 <ul>
                     {
                         albums?albums.map(v=>(
