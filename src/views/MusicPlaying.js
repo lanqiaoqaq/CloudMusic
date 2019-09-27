@@ -125,7 +125,6 @@ class MusicPlaying extends React.Component {
         });
     }
     componentDidMount() {
-       
         this.setState({
             songList: this.props.location.state.song,
             id: this.props.location.state.id,

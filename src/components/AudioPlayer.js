@@ -24,8 +24,9 @@ class AudioPlayer extends React.Component{
                 }
             }
         }
+        // console.log(this.props.cySongDetail)
         return(
-            <div className={"audio_player"}  onClick={()=>this.props.history.push({pathname:"/musicplaying",state:{id}})}>
+            <div className={"audio_player"}  onClick={()=>this.props.history.push({pathname:"/musicplaying",state:{id,songs:this.props.cySongDetail.songs}})}>
                 <div className={"audio_son"}>
                     <img style={{width:"1.2rem",height:"1.2rem",borderRadius:"50%"}} src={this.props.cySongDetail.songs?this.props.cySongDetail.songs[a].al.picUrl:""} alt=""/>
                    
@@ -129,6 +130,7 @@ function mapStateToProps(state, props) {
         music:state.profile.cyMusic,
         cySongDetail:state.profile.cySongDetail,
         currentTime:state.profile.cyCurrentTime
+
     }
 }
 function mapDispatchToProps(dispatch, props) {

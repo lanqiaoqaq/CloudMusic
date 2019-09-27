@@ -40,7 +40,6 @@ class App extends React.Component {
                 </section>
                 <footer className={"footer"} style={{display:this.props.cySongDetail.songs?"block":"none"}}>
                     <AudioPlayer {...this.props}></AudioPlayer>
-                    {/* <Audio></Audio> */}
                 </footer>
 
             </>
