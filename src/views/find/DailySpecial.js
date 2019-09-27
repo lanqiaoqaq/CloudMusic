@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import DailyCreator from '../../store/actionCreator/find'
 class DailySpecial extends React.Component{
     render(){
-        console.log(this.props.recommendSongs);
+        //console.log(this.props.recommendSongs);
         const recommendSongs = this.props.recommendSongs;
         return(
             <div className="daily_sps">

@@ -12,7 +12,7 @@ class List extends React.Component {
     render() {
         const { songDetail } = this.state;
         return (
-            <>
+            <div>
                 {
                     songDetail.length > 0 ?
                         songDetail.map((v, i) => (
@@ -44,7 +44,7 @@ class List extends React.Component {
 
                 }
 
-            </>
+            </div>
         )
     }
     componentWillReceiveProps(nextProps) {
