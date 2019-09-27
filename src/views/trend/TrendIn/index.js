@@ -202,7 +202,7 @@ class TrendIn extends React.Component{
                                                                     <div className={"ra_Content_2_1img"} style={{display:(event?event.pics:"").length>0?"block":"none"}}>
                                                                         {
                                                                             event?event.pics?event.pics.map((v1,i)=>(
-                                                                                <img className={this.getClassName(event?event.pics.length:"",i)} src={v1.originUrl} alt=""/>
+                                                                                <img className={this.getClassName(event?event.pics.length:"",i)} key={i} src={v1.originUrl} alt=""/>
                                                                             )):[]:[]
                                                                         }
 
