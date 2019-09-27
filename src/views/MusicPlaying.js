@@ -11,12 +11,17 @@ class MusicPlaying extends React.Component {
             songList: [],
             id: "",
             deg: true,
-            isShow: true
+            isShow: true,
+            isLike:true,
+            like:false
         }
     }
     render() {
         // console.log(this.state.songList, this.state.id)
-        // console.log(this.props)
+        // console.log(this.props.songDetail)
+        // console.log(23423)
+        // let {like}=this.state;
+       
         return (
 
             <div  className="cy_au_box">
@@ -39,14 +44,14 @@ class MusicPlaying extends React.Component {
                         </div>
                       
                         <div className="cy_au_icon">
-                            <span className={"iconfont iconaixin cyiconaixin"} ></span>
+                            <span className={`iconfont cyiconaixin ${this.state.like?`iconaixin1`:`iconaixin`}`} onClick={(e)=>this.rerender(e)}></span>
                             <span className={"iconfont iconxiazai1"} ></span>
                             <span className={"iconfont iconpinglun cyiconpinglun"}></span>
                             <span className={"iconfont icondiandiandian"} ></span>
                         </div>
                     </div>
                 </div>
-                <div className={"cy_au_lrc"} style={{ display: this.state.isShow ? "none" : "block" }} onClick={() => this.setState({ isShow: !this.state.isShow })}>
+                <div className={"cy_au_lrc"} style={{ display: this.state.isShow ? "none" : "block" }} onClick={(e) => this.setState({ isShow: !this.state.isShow })}>
                     <pre className="lyricbox">
                         {this.props.lyric.lrc?this.props.lyric.lrc.lyric:""}
                     </pre>
@@ -64,6 +69,15 @@ class MusicPlaying extends React.Component {
             deg: data //把父组件中的deg替换为子组件传递的值
         });
 
+    }
+    rerender=(e)=>{
+        e.stopPropagation();
+        // console.log(!like,23423);
+        this.props.changeLike(!this.state.like,this.state.id).then(()=>this.props.getLikeMusic(localStorage.userId));
+        this.setState({
+            like:!this.state.like
+        })
+        console.log(this.state.like)
     }
     nextSong() {
         this.state.songList.map((v, i) => {
@@ -95,22 +109,40 @@ class MusicPlaying extends React.Component {
             }
         })
     }
-
+    changeLikeMusic(){
+        // console.log(this.props)
+        // let like=this.state.like;
+        this.props.likeMusic.ids?this.props.likeMusic.ids.map(v=>{
+            if(v===this.state.id) return this.setState({like:true});
+        }):this.setState({like:false});
+        // console.log(this.state.like,"jaskdkajsdh")
+    }
+    componentWillReceiveProps(nextProps){
+        // console.log(this.props,119)
+        // let like=this.state.like;
+        if(nextProps.likeMusic.ids) nextProps.likeMusic.ids.map(v=>{
+            if(v===this.state.id) return this.setState({like:true});
+        });
+    }
     componentDidMount() {
+       
         this.setState({
             songList: this.props.location.state.song,
-            id: this.props.location.state.id
+            id: this.props.location.state.id,
+            isLike:true
         })
         this.props.getSonDetail(this.props.location.state.id);
         this.props.getMusic(this.props.location.state.id);
         this.props.getLyric(this.props.location.state.id);
+        this.props.getLikeMusic(localStorage.userId).then(()=> this.changeLikeMusic());
     }
 }
 function mapStateToProps(state, props) {
     return {
         music: state.profile.cyMusic,
         songDetail: state.profile.cySongDetail,
-        lyric:state.profile.cylyric
+        lyric:state.profile.cylyric,
+        likeMusic:state.profile.cyLikeMusic
     }
 }
 function mapDispatchToProps(dispatch, props) {

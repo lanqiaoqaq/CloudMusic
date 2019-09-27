@@ -23,6 +23,12 @@ class TrendIn extends React.Component{
         }
     }
     render() {
+        // console.log("render");
+        // const bground={
+        //     background: `url(${videoDetails.coverUrl})`,
+        //     backgroundSize: "100% 100%",
+        //     backgroundPosition: "0 0"
+        // };
         if(this.state.isLoading){
             return (
                 <div style={{fontSize:"1rem",width:"100%",textAlign:"center"}}>
@@ -30,22 +36,16 @@ class TrendIn extends React.Component{
                 </div>
             )
         }
-        // console.log("render");
-        // const bground={
-        //     background: `url(${videoDetails.coverUrl})`,
-        //     backgroundSize: "100% 100%",
-        //     backgroundPosition: "0 0"
-        // };
         const {follow,trends,url,cover}=this.state;
         // console.log(follow,trends,url,cover);
 
         return(
             <>
                 {/**********************发表动态********************/}
-                <sapn onClick={()=>{
+                <span onClick={()=>{
                     document.querySelector(".ra_trend_add_type").style.display="flex"
                 }} className={"ra_trend_add iconfont iconjiahao"}>
-                </sapn>
+                </span>
                 {/*********************选择动态类型********************/}
                 <div onClick={(e)=>{
                     if(e.target===document.querySelector(".ra_trend_add_type"))
@@ -63,14 +63,14 @@ class TrendIn extends React.Component{
                 {/****************我的关注************************/}
                 <div className={"ra_box"} >
                     <p onClick={()=>{
-                        this.props.history.push("/allFollow")
+                        this.props.history.push("/allFollow/"+this.state.page);
                     }}>我关注的他们 ></p>
                     <ul>
                         {
                             follow?follow.map((v,i)=>(
                                 <li onClick={()=>{
                                     this.props.history.push("/userInfo/"+v.userId);
-                                }}>
+                                }} key={i}>
                                     <div><img src={v.avatarUrl}/></div>
                                     <h2>{v.nickname}</h2>
                                 </li>
@@ -114,7 +114,7 @@ class TrendIn extends React.Component{
                             return(
                                 <div onClick={()=>{
                                     this.props.history.push("/trendDetails/"+v.info.threadId);
-                                }} className={"ra_box1"}>
+                                }} className={"ra_box1"} key={i}>
                                     <div className={"ra_box1in"}>
                                         <div onClick={(e)=>{
                                             e.stopPropagation();
@@ -135,14 +135,14 @@ class TrendIn extends React.Component{
                                                 <div className={"ra_Content_2_1img"} style={{display:v.pics.length>0?"block":"none"}}>
                                                     {
                                                         v.pics?v.pics.map((v1,i)=>(
-                                                            <img className={this.getClassName(v.pics.length,i)} src={v1.originUrl} alt=""/>
+                                                            <img key={i} className={this.getClassName(v.pics.length,i)} src={v1.originUrl} alt=""/>
                                                         )):[]
                                                     }
 
                                                 </div>
                                                 {/************视频**************/}
                                                 <div className={"ra_Content_2_vedio_s"} style={{display:v.type===39?"block":"none"}}>
-                                                    <video poster={"j.jpg"} style={bground} controls src={url[i]}></video>
+                                                    <video poster={"1.jpg"} style={bground} controls src={url[i]}></video>
                                                     <span className={"ra_Content_2_vedio_s_one iconfont iconyousanjiao-wangyiicon"}>{getPlayerTime(json.video?json.video.playTime:"")}</span>
                                                     <span className={"ra_Content_2_vedio_s_two"}>{getVideoLong(json.video?json.video.size:"")}</span>
                                                 </div>
@@ -209,7 +209,7 @@ class TrendIn extends React.Component{
                                                                     </div>
                                                                     {/************视频**************/}
                                                                     <div className={"ra_Content_2_vedio_s"} style={{display:(event?event.type:"")===39?"block":"none"}}>
-                                                                        <video poster={"j.jpg"} style={bground1} controls src={""}></video>
+                                                                        <video poster={"1.jpg"} style={bground1} controls src={""}></video>
                                                                         <span className={"ra_Content_2_vedio_s_one iconfont iconyousanjiao-wangyiicon"}>{getPlayerTime(json1?json1.video?json1.video.playTime:"":"")}</span>
                                                                         <span className={"ra_Content_2_vedio_s_two"}>{getVideoLong(json1?json1.video?json1.video.size:"":"")}</span>
                                                                     </div>
@@ -270,7 +270,7 @@ class TrendIn extends React.Component{
 
                                                 <div  onClick={(e)=>{
                                                     e.stopPropagation();
-                                                    console.log("das");
+                                                    // console.log("das");
                                                     document.querySelector(".ra_trendIn_delete").style.display="block";
                                                     document.querySelector(".ra_trendIn_delete").setAttribute("comId",v.id);
                                                 }}  className={"ra_Content_3_more"}><span className={"iconfont icondiandiandian"}></span></div>
@@ -366,9 +366,9 @@ class TrendIn extends React.Component{
             onScroll.on("pullingUp",function(){
                 //alert('已到最底部');
                 page++;
-                console.log(page);
-                console.log('加载ajax数据');
-                console.log(this.me);
+                // console.log(page);
+                // console.log('加载ajax数据');
+                // console.log(this.me);
                 this.me.setState({
                     page
                 });

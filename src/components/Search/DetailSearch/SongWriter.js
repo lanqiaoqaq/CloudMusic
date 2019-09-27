@@ -13,7 +13,7 @@ class SongWriter extends React.Component{
         // console.log(artists,"1")
         return(
             <div className={"songwriter"}>
-                <div className={"my_kwc"} style={{display:artists?"none":"block"}}>未找到与"{localStorage._k}"相关的内容</div>
+                <div className={"my_kwc"} style={{display:artists?"none":"block"}}>"{localStorage._k}"相关的内容加载中.....</div>
                 <ul>
                     {
                         artists?artists.map(v=>(

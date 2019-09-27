@@ -9,7 +9,7 @@ class Audio extends React.Component{
   constructor(props) {
     super(props)
     this.state = {
-        id:"xixi",
+      id:"xixi",
       isPlay: true,
       isMuted: false,
       volume: 100,
@@ -95,7 +95,7 @@ class Audio extends React.Component{
       
       timeUpdate() {
         const audio = document.getElementById(`audio${this.state.id}`)
-        this.props.getTime(this.state.currentTime);
+        this.props.getTime(this.state.currentTime,this.state.isPlay);
         var playPercent = 7.6 * (this.state.currentTime / audio.duration);
         this.refs.playhead.style.webkitTransform  = "translateX("+playPercent + "rem)";
         this.refs.playhead.style.transform = "translateX("+playPercent + "rem)";
@@ -113,7 +113,7 @@ class Audio extends React.Component{
                      const playhead=this.refs.playhead;
                     const audio = document.getElementById(`audio${this.state.id}`)
                     var newLeft = (e.clientX - this.refs.timeline.offsetLeft);
-                    console.log(newLeft,this.refs.timeline.offsetLeft,this.refs.timeline.clientWidth)
+                    // console.log(newLeft,this.refs.timeline.offsetLeft,this.refs.timeline.clientWidth)
                     if (newLeft >= 0 && newLeft <= this.refs.timeline.clientWidth) {
                         playhead.style.transform = "translateX("+ newLeft +"px)";
                     }
@@ -156,6 +156,7 @@ class Audio extends React.Component{
               isPlay: true
             },()=>{
               this.timeChange();
+              this.props.getTime(this.state.currentTime,this.state.isPlay);
             })
 
             break
@@ -165,6 +166,7 @@ class Audio extends React.Component{
               isPlay: false
             },()=>{
               this.timeChange();
+              this.props.getTime(this.state.currentTime,this.state.isPlay);
             })
             break
           case 'muted':
@@ -248,9 +250,13 @@ class Audio extends React.Component{
         //   isPlay:this.props.isPlay
         // })
           this.timeUpdate();
+          this.controlAudio("changeCurrentTime",this.props.currentTime.time?this.props.currentTime.time:0)
           this.refs.timeline.addEventListener("click", this.timelineClick.bind(this));
           this.refs.playhead.addEventListener("mousedown", this.down.bind(this));
-        console.log(this.props)
+        // console.log(this.props)
+        this.setState({
+          isPlay:this.props.currentTime.play?false:true
+        },()=>this.controlAudio(this.state.isPlay ? 'pause' : 'play'))
           // this.props.getMusic(this.props.id?this.props.id:this.props.location.state.id);
       }
 }

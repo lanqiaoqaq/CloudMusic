@@ -6,12 +6,10 @@ import {
     bindActionCreators
 } from 'redux'
 import FindCreator from '../../store/actionCreator/search/index'
-
 class HotSearch extends React.Component {
     constructor(props) {
         super(props)
     }
-
     render() {
         const {hotList} = this.props
         // console.log(hotList)
@@ -43,7 +41,6 @@ class HotSearch extends React.Component {
                         ))
                     }
                 </ul>
-
             </div>
         )
     }

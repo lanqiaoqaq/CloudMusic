@@ -6,7 +6,8 @@ import Swipers from '../components/MineCloud/Swiper';
 import Type from '../components/MineCloud/Type';
 import {connect} from "react-redux";
 import { bindActionCreators } from "redux";
-import ProfileCreators from "../store/actionCreator/profile/index"
+import ProfileCreators from "../store/actionCreator/profile/index";
+import Dialog from "./MyMusics/Dialog";
 class Profile extends React.Component{
     constructor(){
         super();
@@ -26,21 +27,22 @@ class Profile extends React.Component{
                <Swipers></Swipers>
                <Type {...this.props}></Type>
                <div>
-                   <div className={"collMusic"}>
-                       <div className={"collM1"}>
-                           <span style={{transition:".1s ease-in",transform:this.state.isShow?"rotate(0deg)":"rotate(-90deg)"}} className={"iconfont iconarrow-bottom2 iconCollM1"} onClick={()=>this.setState({isShow:!this.state.isShow})}></span>
-                           <p className={"weightFont"}>创建的歌单 <span>({num1})</span></p>
-                       </div>
-                       <div className={"collM2"}>
-                       <span className={"iconfont iconjiahao iconCollM2"}></span>
-                       <span className={"iconfont icondiandiandian iconCollM2"}></span>
-                       </div>
-                   </div>
+               <div className={"collMusic"}>
+                    <div className={"collM1"}>
+                        <span style={{transition:".1s ease-in",transform:this.state.isShow?"rotate(0deg)":"rotate(-90deg)"}} className={"iconfont iconarrow-bottom2 iconCollM1"} onClick={()=>this.setState({isShow:!this.state.isShow})}></span>
+                        <p className={"weightFont"}>创建的歌单 <span>({num1})</span></p>
+                    </div>
+                    <div className={"collM2"}>
+                    <Dialog {...this.props}></Dialog>
+                    
+                    <span className={"iconfont icondiandiandian iconCollM2"}></span>
+                    </div>
+                </div>
                    <div style={{display:this.state.isShow?"block":"none"}}>
                         {
                        playList.map((v,i)=>(
-                           !(v.userId.toString()===localStorage.userId)?<></>:
-                           <div key={i} className={"collList"} onClick={()=>this.props.history.push("/musiclist/"+v.id)}>
+                           !(v.userId.toString()===localStorage.userId)?"":
+                           <div key={v.id} className={"collList"} onClick={()=>this.props.history.push("/musiclist/"+v.id)}>
                                 <div className={"collImg"}>
                                         <img className={"collBox"} src={v.coverImgUrl}/>
                                     
@@ -67,7 +69,7 @@ class Profile extends React.Component{
                    <div style={{display:this.state.isShow2?"block":"none"}}>
                         {
                        playList.map((v)=>(
-                        v.userId.toString()===localStorage.userId?<></>:
+                        v.userId.toString()===localStorage.userId?"":
                            <div key={v.id} className={"collList"} onClick={()=>this.props.history.push("/musiclist/"+v.id)}>
                                 <div className={"collImg"}>
                                         <img className={"collBox"} src={v.coverImgUrl}/>
@@ -84,8 +86,12 @@ class Profile extends React.Component{
                    </div>
                   
                </div>
+              
             </>
         )
+    }
+    addList(value){
+        this.props.newList(value);
     }
     componentDidMount(){
             var mySwiper = new Swiper('.swiper-container',{

@@ -13,7 +13,7 @@ class RadioStation extends React.Component{
         //console.log(this.props.radioStationList.result,"1")
         return(
             <div className={"radioStation_k"}>
-                <div className={"my_kwc"} style={{display:djRadios?"none":"block"}}>未找到与"{localStorage._k}"相关的内容</div>
+                <div className={"my_kwc"} style={{display:djRadios?"none":"block"}}>"{localStorage._k}"相关的内容加载中.....</div>
                 <h5 style={{display:djRadios?"block":"none"}}>电台</h5>
                 <ul>
                     {

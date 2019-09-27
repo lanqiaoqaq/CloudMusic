@@ -10,4 +10,6 @@ export default {
     cyCreateDj:[],
     cypaygift:[],
     cyCurrentTime:{},
+    cyLikeMusic:[],
+    cyChangeMusic:[]
 }

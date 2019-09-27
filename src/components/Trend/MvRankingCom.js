@@ -46,7 +46,7 @@ class MvRankingCom extends React.Component{
     }
     componentDidMount() {
         // console.log("componentDidMount")
-        console.log(this.props.location.pathname);
+        // console.log(this.props.location.pathname);
         switch (this.props.location.pathname) {
             case '/mvRanking/hk':this.props.getMvRankListMl("港台");break;
             case '/mvRanking/japan':this.props.getMvRankListMl("日本");break;

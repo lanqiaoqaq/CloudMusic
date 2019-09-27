@@ -48,7 +48,7 @@ class MvDetails extends React.Component{
             <>
                 {
                     <div className={"ra_mvdetails_video_out"}>
-                        <video className={"ra_mvdetails_video"} poster={"j.jpg"} controls style={bground} src={mvDetails.data?mvDetails.data.brs[mvBrs[0]]:""}>
+                        <video className={"ra_mvdetails_video"} poster={"1.jpg"} controls style={bground} src={mvDetails.data?mvDetails.data.brs[mvBrs[0]]:""}>
                         </video>
                         <select value={mvBrs[0]+"P"} onChange={this.props.changeMvBrs.bind(this,mvDetails.data?mvDetails.data.id:"")}>
                             <option value={"240P"}>240P</option>
@@ -96,7 +96,7 @@ class MvDetails extends React.Component{
                         mvdd.artists?mvdd.artists.map((v,i)=>(
                             <div onClick={()=>{
                                 this.props.history.push("/userInfo/"+mvdd.artists[i].id);
-                            }} className={"ra_mvdetails_Mask_in"}><img src={singerPic1[i]}/><span>{v.name}</span></div>
+                            }} className={"ra_mvdetails_Mask_in"} key={i}><img src={singerPic1[i]}/><span>{v.name}</span></div>
                         )):[].map(()=>{})
                     }
                 </div>
@@ -115,7 +115,7 @@ class MvDetails extends React.Component{
                     <div className={"ra_mvdetails_artist_pic"}>
                         {
                             singerPic1.map((v,i)=>(
-                                <img style={{position:"absolute",left:0.2+i*0.5+"rem",top:"0.2rem",zIndex:-i+5}} src={v}/>
+                                <img key={i} style={{position:"absolute",left:0.2+i*0.5+"rem",top:"0.2rem",zIndex:-i+5}} src={v}/>
                             ))
                         }
                     </div>
@@ -142,7 +142,7 @@ class MvDetails extends React.Component{
                                 }else{
                                     this.props.history.push("/mvDetails/"+v.vid)
                                 }
-                            }} className={"ra_mvdetails_recom_s_in"}>
+                            }} className={"ra_mvdetails_recom_s_in"} key={i}>
                                 <div className={"ra_mvdetails_recom_s_in_img"}>
                                     <img src={v.coverUrl}/>
                                     <div className={"ra_mvdetails_recom_play"}><span className={"iconfont iconbofang3"}>{getPlayerTime(v.playTime)}</span></div>
@@ -163,7 +163,7 @@ class MvDetails extends React.Component{
                 <div className={"ra_mvdetails_new_discuss"}>
                     {
                         hotComments.map((v,i)=>(
-                            <div className={"ra_mvdetails_new_discuss_in"}>
+                            <div className={"ra_mvdetails_new_discuss_in"} key={i}>
                                 <div className={"ra_mvdetails_new_discuss_in_user"}>
                                     <img  onClick={()=>{
                                         if(v.user.userId)
@@ -184,7 +184,7 @@ class MvDetails extends React.Component{
                 <div className={"ra_mvdetails_new_discuss"}>
                     {
                         comments.map((v,i)=>(
-                            <div className={"ra_mvdetails_new_discuss_in"}>
+                            <div className={"ra_mvdetails_new_discuss_in"} key={i}>
                                 <div className={"ra_mvdetails_new_discuss_in_user"}>
                                     <img src={v.user?v.user.avatarUrl:""} alt=""/>
                                     <div className={"ra_mvdetails_new_discuss_in_user_s"}>
@@ -209,7 +209,7 @@ class MvDetails extends React.Component{
             })
         });
         // console.log(this.props.mvBrs)
-        console.log("aaa")
+        // console.log("aaa");
         document.querySelector("video").currentTime=this.props.mvBrs[1];
     }
 

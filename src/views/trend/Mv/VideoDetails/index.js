@@ -25,7 +25,7 @@ class VideoDetails extends React.Component{
                 </div>
             )
         }else {
-            console.log("render");
+            // console.log("render");
             const {videoDetails, pic, related, comment, vurl} = this.state;
             // console.log(comment);
             // console.log(this.props.videoDetails,this.props,this.state);
@@ -68,10 +68,10 @@ class VideoDetails extends React.Component{
                     {/************************视频*********************/}
                     {
                         <div className={"ra_mvdetails_video_out"}>
-                            <video className={"ra_mvdetails_video"} poster={"j.jpg"} controls style={bground}
+                            <video className={"ra_mvdetails_video"} poster={"1.jpg"} controls style={bground}
                                    src={vurl}>
                             </video>
-                            <select value={"240P"}>
+                            <select defaultValue={"240P"}>
                                 <option value={"240P"}>240P</option>
                                 <option value={"480P"}>480P</option>
                                 <option value={"720P"}>720P</option>
@@ -149,7 +149,7 @@ class VideoDetails extends React.Component{
                                     } else {
                                         this.props.history.push("/mvDetails/" + v.vid)
                                     }
-                                }} className={"ra_mvdetails_recom_s_in"}>
+                                }} className={"ra_mvdetails_recom_s_in"} key={i}>
                                     <div className={"ra_mvdetails_recom_s_in_img"}>
                                         <img src={v.coverUrl}/>
                                         <div className={"ra_mvdetails_recom_play"}><span
@@ -182,7 +182,7 @@ class VideoDetails extends React.Component{
                                         document.querySelector(".ra_mvdetails_addcom1").setAttribute("commentId", v.commentId);
                                     }
                                 }
-                                } className={"ra_asdf"}>
+                                } className={"ra_asdf"} key={i}>
                                     <div className={"ra_mvdetails_new_discuss_in_user"}>
                                         <img onClick={() => {
                                             if (v.user.userId)
@@ -219,7 +219,7 @@ class VideoDetails extends React.Component{
                                     document.querySelector(".ra_mvdetails_addcom1").style.display = "block";
                                     document.querySelector(".ra_mvdetails_addcom1").setAttribute("commentId", v.commentId);
                                 }
-                                } className={"ra_mvdetails_new_discuss_in"}>
+                                } className={"ra_mvdetails_new_discuss_in"} key={i}>
                                     <div className={"ra_mvdetails_new_discuss_in_user"}>
                                         <img src={v.user ? v.user.avatarUrl : ""} alt=""/>
                                         <div className={"ra_mvdetails_new_discuss_in_user_s"}>
@@ -257,11 +257,12 @@ class VideoDetails extends React.Component{
         }
     }
     componentWillReceiveProps(nextProps, nextContext){
-            console.log("componentWillReceiveProps");
-            console.log(this.props.videoDetails===nextProps.videoDetails,"******");
+            // console.log("componentWillReceiveProps");
+            // console.log(this.props.videoDetails===nextProps.videoDetails,"******");
             if(this.props.videoDetails===nextProps.videoDetails){//同路由跳转执行不到componentDidMount，先判断数据有没有改变，没改变执行componentDidMount
                 setTimeout(()=>{
-                    this.props.getVideoDetails(this.props.match.params.id);
+                    // this.props.getVideoDetails(this.props.match.params.id);
+                    this.props.getVideoDetails.bind(this,1,this.props.match.params.id)()
                 },50);
             }
             this.setState({
