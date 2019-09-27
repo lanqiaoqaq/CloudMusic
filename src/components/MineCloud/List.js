@@ -16,7 +16,7 @@ class List extends React.Component {
                 {
                     songDetail.length > 0 ?
                         songDetail.map((v, i) => (
-                            <div className={"cy_ml_box"} key={i} onClick={(e) => {
+                            <div className={"cy_ml_box"} style={{flex:1}} key={i} onClick={(e) => {
                                 e.preventDefault();
                                 return this.props.history.push({ pathname: '/musicplaying', state: { id: v.id, song: songDetail } })
                             }}>

@@ -14,7 +14,7 @@ class MusicList extends React.Component {
     }
     render() {
         return (
-            <>
+            <div>
                 <MusicListHead {...this.props}></MusicListHead>
                 <div className={"single_k"}>
                     <div className={"cy_single_k"}>
@@ -31,7 +31,7 @@ class MusicList extends React.Component {
 
                 <List {...this.props}></List>
 
-            </>
+            </div>
         )
     }
     //   shouldComponentUpdate(nextProps){
