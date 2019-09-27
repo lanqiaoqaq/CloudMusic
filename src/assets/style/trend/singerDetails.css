@@ -1,0 +1,24 @@
+.ra_singer_details_top{
+    width: 100%;
+    height: 8rem;
+    background: pink;
+}
+.ra_singer_details_top1{
+    width: 100%;
+    height: 1.5rem;
+    line-height: 1.5rem;
+}
+.ra_singer_details_top1_goback{
+    font-size:1rem ;
+}
+.ra_singer_details_top1_name{
+    font-size: 0.8rem;
+}
+.ra_singer_details_top2{
+    height: 6.5rem;
+    width: 100%;
+}
+.ra_singer_details_top2 span{
+    height: 1.5rem;
+    width: 3rem;
+}

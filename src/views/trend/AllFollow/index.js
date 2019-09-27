@@ -24,8 +24,8 @@ class AllFollow extends React.Component{
                     {
                         follow.map((v,i)=>(
                             <div onClick={()=>{
-                                this.props.history.push("/userInfo")
-                            }} className={"ra_follow_body_p"}>
+                                this.props.history.push("/userInfo/"+v.userId)
+                            }} className={"ra_follow_body_p"} key={i}>
                                 <div className={"ra_follow_body_p_in"}>
                                     <div className={"ra_follow_avatar"}>
                                         <img src={v.avatarUrl} alt=""/>
@@ -54,7 +54,8 @@ class AllFollow extends React.Component{
     }
 
     componentDidMount() {
-        this.props.getTrend();
+        // this.props.getTrend();
+        this.props.getTrend.bind(this,this.props.match.params.page)();
     }
 }
 export default connect(state=>({trend:state.trend.trend}),dispatch=>bindActionCreators(trendCreator,dispatch))(AllFollow);

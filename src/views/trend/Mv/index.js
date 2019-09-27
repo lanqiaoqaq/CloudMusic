@@ -18,7 +18,7 @@ class Mv extends React.Component{
     }
     render() {
         const {allMv,videoFeatured,rank}=this.state;
-        console.log(this.state,"mvmvmvmvvm",rank.updateTime);
+        // console.log(this.state,"mvmvmvmvvm",rank.updateTime);
         return(
             <div className={"ra_mv"}>
                 <div className={"ra_mv_featured"}>
@@ -30,7 +30,7 @@ class Mv extends React.Component{
                             <span className={"iconfont iconyou"}></span>
                         </div>
                         {
-                            videoFeatured.map((v,i)=>(
+                            videoFeatured?videoFeatured.map((v,i)=>(
                                 <div onClick={()=>{
                                     console.log(v.id)
                                     this.props.history.push("/mvDetails/"+v.id)
@@ -49,7 +49,7 @@ class Mv extends React.Component{
                                         </div>
                                     </div>
                                 </div>
-                            ))
+                            )):""
                         }
                     </div>
                 </div>
@@ -59,7 +59,7 @@ class Mv extends React.Component{
                     <div className={"ra_mv_leaderboard_in"}>
                         <div className={"ra_mv_leaderboard_in_left"}>
                             <p>排行榜<span className={"iconfont iconyou"}></span></p>
-                            <h2>更新时间 : {getDate(rank.updateTime)}</h2>
+                            <h2>更新时间 : {getDate(rank?rank.updateTime:"")}</h2>
                         </div>
                         <div className={"ra_mv_leaderboard_in_right"}>
                             <img style={{

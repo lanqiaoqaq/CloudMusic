@@ -34,7 +34,7 @@ class AddTrends extends React.Component{
     }
     componentDidMount() {
         console.log(this.props.match.params.id,this.props.match.params.name);
-        if(this.props.match.params.id!="asd"){
+        if(this.props.match.params.id!=="asd"){
             this.setState({
                 songName:this.props.match.params.name
             })
