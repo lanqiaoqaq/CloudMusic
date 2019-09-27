@@ -21,7 +21,7 @@ class MvFeatured extends React.Component{
     render() {
         // console.log(this.props.featuredMv)
         const {wyMv,mainland,HKaT,europe,Korea,japan}=this.state;
-        console.log(wyMv,mainland,HKaT,europe,Korea,japan)
+        // console.log(wyMv,mainland,HKaT,europe,Korea,japan);
         return(
             <>
                 <div className={"ra_mvF_follow_header"}>
@@ -45,7 +45,7 @@ class MvFeatured extends React.Component{
                                 wyMv.map((v,i)=>(
                                     <div onClick={()=>{
                                         this.props.history.push("/mvDetails/"+v.id)
-                                    }} className={"ra_Netease_mv_featured_in_wor"}>
+                                    }} className={"ra_Netease_mv_featured_in_wor"} key={i}>
                                         <div className={"ra_Netease_mv_featured_in_wor_in"}>
                                             <Link className={"vedio"} to={"/"}>
                                                 <img src={v.cover} alt=""/>
@@ -77,7 +77,7 @@ class MvFeatured extends React.Component{
                                 mainland.map((v,i)=>(
                                     <div onClick={()=>{
                                         this.props.history.push("/mvDetails/"+v.id)
-                                    }} className={"ra_Netease_mv_featured_in_wor"}>
+                                    }} className={"ra_Netease_mv_featured_in_wor"} key={i}>
                                         <div className={"ra_Netease_mv_featured_in_wor_in"}>
                                             <Link className={"vedio"} to={"/"}>
                                                 <img src={v.cover} alt=""/>
@@ -109,7 +109,7 @@ class MvFeatured extends React.Component{
                                 HKaT.map((v,i)=>(
                                     <div onClick={()=>{
                                         this.props.history.push("/mvDetails/"+v.id)
-                                    }} className={"ra_Netease_mv_featured_in_wor"}>
+                                    }} className={"ra_Netease_mv_featured_in_wor"} key={i}>
                                         <div className={"ra_Netease_mv_featured_in_wor_in"}>
                                             <Link className={"vedio"} to={"/"}>
                                                 <img src={v.cover} alt=""/>
@@ -141,7 +141,7 @@ class MvFeatured extends React.Component{
                                 europe.map((v,i)=>(
                                     <div onClick={()=>{
                                         this.props.history.push("/mvDetails/"+v.id)
-                                    }} className={"ra_Netease_mv_featured_in_wor"}>
+                                    }} className={"ra_Netease_mv_featured_in_wor"} key={i}>
                                         <div className={"ra_Netease_mv_featured_in_wor_in"}>
                                             <Link className={"vedio"} to={"/"}>
                                                 <img src={v.cover} alt=""/>
@@ -173,7 +173,7 @@ class MvFeatured extends React.Component{
                                 Korea.map((v,i)=>(
                                     <div onClick={()=>{
                                         this.props.history.push("/mvDetails/"+v.id)
-                                    }} className={"ra_Netease_mv_featured_in_wor"}>
+                                    }} className={"ra_Netease_mv_featured_in_wor"} key={i}>
                                         <div className={"ra_Netease_mv_featured_in_wor_in"}>
                                             <Link className={"vedio"} to={"/"}>
                                                 <img src={v.cover} alt=""/>
@@ -206,7 +206,7 @@ class MvFeatured extends React.Component{
                                 japan.map((v,i)=>(
                                     <div onClick={()=>{
                                         this.props.history.push("/mvDetails/"+v.id)
-                                    }} className={"ra_Netease_mv_featured_in_wor"}>
+                                    }} className={"ra_Netease_mv_featured_in_wor"} key={i}>
                                         <div className={"ra_Netease_mv_featured_in_wor_in"}>
                                             <Link className={"vedio"} to={"/"}>
                                                 <img src={v.cover} alt=""/>

@@ -16,7 +16,7 @@ class MvVideo extends React.Component{
                             <span className={"iconfont iconbofang3"}></span>
                             <span>{v.playCount}</span>
                         </div>
-                        <video style={bground} controls poster={"j.jpg"}  src={mvUrlList[i]}></video>
+                        <video style={bground} controls poster={"1.jpg"}  src={mvUrlList[i]}></video>
                     </div>
                     <p>{v.briefDesc}</p>
                 </div>

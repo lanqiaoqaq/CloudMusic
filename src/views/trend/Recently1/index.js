@@ -32,7 +32,7 @@ class Recently1 extends React.Component {
                 </div>
                 {
                     record.map((v, i) => (
-                        <Link to={"/addTrends/"+v.song.id+"/"+v.song.name}>
+                        <Link to={"/addTrends/"+v.song.id+"/"+v.song.name} key={i}>
                             <div key={i} className={"cy_ml_box"} style={{ paddingLeft: ".28rem", paddingRight: ".5rem" }}>
                                 <div className={"cy_ml_r"}>
                                     <div>
