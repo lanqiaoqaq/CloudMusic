@@ -22,7 +22,7 @@ class MvVideo extends React.Component{
                 </div>
                 <div className={"ra_mv_more_body_bottom"}>
                     <div onClick={()=>{
-                        this.props.history.push("/userInfo")
+                        this.props.history.push("/userInfo/"+v.id)
                     }} className={"ra_mv_more_body_bottom_l"}>
                         <img src={singerPic[i]} alt=""/>
                         <span>{v.artistName}</span>

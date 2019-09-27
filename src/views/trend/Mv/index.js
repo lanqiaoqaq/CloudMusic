@@ -70,7 +70,7 @@ class Mv extends React.Component{
                                 top:"0.2rem",
                                 right:"0.3rem",
                                 zIndex:"2"
-                            }} src={rank.data?rank.data[0].cover:""} alt=""/>
+                            }} src={rank?rank.data?rank.data[0].cover:"":""} alt=""/>
                             <img style={{
                                 height: "1.1rem",
                                 width: "2rem",
@@ -78,7 +78,7 @@ class Mv extends React.Component{
                                 position:"absolute",
                                 top:"0.4rem",
                                 right:"0.6rem"
-                            }} src={rank.data?rank.data[1].cover:""} alt=""/>
+                            }} src={rank?rank.data?rank.data[1].cover:"":""} alt=""/>
                         </div>
                     </div>
                 </div>
@@ -87,7 +87,7 @@ class Mv extends React.Component{
                         <p>更多精彩MV</p>
                     </div>
                     {
-                        allMv.map((v,i)=>{
+                        allMv?allMv.map((v,i)=>{
                             const bground={
                                 background: `url(${v.cover})`,
                                 backgroundSize: "100% 100%",
@@ -96,13 +96,14 @@ class Mv extends React.Component{
                             return(
                                 <MvVideo key={i} {...this.props} v={v} i={i} bground={bground}></MvVideo>
                             )
-                        })
+                        }):""
                     }
                 </div>
             </div>
         )
     }
     componentWillReceiveProps(nextProps, nextContext) {
+        // console.log(nextProps.allMv);
         this.setState({
             allMv:nextProps.allMv.allMv,
             videoFeatured:nextProps.allMv.videoFeatured,
