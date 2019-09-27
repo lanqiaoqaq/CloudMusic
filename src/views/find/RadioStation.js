@@ -5,5 +5,9 @@ class RadioStation extends React.Component{
             <div>电台</div>
         )
     }
+    componentDidMount(){
+        alert("该功能暂未开放！")
+        this.props.history.push("/")
+    }
 }
 export default RadioStation

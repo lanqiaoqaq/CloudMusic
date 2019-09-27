@@ -76,7 +76,12 @@ class DailySpecial extends React.Component{
         )
     }
     componentDidMount(){
-        this.props.getRecommendSongs();
+        if(localStorage.userId){
+            this.props.getRecommendSongs();
+        }else {
+            alert("您好，请先登陆")
+        }
+
     }
 }
 function mapStateToProps(state,props) {
