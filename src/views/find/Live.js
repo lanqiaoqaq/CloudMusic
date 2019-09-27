@@ -27,6 +27,10 @@ class Live extends React.Component{
             </div>
         )
     }
+    componentWillMount(){
+        alert("该功能暂未开放！")
+        this.props.history.push("/")
+    }
     // componentDidMount(){
     //     let scroll = new BScroll('.wrapper_s',{
     //         scrollY: true,

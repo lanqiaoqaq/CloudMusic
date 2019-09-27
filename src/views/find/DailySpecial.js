@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import DailyCreator from '../../store/actionCreator/find'
 class DailySpecial extends React.Component{
     render(){
-        console.log(this.props.recommendSongs);
+        //console.log(this.props.recommendSongs);
         const recommendSongs = this.props.recommendSongs;
         return(
             <div className="daily_sps">
@@ -76,7 +76,12 @@ class DailySpecial extends React.Component{
         )
     }
     componentDidMount(){
-        this.props.getRecommendSongs();
+        if(localStorage.userId){
+            this.props.getRecommendSongs();
+        }else {
+            alert("您好，请先登陆")
+        }
+
     }
 }
 function mapStateToProps(state,props) {
