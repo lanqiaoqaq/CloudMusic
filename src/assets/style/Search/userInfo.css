@@ -1,6 +1,9 @@
 .userInfo_k{
     width: 10.8rem;
 }
+.userInfo_k::-webkit-scrollbar{
+    display:none;
+}
 /*详情头部*/
 .userInfo_heard{
     width: 10.8rem;
