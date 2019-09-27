@@ -38,16 +38,16 @@ class SearchDetails extends React.Component {
                         </ul>
                     </div>
                 </div>
-                <ul className={"search_contain"}>
-                    <li><Route path={"/SearchDetails"} exact component={Composite}></Route></li>
-                    <li><Route path={"/SearchDetails/Single"} component={Single}></Route></li>
-                    <li><Route path={"/SearchDetails/Video"} component={Video}></Route></li>
-                    <li><Route path={"/SearchDetails/SongWriter"} component={SongWriter}></Route></li>
-                    <li><Route path={"/SearchDetails/Album"} component={Album}></Route></li>
-                    <li><Route path={"/SearchDetails/PlayList"} component={PlayList}></Route></li>
-                    <li><Route path={"/SearchDetails/RadioStation"} component={RadioStation}></Route></li>
-                    <li><Route path={"/SearchDetails/UserHome"} component={UserHome}></Route></li>
-                </ul>
+                <div className={"search_contain"}>
+                    <Route path={"/SearchDetails"} exact component={Composite}></Route>
+                    <Route path={"/SearchDetails/Single"} component={Single}></Route>
+                    <Route path={"/SearchDetails/Video"} component={Video}></Route>
+                    <Route path={"/SearchDetails/SongWriter"} component={SongWriter}></Route>
+                    <Route path={"/SearchDetails/Album"} component={Album}></Route>
+                    <Route path={"/SearchDetails/PlayList"} component={PlayList}></Route>
+                    <Route path={"/SearchDetails/RadioStation"} component={RadioStation}></Route>
+                    <Route path={"/SearchDetails/UserHome"} component={UserHome}></Route>
+                </div>
             </div>
         )
     }

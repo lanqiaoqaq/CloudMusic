@@ -68,7 +68,7 @@ class VideoDetails extends React.Component{
                     {/************************视频*********************/}
                     {
                         <div className={"ra_mvdetails_video_out"}>
-                            <video className={"ra_mvdetails_video"} poster={"j.jpg"} controls style={bground}
+                            <video className={"ra_mvdetails_video"} poster={"1.jpg"} controls style={bground}
                                    src={vurl}>
                             </video>
                             <select defaultValue={"240P"}>

@@ -34,7 +34,7 @@ class Mv extends React.Component{
                                 <div onClick={()=>{
                                     console.log(v.id)
                                     this.props.history.push("/mvDetails/"+v.id)
-                                }} className={"ra_mv_featured_in_wor"}>
+                                }} className={"ra_mv_featured_in_wor"} key={i}>
                                     <div className={"ra_mv_featured_in_wor_in"}>
                                         <Link className={"vedio"} to={"/"}>
                                             <img src={v.picUrl} alt=""/>
@@ -94,7 +94,7 @@ class Mv extends React.Component{
                                 backgroundPosition: "0 0"
                             };
                             return(
-                                <MvVideo {...this.props} v={v} i={i} bground={bground}></MvVideo>
+                                <MvVideo key={i} {...this.props} v={v} i={i} bground={bground}></MvVideo>
                             )
                         })
                     }

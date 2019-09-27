@@ -11,8 +11,8 @@ class SearchView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            StrList: ""
-        }
+        StrList: ""
+    }
     }
 
     getabc(_this) {

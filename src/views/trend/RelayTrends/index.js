@@ -21,7 +21,7 @@ class RelayTrends extends React.Component{
         )
     }
     componentDidMount() {
-        console.log(this.props.match.params.id);
+        // console.log(this.props.match.params.id);
     }
 }
 export default connect(state=>({trend:state.trend.trend}),dispatch=>bindActionCreators(trendCreator,dispatch))(RelayTrends);

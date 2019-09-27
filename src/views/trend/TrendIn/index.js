@@ -135,14 +135,14 @@ class TrendIn extends React.Component{
                                                 <div className={"ra_Content_2_1img"} style={{display:v.pics.length>0?"block":"none"}}>
                                                     {
                                                         v.pics?v.pics.map((v1,i)=>(
-                                                            <img className={this.getClassName(v.pics.length,i)} src={v1.originUrl} alt=""/>
+                                                            <img key={i} className={this.getClassName(v.pics.length,i)} src={v1.originUrl} alt=""/>
                                                         )):[]
                                                     }
 
                                                 </div>
                                                 {/************视频**************/}
                                                 <div className={"ra_Content_2_vedio_s"} style={{display:v.type===39?"block":"none"}}>
-                                                    <video poster={"j.jpg"} style={bground} controls src={url[i]}></video>
+                                                    <video poster={"1.jpg"} style={bground} controls src={url[i]}></video>
                                                     <span className={"ra_Content_2_vedio_s_one iconfont iconyousanjiao-wangyiicon"}>{getPlayerTime(json.video?json.video.playTime:"")}</span>
                                                     <span className={"ra_Content_2_vedio_s_two"}>{getVideoLong(json.video?json.video.size:"")}</span>
                                                 </div>
@@ -209,7 +209,7 @@ class TrendIn extends React.Component{
                                                                     </div>
                                                                     {/************视频**************/}
                                                                     <div className={"ra_Content_2_vedio_s"} style={{display:(event?event.type:"")===39?"block":"none"}}>
-                                                                        <video poster={"j.jpg"} style={bground1} controls src={""}></video>
+                                                                        <video poster={"1.jpg"} style={bground1} controls src={""}></video>
                                                                         <span className={"ra_Content_2_vedio_s_one iconfont iconyousanjiao-wangyiicon"}>{getPlayerTime(json1?json1.video?json1.video.playTime:"":"")}</span>
                                                                         <span className={"ra_Content_2_vedio_s_two"}>{getVideoLong(json1?json1.video?json1.video.size:"":"")}</span>
                                                                     </div>
@@ -270,7 +270,7 @@ class TrendIn extends React.Component{
 
                                                 <div  onClick={(e)=>{
                                                     e.stopPropagation();
-                                                    console.log("das");
+                                                    // console.log("das");
                                                     document.querySelector(".ra_trendIn_delete").style.display="block";
                                                     document.querySelector(".ra_trendIn_delete").setAttribute("comId",v.id);
                                                 }}  className={"ra_Content_3_more"}><span className={"iconfont icondiandiandian"}></span></div>
@@ -366,9 +366,9 @@ class TrendIn extends React.Component{
             onScroll.on("pullingUp",function(){
                 //alert('已到最底部');
                 page++;
-                console.log(page);
-                console.log('加载ajax数据');
-                console.log(this.me);
+                // console.log(page);
+                // console.log('加载ajax数据');
+                // console.log(this.me);
                 this.me.setState({
                     page
                 });
