@@ -77,6 +77,20 @@ export function changeTime(payload){
         payload
     }
 }
+export function changeLikeMusic(payload){
+    // console.log(payload,93274892738)
+    return {
+        type:actionType.CHANGE_LIKEMUSIC,
+        payload
+    }
+}
+export function changeLikeMusic2(payload){
+    // console.log(payload,93274892738)
+    return {
+        type:actionType.CHANGE_LIKEMUSIC2,
+        payload
+    }
+}
 export default {
     //获取用户歌单
     getPlayList(){//异步action
@@ -166,8 +180,37 @@ export default {
         }
     },
     //歌曲时间
-    getTime(time){
+    getTime(time,play){
         return async (dispatch)=>
-        dispatch(changeTime({time}));   
+        dispatch(changeTime({time,play}));   
+    },
+    //喜欢音乐
+    getLikeMusic(id){
+        return async (dispatch)=>{
+            const data=await axios.get("/likelist?uid="+id);
+            // console.log(data);
+            dispatch(changeLikeMusic(data));
+        }
+    },
+    changeLike(like,id){
+        return async (dispatch)=>{
+            const data=await axios.get("/like?id="+id+"&like="+like);
+            // console.log(data);
+            dispatch(changeLikeMusic2(data));
+        }
+    },
+    //新建歌单
+    newList(name,privacy){
+        let data=0;
+        return async (dispatch)=>{
+            if(privacy){
+                 data=await axios.get("/playlist/create?name="+name+"&privacy=10");
+            }else{
+                 data=await axios.get("/playlist/create?name="+name); 
+            }
+            
+            // console.log(data);
+            this.getPlayList();
+        }
     }
 }

@@ -35,7 +35,10 @@ class AudioPlayer extends React.Component{
                     </div>
                 </div>
                 <div>
-                    <span className={"iconfont iconbofang icon_audio"}></span>
+                <i 
+              className={`cyiconpause iconfont ${this.state.isPlay ? `iconbofang2` : `iconbofang`}`} 
+              onClick={(e) => {e.stopPropagation();this.controlAudio(this.state.isPlay ? 'pause' : 'play')}}
+            />
                     <span className={"iconfont iconsangeheng icon_audio"}></span>
                 </div>
                 <audio 
@@ -46,6 +49,7 @@ class AudioPlayer extends React.Component{
               onTimeUpdate={(e) =>{
                 this.controlAudio('getCurrentTime')
                 this.controlAudio('allTime');
+                // this.props.getTime()
             }}
             >
               您的浏览器不支持 audio 标签。
@@ -68,7 +72,8 @@ class AudioPlayer extends React.Component{
             this.setState({
               isPlay: true
             },()=>{
-              this.timeChange();
+              // this.timeChange();
+              this.props.getTime(this.state.currentTime,this.state.isPlay)
             })
 
             break
@@ -77,7 +82,8 @@ class AudioPlayer extends React.Component{
             this.setState({
               isPlay: false
             },()=>{
-              this.timeChange();
+              // this.timeChange();
+              this.props.getTime(this.state.currentTime,this.state.isPlay)
             })
             break
           case 'changeCurrentTime':
@@ -94,7 +100,7 @@ class AudioPlayer extends React.Component{
           case 'getCurrentTime':
             this.setState({
               currentTime: audio.currentTime
-            })
+            },()=>this.props.getTime(this.state.currentTime,this.state.isPlay))
             if(audio.currentTime == audio.duration) {
               this.setState({
                 isPlay: false
@@ -103,15 +109,19 @@ class AudioPlayer extends React.Component{
             break
         }
       }
-      componentWillReceiveProps(nextProps){
-          console.log(nextProps.currentTime.time)
-        if(nextProps.currentTime!==this.props.currentTime){
-            this.controlAudio("changeCurrentTime",nextProps.currentTime.time?nextProps.currentTime.time:0)
-        }
-      }
+      // componentWillReceiveProps(nextProps){
+      //     console.log(nextProps.currentTime.time)
+      //   if(nextProps.currentTime!==this.props.currentTime){
+      //       this.controlAudio("changeCurrentTime",nextProps.currentTime.time?nextProps.currentTime.time:0)
+      //   }
+      // }
     componentDidMount(){
-        console.log(this.props.currentTime)
+        // console.log(this.props.currentTime)
         this.controlAudio("changeCurrentTime",this.props.currentTime.time?this.props.currentTime.time:0)
+        //this.controlAudio("changeCurrentTime",this.props.currentTime.play?this.props.currentTime.play:true)
+        this.setState({
+          isPlay:this.props.currentTime.play?false:true
+        },()=>this.controlAudio(this.state.isPlay ? 'pause' : 'play'))
     }
 }
 function mapStateToProps(state, props) {

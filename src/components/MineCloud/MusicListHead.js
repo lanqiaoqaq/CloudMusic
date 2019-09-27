@@ -13,9 +13,12 @@ class MusicListHead extends React.Component{
         }
     }
     render(){
-        const {playlist,nickname,name,avatarUrl}=this.state;
+        const {playlist,nickname,name,avatarUrl,userId}=this.state;
          return(
             <>
+                <div className="cy_ml_filter" >
+                    
+                </div>
                 <div className="cy_ml_head" style={{ backgroundImage: playlist.coverImgUrl?`url(${playlist.coverImgUrl})`:""}}>
                     <p className="cy_ml_hh">
                         <span className={"iconfont iconzuojiantou"} onClick={()=>this.props.history.go(-1)}></span>
@@ -28,7 +31,9 @@ class MusicListHead extends React.Component{
                         <div >
                             <p className="cy_ml_wrap">{name}</p>
                             <div>
-                            <img className="cy_ml_iconImg" src={avatarUrl}/>
+                            <img className="cy_ml_iconImg" src={avatarUrl} onClick={()=>{
+                                this.props.history.push("/UserInfo/"+userId);
+                            }}/>
                             <span >{nickname}</span>
                             <span className={"iconfont iconyou"}></span>
                             </div>
@@ -48,6 +53,7 @@ class MusicListHead extends React.Component{
           this.setState({
          playlist:nextProps.playListDetail.playlist,
          nickname:nextProps.playListDetail.playlist.creator.nickname,
+         userId:nextProps.playListDetail.playlist.creator.userId,
          name:nextProps.playListDetail.playlist.name,
          avatarUrl:nextProps.playListDetail.playlist.creator.avatarUrl
       })

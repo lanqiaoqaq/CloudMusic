@@ -21,14 +21,14 @@ class TrendIn extends React.Component{
         }
     }
     render() {
-        console.log("render");
+        // console.log("render");
         // const bground={
         //     background: `url(${videoDetails.coverUrl})`,
         //     backgroundSize: "100% 100%",
         //     backgroundPosition: "0 0"
         // };
         const {follow,trends,url,cover}=this.state;
-        console.log(follow,trends,url,cover);
+        // console.log(follow,trends,url,cover);
 
         return(
             <>

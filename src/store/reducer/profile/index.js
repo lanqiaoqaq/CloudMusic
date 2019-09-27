@@ -32,9 +32,14 @@ export default function (state = initState,{type,payload}) {
     if(type===actionType.CHANGE_PAYGIFT){
         state.cypaygift=payload;
     }
-    
     if(type===actionType.CHANGE_TIME){
         state.cyCurrentTime=payload;
+    }
+    if(type===actionType.CHANGE_LIKEMUSIC){
+        state.cyLikeMusic=payload;
+    }
+    if(type===actionType.CHANGE_LIKEMUSIC2){
+        state.cyChangeMusic=payload;
     }
     return state
 }
