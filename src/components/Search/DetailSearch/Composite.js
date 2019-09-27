@@ -13,14 +13,14 @@ class Composite extends React.Component{
     }
     render() {
         const compositeList = this.props.compositeList;
-        const song = (this.props.compositeList.result?this.props.compositeList.result.song:"");
-        const video = (this.props.compositeList.result?this.props.compositeList.result.video:"");
-        const playList = (this.props.compositeList.result?this.props.compositeList.result.playList:"");
-        const mlog = (this.props.compositeList.result?this.props.compositeList.result.mlog:"");
-        const artist = (this.props.compositeList.result?this.props.compositeList.result.artist:"");
-        const album = (this.props.compositeList.result?this.props.compositeList.result.album:"");
-        const djRadio = (this.props.compositeList.result?this.props.compositeList.result.djRadio:"");
-        const user = (this.props.compositeList.result?this.props.compositeList.result.user:"");
+        const song = this.props.compositeList.result?this.props.compositeList.result.song:"";
+        const video = this.props.compositeList.result?this.props.compositeList.result.video:"";
+        const playList = this.props.compositeList.result?this.props.compositeList.result.playList:"";
+        const mlog = this.props.compositeList.result?this.props.compositeList.result.mlog:"";
+        const artist = this.props.compositeList.result?this.props.compositeList.result.artist:"";
+        const album = this.props.compositeList.result?this.props.compositeList.result.album:"";
+        const djRadio = this.props.compositeList.result?this.props.compositeList.result.djRadio:"";
+        const user = this.props.compositeList.result?this.props.compositeList.result.user:"";
         // console.log(video)
         return(
             <div className={"composite_k"}>
@@ -73,7 +73,7 @@ class Composite extends React.Component{
                                     <span><img src={v.coverUrl} alt=""/></span>
                                     <span>
                                 <p>{v.title}</p>
-                                <p>{v.playTime}  {v.creator[0].userName}</p>
+                                <p>{Tools.getVideoLong(v.durationms)}  {v.creator[0].userName}</p>
                             </span>
                                 </li>
                             )):[].map(v=>{

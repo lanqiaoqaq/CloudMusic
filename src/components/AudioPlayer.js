@@ -6,7 +6,7 @@ class AudioPlayer extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-          isPlay: true,
+          isPlay: false,
           allTime: 0,
           currentTime:0
         }

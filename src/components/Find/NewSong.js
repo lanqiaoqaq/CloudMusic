@@ -15,7 +15,7 @@ class NewSong extends React.Component{
     }
     render(){
         const newSong = this.props.newSong;
-        //console.log(newSong)
+       // console.log(newSong)
         return(
             <div className={"new_disc"}>
                 <div className={"head_disc"}>
@@ -45,10 +45,10 @@ class NewSong extends React.Component{
                                 this.props.history.push("/musiclist/"+v.id)
                             }}>
                                 <div style={{width:"3.1rem",height:"3.24rem"}}>
-                                    <img style={{width:"100%",height:"100%",borderRadius:"5px"}} src={v.picUrl || v.album.picUrl} alt=""/>
+                                    <img style={{width:"100%",height:"100%",borderRadius:"5px"}} src={v.picUrl ||v.album.picUrl} alt=""/>
                                 </div>
                                 <p style={{fontSize:"0.3rem",color:"#3b3b3b",lineHeight:"0.44rem",height:"0.44rem",whiteSpace:"nowrap",overflow:"hidden"}}>{v.name}</p>
-                                <p style={{fontSize:"0.28rem",color:"#878787",lineHeight:"0.44rem",height:"0.44rem",whiteSpace:"nowrap",overflow:"hidden"}}>{v.company || v.album.company}</p>
+                                <p style={{fontSize:"0.28rem",color:"#878787",lineHeight:"0.44rem",height:"0.44rem",whiteSpace:"nowrap",overflow:"hidden"}}>{v.company}</p>
                             </li>
                         ))
                     }

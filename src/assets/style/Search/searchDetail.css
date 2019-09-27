@@ -574,6 +574,10 @@
 .single_k ul li span:nth-child(1) p{
     font-size: 0.28rem;
     color: #7e8c8d;
+    width: 7rem;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
 }
 .single_k ul li span:nth-child(2) i:nth-child(2){
     color: #7e8c8d;

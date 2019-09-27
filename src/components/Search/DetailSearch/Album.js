@@ -9,12 +9,12 @@ import FindCreator from "../../../store/actionCreator/search"
 import Tools from "../../../common/Tools";
 class Album extends React.Component{
     render() {
-        const albumList  = this.props.albumList
+        const albumList  = this.props.albumList;
         const albums = (this.props.albumList.result?this.props.albumList.result.albums:"");
         // console.log(albums,"1")
         return(
             <div className={"album_k"}>
-                <div className={"my_kwc"} style={{display:albums?"none":"block"}}>未找到与"{localStorage._k}"相关的内容</div>
+                <div className={"my_kwc"} style={{display:albums?"none":"block"}}>"{localStorage._k}"相关的内容加载中.....</div>
                 <ul>
                     {
                         albums?albums.map(v=>(

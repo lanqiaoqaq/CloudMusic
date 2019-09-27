@@ -97,17 +97,20 @@ export default {
             await axios.get(`/event/del?evId=${id}`);
         }
     },
-    resourceLike(data){//资源点赞//t: 操作,1 为点赞,其他未取消点赞
+    resourceLike(data,e){//资源点赞//t: 操作,1 为点赞,其他未取消点赞
         // type:资源类型,对应以下类型
         // 1: mv
         // 4: 电台
         // 5: 视频
         // 6: 动态
+        e.stopPropagation();
         const {type,threadId,t}=data;
+        // console.log(type,t);
         return async ()=>{
             await axios.get(`/resource/like?t=${t}&type=${type}&threadId=${threadId}`);
-            console.log("shuaxin");
-            this.props.getTrend();
+            // console.log("shuaxin");
+            // console.log(this)
+            this.props.getTrend.bind(this,this.state.page)();
         }
     },
     relayTrends(data){//转发动态
@@ -115,7 +118,7 @@ export default {
         const text=document.querySelector("textarea").value;
         return async ()=>{
             await axios.get(`/event/forward?evId=${id}&uid=${uId}&forwards=${text}`);
-            this.props.getTrend();
+            // this.props.getTrend();
             setTimeout(()=>{
                 this.props.history.push("/trend");
             },500);
@@ -124,25 +127,31 @@ export default {
     },
     addSong(data){//发布动态/转发动态
         const {id}=data;
-        console.log(id);
-        const text=document.querySelector("textarea").value;
-        document.querySelector("textarea").value="";
-        console.log(text);
-        return async (dispatch)=>{
+        // console.log(id);
+        if(id!=="asd"){
+            const text=document.querySelector("textarea").value;
+            document.querySelector("textarea").value="";
+            // console.log(text);
+            return async (dispatch)=>{
                 await axios.get(`/share/resource?id=${id}&msg=${text}`);
                 this.props.history.push("/trend");
-
+            }
+        }else{
+            alert("暂不支持纯文字动态")
         }
+
+
     },
 
-    getTrend(){//获取动态页数据
+    getTrend(page){//获取动态页数据
+        // console.log("page",page);
         const uid=localStorage.userId;
         return async (dispatch)=>{
             const data=await axios.get("/user/follows?uid="+uid);
             // console.log(data);
             if(data.code===200){
                 const follow=data.follow;
-                const trends=await this.getTrends();
+                const trends=await this.props.getTrends(page);
                 let urlArr=[],coverArr=[];
                 trends.map((v,i)=>{
                     const json =JSON.parse(v.json);
@@ -174,6 +183,7 @@ export default {
                         return cover
                     })()
                 }));
+                // console.log("请求成功");
                 dispatch(changeTrend({
                     follow,
                     trends,
@@ -183,10 +193,11 @@ export default {
             }
         }
     },
-    getTrends(){
+    getTrends(page){
         const date=Date.now();
+
         return async (dispatch)=>{
-            const data =await axios.get("/event?pagesize=30&lasttime="+date);
+            const data =await axios.get("/event?pagesize="+page*5+"&lasttime="+date);
             const data1=await axios.get("/user/event?uid=32953014");
             // console.log(data1);
             // console.log(JSON.parse(data.event[0].json))
@@ -225,16 +236,16 @@ export default {
             }
         }
     },
-    getVideoDetails(id){//获取视频数据
-        console.log("getVideoDetails");
+    getVideoDetails(page,id){//获取视频数据
+        // console.log("getVideoDetails",id);
         return async (dispatch)=>{
             // console.log(id)；
             const data= await axios.get("/video/detail?id="+id);
             if(data.code===200){
-                const pic=await  this.getVideoUserPic(data.data.creator.userId);//头像
-                const related=await this.getVideoRelatedVideos(data.data.vid);//相关视频
-                const comment=await this.getVideoComment(data.data.vid);//评论
-                const vurl=await this.getVideoAdd(data.data.vid);//视频地址
+                const pic=await  this.props.getVideoUserPic(data.data.creator.userId);//头像
+                const related=await this.props.getVideoRelatedVideos(data.data.vid);//相关视频
+                const comment=await this.props.getVideoComment(data.data.vid);//评论
+                const vurl=await this.props.getVideoAdd(data.data.vid);//视频地址
                 dispatch(changeVideoDetails({
                     videoDetails:data,
                     pic,
@@ -312,10 +323,10 @@ export default {
         }
     },
     getSingerPic(id){//获取歌手头像
-        console.log("获取歌手头像",id)
+        // console.log("获取歌手头像",id);
         return async (dispatch)=>{
             const data=await axios.get("/artists?id="+id);
-            console.log(data,2)
+            // console.log(data,2);
             if(data.code===200){
                 dispatch(changeSingerPic(data.artist.img1v1Url))
                 return data.artist.img1v1Url
@@ -371,7 +382,7 @@ export default {
         }
     },
     changeMvBrs(id,e){//切换视频清晰度
-        console.log(id,e.target.value,document.querySelector("video").currentTime);
+        // console.log(id,e.target.value,document.querySelector("video").currentTime);
         const currentTime=document.querySelector("video").currentTime;
         return  (dispatch)=>{
             switch (e.target.value) {
@@ -389,13 +400,13 @@ export default {
             let result= await Promise.all(arr.map(async (v,i)=>{
                 return  ( async ()=>{
                     const data=await axios.get("/artists?id="+v.id);
-                    console.log(data)
+                    // console.log(data);
                     // console.log(data.artist.img1v1Url,"获取歌手头像")
                     newarr.push(data.artist.img1v1Url);
                     return newarr
                 })()
-            }))
-            console.log(newarr,2222)
+            }));
+            // console.log(newarr,2222);
 
             dispatch(changeSingerPic1(newarr))
         }
@@ -424,36 +435,49 @@ export default {
             })
         }
     },
-    async addCom(data,e){//发评论
-        const {t,type,id,commentId,content1}=data;
-        const content=content1.value;
-        const commentid=commentId.getAttribute("commentid");
-        content1.value=""
-        console.log(t,type,id,commentId.getAttribute("commentid"),content);
-        if(t===1){
-            await axios.get(`/comment?t=${t}&type=${type}&id=${id}&content=${content}`);
+    addCom(data,e){//发评论
+        return async()=>{
+            const {t,type,id}=data;
+            const commentId=document.querySelector(".ra_mvdetails_addcom1");
+            const content1=document.querySelector(".ra_mvdetails_addcom_in");
+            const content2=document.querySelector(".ra_mvdetails_addcom_in1");
+            const content11=content1.value;
+            const content22=content2.value;
+            content1.value="";
+            content2.value="";
+            if(t===1){
+                // console.log(t,type,id,content11);
+                await axios.get(`/comment?t=${t}&type=${type}&id=${id}&content=${content11}`);
+            }
+            if(t===2){
+                // console.log("qwerer",content22);
+                const commentid=commentId.getAttribute("commentid");
+                // console.log(t,type,id,content22,commentid);
+                await axios.get(`/comment?t=${t}&type=${type}&id=${id}&content=${content22}&commentId=${commentid}`);
+            }
+            // console.log(id);
+            this.props.getVideoDetails.bind(this,1,id)();
         }
-        if(t===2){
-            await axios.get(`/comment?t=${t}&type=${type}&id=${id}&content=${content}&commentId=${commentid}`);
-        }
-        // console.log(this.props.getVideoDetails);
-        this.props.getVideoDetails(id);
     },
 
     isFollow(data,e){//关注用户
-            const {type,id,vid}=data;
-            console.log(type,id,vid)
-            return async (dispatch)=>{
-                await axios.get(`/follow?id=${id}&t=${type}`);
-                this.props.getVideoDetails(vid);
-            }
+        const {type,id,vid}=data;
+        // console.log(type,id,vid);
+        return async (dispatch)=>{
+            await axios.get(`/follow?id=${id}&t=${type}`);
+            // this.props.getVideoDetails(vid);
+            this.props.getVideoDetails.bind(this,1,vid)();
+        }
     },
     isLike(data,e){//评论的点赞
+        e.stopPropagation();
         const {t,type,id,cid}=data;
-        console.log(t,type,id,cid);
+        // console.log(t,type,id,cid);
         return async (dispatch)=>{
             await axios.get(`/comment/like?id=${id}&cid=${cid}&t=${t}&type=${type}`)
-            this.props.getVideoDetails(id);
+            // this.props.getVideoDetails(id);
+            // console.log(id);
+            this.props.getVideoDetails.bind(this,1,id)()
         }
     }
 }

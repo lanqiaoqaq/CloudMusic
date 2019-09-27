@@ -1,5 +1,5 @@
 import React from "react";
-
+import BScroll from 'better-scroll';
 import {
     NavLink,Route,Link
 } from "react-router-dom";
@@ -14,6 +14,8 @@ class TrendIn extends React.Component{
     constructor(){
         super();
         this.state={
+            page:1,
+            isLoading:true,
             follow:[],
             trends:[],
             url:[],
@@ -27,16 +29,23 @@ class TrendIn extends React.Component{
         //     backgroundSize: "100% 100%",
         //     backgroundPosition: "0 0"
         // };
+        if(this.state.isLoading){
+            return (
+                <div style={{fontSize:"1rem",width:"100%",textAlign:"center"}}>
+                    加载中...
+                </div>
+            )
+        }
         const {follow,trends,url,cover}=this.state;
         // console.log(follow,trends,url,cover);
 
         return(
             <>
                 {/**********************发表动态********************/}
-                <sapn onClick={()=>{
+                <span onClick={()=>{
                     document.querySelector(".ra_trend_add_type").style.display="flex"
                 }} className={"ra_trend_add iconfont iconjiahao"}>
-                </sapn>
+                </span>
                 {/*********************选择动态类型********************/}
                 <div onClick={(e)=>{
                     if(e.target===document.querySelector(".ra_trend_add_type"))
@@ -54,14 +63,14 @@ class TrendIn extends React.Component{
                 {/****************我的关注************************/}
                 <div className={"ra_box"} >
                     <p onClick={()=>{
-                        this.props.history.push("/allFollow")
+                        this.props.history.push("/allFollow/"+this.state.page);
                     }}>我关注的他们 ></p>
                     <ul>
                         {
                             follow?follow.map((v,i)=>(
                                 <li onClick={()=>{
                                     this.props.history.push("/userInfo/"+v.userId);
-                                }}>
+                                }} key={i}>
                                     <div><img src={v.avatarUrl}/></div>
                                     <h2>{v.nickname}</h2>
                                 </li>
@@ -72,9 +81,9 @@ class TrendIn extends React.Component{
 
                 {/********************动态*****************/}
                 <div onClick={(e)=>{
-                        if(document.querySelector(".ra_trendIn_delete").style.display==="block"){
-                            document.querySelector(".ra_trendIn_delete").style.display="none";
-                        }
+                    if(document.querySelector(".ra_trendIn_delete").style.display==="block"){
+                        document.querySelector(".ra_trendIn_delete").style.display="none";
+                    }
 
                 }} className={"ra_box1_out"}>
                     {
@@ -105,7 +114,7 @@ class TrendIn extends React.Component{
                             return(
                                 <div onClick={()=>{
                                     this.props.history.push("/trendDetails/"+v.info.threadId);
-                                }} className={"ra_box1"}>
+                                }} className={"ra_box1"} key={i}>
                                     <div className={"ra_box1in"}>
                                         <div onClick={(e)=>{
                                             e.stopPropagation();
@@ -322,7 +331,52 @@ class TrendIn extends React.Component{
 
     componentDidMount() {
         // console.log("componentDidMount");
-        this.props.getTrend();
+        let {page}=this.state;
+        // console.log(page);
+        this.props.getTrend.bind(this,page)().then(()=>{
+            // console.log(this);
+            this.setState({
+                isLoading:false
+            });
+            let onScroll = new BScroll(".ra_ui-tab-content", {
+                click:true,
+                tap:true,
+                probeType: 2,
+                pullDownRefresh: {
+                    threshold: 50,
+                    stop: 20
+                },
+                //下拉刷新：可以配置顶部下拉的距离（threshold） 来决定刷新时机以及回弹停留的距离（stop）
+                //这个配置用于做上拉加载功能，默认为 false。当设置为 true 或者是一个 Object 的时候，可以开启上拉加载
+                pullUpLoad: {
+                    threshold: 10
+                },
+                mouseWheel: {    // pc端同样能滑动
+                    speed: 20,
+                    invert: false
+                },
+                useTransition:false  // 防止iphone微信滑动卡顿
+            });
+            BScroll.prototype.me=this;
+            onScroll.on("pullingDown",function(){
+                console.log("pullingDown");
+                this.me.props.getTrend.bind(this.me,1)();
+                onScroll.finishPullDown();//可以多次执行上拉刷新
+            });
+            onScroll.on("pullingUp",function(){
+                //alert('已到最底部');
+                page++;
+                console.log(page);
+                console.log('加载ajax数据');
+                console.log(this.me);
+                this.me.setState({
+                    page
+                });
+                this.me.props.getTrend.bind(this.me,page)();
+                onScroll.finishPullUp();//可以多次执行上拉刷新
+            });
+            onScroll.refresh();
+        })
     }
 }
 
