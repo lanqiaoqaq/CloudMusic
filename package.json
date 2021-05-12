@@ -22,7 +22,7 @@
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
     "silk-scroller": "^1.0.13",
-    "swiper": "^4.5.1"
+    "swiper": "^6.5.1"
   },
   "scripts": {
     "start": "react-scripts start",
